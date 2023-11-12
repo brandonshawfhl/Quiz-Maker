@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp3
+﻿namespace Quiz_Maker
 {
     internal class Program
     {
