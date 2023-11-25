@@ -2,6 +2,9 @@
 {
     internal class Logic
     {
-       public static 
+       public static List<Question> CreateQuestions()
+        {
+            Question firstQuestion = new Question();
+        }
     }
 }
