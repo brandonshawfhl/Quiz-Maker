@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            UserInterface.WelcomeMessage();
+            UserInterface.PrintWelcomeMessage();
+            string questionWording = Console.ReadLine();
         }
     }
 }

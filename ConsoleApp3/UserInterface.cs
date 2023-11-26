@@ -2,9 +2,10 @@
 {
     internal class UserInterface
     {
-        public static void WelcomeMessage()
+        public static void PrintWelcomeMessage()
         {
-            Console.WriteLine("Welcome to Quiz Land! Test your intelligence!");
+            Console.WriteLine("Welcome to Quiz Maker where you can make your own quiz!");
+            Console.WriteLine("Please enter a question you would like to use on your quiz.");
         }
     }
 }
