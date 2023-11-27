@@ -4,6 +4,6 @@
     {
             public string GameQuestion;
             public string RightAnswer;
-            public List<String> WrongAnswers;
+            public List<string> WrongAnswers;
     }
 }

@@ -5,16 +5,21 @@
         static void Main(string[] args)
         {
             int questionNumber = 0;
+            List<Question> questionList = new List<Question>();
+            bool userStillNeedsMoreQuestions = true;
 
+            {
             questionNumber += 1;
             UserInterface.PrintWelcomeMessage();
             string questionName = Console.ReadLine();
             UserInterface.PrintEnterQuestionBodyMessage();
-            Question question{questionNumber} = new Question();
+            Question userQuestion = new Question();
+            questionList.Add(userQuestion);
             UserInterface.PrintEnterCorrectAnswerMessage();
-            string questionCorrectAnswer = Console.ReadLine();
+            userQuestion.RightAnswer = Console.ReadLine();
             UserInterface.PrintEnterIncorrectAnswersMessage();
-            List<String> incorrectAnswers = new List<String>();
+            List<string> incorrectAnswers = new List<string>();
+            } while (userStillNeedsMoreQuestions);
         }
     }
 }
