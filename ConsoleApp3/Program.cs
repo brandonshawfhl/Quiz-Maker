@@ -4,22 +4,20 @@
     {
         static void Main(string[] args)
         {
-            int questionNumber = 0;
-            List<Question> questionList = new List<Question>();
+            List<QuestionAndAnswers> questionAndAnswersList = new List<QuestionAndAnswers>();
             bool userStillNeedsMoreQuestions = true;
 
             {
-                questionNumber += 1;
                 UserInterface.PrintWelcomeMessage();
                 string questionName = Console.ReadLine();
-                UserInterface.PrintEnterQuestionBodyMessage();
-                Question userQuestion = new Question();
-                questionList.Add(userQuestion);
+                QuestionAndAnswers userQuestionAndAnswers = new QuestionAndAnswers();
+                questionAndAnswersList.Add(userQuestionAndAnswers);
                 UserInterface.PrintEnterCorrectAnswerMessage();
-                userQuestion.RightAnswer = Console.ReadLine();
-                UserInterface.PrintEnterIncorrectAnswersMessage();
+                userQuestionAndAnswers.correctAnswer = Console.ReadLine();
+                UserInterface.PrintEnterWrongAnswersMessage();
                 List<string> incorrectAnswers = new List<string>();
             } while (userStillNeedsMoreQuestions) ;
         }
     }
+
 }
