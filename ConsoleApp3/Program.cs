@@ -15,7 +15,7 @@
                 UserInterface.PrintEnterCorrectAnswerMessage();
                 userQuestionAndAnswers.correctAnswer = Console.ReadLine();
                 UserInterface.PrintEnterWrongAnswersMessage();
-                List<string> incorrectAnswers = new List<string>();
+                List<string> wrongAnswers = new List<string>();
             } while (userStillNeedsMoreQuestions) ;
         }
     }
