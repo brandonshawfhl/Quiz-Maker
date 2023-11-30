@@ -4,18 +4,27 @@
     {
         static void Main(string[] args)
         {
-            List<QuestionAndAnswers> questionAndAnswersList = new List<QuestionAndAnswers>();
+            List<Question> questionList = new List<Question>();
+            List<CorrectAnswer> correctAnswersList = new List<CorrectAnswer>();
+            List<WrongAnswers> wrongAnswersList = new List<WrongAnswers>();
             bool userStillNeedsMoreQuestions = true;
 
             {
                 UserInterface.PrintWelcomeMessage();
-                string questionName = Console.ReadLine();
-                QuestionAndAnswers userQuestionAndAnswers = new QuestionAndAnswers();
-                questionAndAnswersList.Add(userQuestionAndAnswers);
+                Question userQuestion = new Question();
+                userQuestion.questionWording = Console.ReadLine();
+                questionList.Add(userQuestion);
                 UserInterface.PrintEnterCorrectAnswerMessage();
-                userQuestionAndAnswers.correctAnswer = Console.ReadLine();
+                CorrectAnswer userQuestionCorrectAnswer = new CorrectAnswer();
+                userQuestionCorrectAnswer.correctAnswerWording = Console.ReadLine();
+                correctAnswersList.Add(userQuestionCorrectAnswer);
                 UserInterface.PrintEnterWrongAnswersMessage();
-                List<string> wrongAnswers = new List<string>();
+                {
+                    bool wantsToCreateMoreWrongAnswers = false;
+                    WrongAnswers.wrongAnswersList.Add(Console.ReadLine());
+                    questionAndAnswersList.Add(userQuestionAndAnswers);
+                    wantsToCreateMoreWrongAnswers = UserInterface.IsCreateMoreWrongAnswers();
+                } while (playAgain == Constants.USER_YES_CHOICE) ;)
             } while (userStillNeedsMoreQuestions) ;
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Quiz_Maker
 {
-    internal class QuestionAndAnswers
+    internal class CorrectAnswer
     {
     }
 }
