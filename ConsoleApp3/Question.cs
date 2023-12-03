@@ -1,9 +1,7 @@
 ﻿namespace Quiz_Maker
 {
-    internal class QuestionAndAnswers
+    internal class Question
     {
-        public string questionWording;
-        public string correctAnswer;
-        public List<string> wrongAnswers;
+        public static string questionWording;
     }
 }

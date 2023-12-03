@@ -8,7 +8,7 @@
             List<CorrectAnswer> correctAnswersList = new List<CorrectAnswer>();
             List<WrongAnswers> wrongAnswersList = new List<WrongAnswers>();
             bool userStillNeedsMoreQuestions = true;
-
+            char wantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
             {
                 UserInterface.PrintWelcomeMessage();
                 Question userQuestion = new Question();
@@ -19,12 +19,12 @@
                 userQuestionCorrectAnswer.correctAnswerWording = Console.ReadLine();
                 correctAnswersList.Add(userQuestionCorrectAnswer);
                 UserInterface.PrintEnterWrongAnswersMessage();
+                char userWantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
                 {
-                    bool wantsToCreateMoreWrongAnswers = false;
                     WrongAnswers.wrongAnswersList.Add(Console.ReadLine());
                     questionAndAnswersList.Add(userQuestionAndAnswers);
-                    wantsToCreateMoreWrongAnswers = UserInterface.IsCreateMoreWrongAnswers();
-                } while (playAgain == Constants.USER_YES_CHOICE) ;)
+                    userWantsToCreateMoreWrongAnswers = UserInterface.IsCreateMoreWrongAnswers();
+                } while (wantsToCreateMoreWrongAnswers == Constants.USER_YES_CHOICE) ;
             } while (userStillNeedsMoreQuestions) ;
         }
     }
