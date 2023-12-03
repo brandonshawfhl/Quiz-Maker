@@ -6,7 +6,6 @@
         {
             List<Question> questionList = new List<Question>();
             List<CorrectAnswer> correctAnswersList = new List<CorrectAnswer>();
-            List<WrongAnswers> wrongAnswersList = new List<WrongAnswers>();
             bool userStillNeedsMoreQuestions = true;
             char wantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
             {
