@@ -5,6 +5,7 @@
         static void Main(string[] args)
         {
             List<QuestionAndAnswers> questionAndAnswerList = new List<QuestionAndAnswers>();
+            List<CorrectAnswer> correctAnswersList = new List<CorrectAnswer>();
             bool userStillNeedsMoreQuestions = true;
             char wantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
             {
