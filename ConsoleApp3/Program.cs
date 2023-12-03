@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            List<QuestionAndAnswers> questionList = new List<QuestionAndAnswers>();
+            List<QuestionAndAnswers> questionAndAnswerList = new List<QuestionAndAnswers>();
             List<CorrectAnswer> correctAnswersList = new List<CorrectAnswer>();
             bool userStillNeedsMoreQuestions = true;
             char wantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
@@ -12,7 +12,7 @@
                 UserInterface.PrintWelcomeMessage();
                 QuestionAndAnswers userQuestion = new QuestionAndAnswers();
                 userQuestion.questionWording = Console.ReadLine();
-                questionList.Add(userQuestion);
+                questionAndAnswerList.Add(userQuestion);
                 UserInterface.PrintEnterCorrectAnswerMessage();
                 CorrectAnswer userQuestionCorrectAnswer = new CorrectAnswer();
                 userQuestionCorrectAnswer.correctAnswerWording = Console.ReadLine();
