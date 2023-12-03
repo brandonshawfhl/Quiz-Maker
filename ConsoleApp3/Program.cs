@@ -4,13 +4,13 @@
     {
         static void Main(string[] args)
         {
-            List<Question> questionList = new List<Question>();
+            List<QuestionAndAnswers> questionList = new List<QuestionAndAnswers>();
             List<CorrectAnswer> correctAnswersList = new List<CorrectAnswer>();
             bool userStillNeedsMoreQuestions = true;
             char wantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
             {
                 UserInterface.PrintWelcomeMessage();
-                Question userQuestion = new Question();
+                QuestionAndAnswers userQuestion = new QuestionAndAnswers();
                 userQuestion.questionWording = Console.ReadLine();
                 questionList.Add(userQuestion);
                 UserInterface.PrintEnterCorrectAnswerMessage();
