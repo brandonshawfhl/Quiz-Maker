@@ -2,9 +2,9 @@
 {
     internal class QuestionAndAnswers
     {
-        public static string questionWording;
-        public static List<string> wrongAnswersList;
-        public static string correctAnswerWording;
+        public string questionWording;
+        public string correctAnswerWording;
+        public List<string> wrongAnswersList = new();
     }
 }
-}
+

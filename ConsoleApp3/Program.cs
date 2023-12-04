@@ -11,18 +11,16 @@
                 UserInterface.PrintWelcomeMessage();
                 QuestionAndAnswers userQuestion = new QuestionAndAnswers();
                 userQuestion.questionWording = Console.ReadLine();
-                questionAndAnswerList.Add(userQuestion);
                 UserInterface.PrintEnterCorrectAnswerMessage();
-                CorrectAnswer userQuestionCorrectAnswer = new CorrectAnswer();
-                userQuestionCorrectAnswer.correctAnswerWording = Console.ReadLine();
-                correctAnswersList.Add(userQuestionCorrectAnswer);
+                userQuestion.correctAnswerWording = Console.ReadLine();
                 UserInterface.PrintEnterWrongAnswersMessage();
+                questionAndAnswerList.Add(userQuestion);
                 char userWantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
                 {
-                    WrongAnswers.wrongAnswersList.Add(Console.ReadLine());
-                    questionAndAnswersList.Add(userQuestionAndAnswers);
+                    userQuestion.wrongAnswersList.Add(Console.ReadLine());
                     userWantsToCreateMoreWrongAnswers = UserInterface.IsCreateMoreWrongAnswers();
                 } while (wantsToCreateMoreWrongAnswers == Constants.USER_YES_CHOICE) ;
+
             } while (userStillNeedsMoreQuestions) ;
         }
     }
