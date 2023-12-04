@@ -25,5 +25,13 @@
             char wantsToCreateMoreWrongAnswers = Char.ToUpper(Console.ReadKey(true).KeyChar);
             return wantsToCreateMoreWrongAnswers;
         }
+
+        public static char IsCreateMoreQuestions()
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine($"Would you like to create another question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            char wantsToCreateMoreQuestions = Char.ToUpper(Console.ReadKey(true).KeyChar);
+            return wantsToCreateMoreQuestions;
+        }
     }
 }

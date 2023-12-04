@@ -14,12 +14,11 @@
                 UserInterface.PrintEnterCorrectAnswerMessage();
                 userQuestion.correctAnswerWording = Console.ReadLine();
                 UserInterface.PrintEnterWrongAnswersMessage();
-                questionAndAnswerList.Add(userQuestion);
-                char userWantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
                 {
                     userQuestion.wrongAnswersList.Add(Console.ReadLine());
-                    userWantsToCreateMoreWrongAnswers = UserInterface.IsCreateMoreWrongAnswers();
+                    wantsToCreateMoreWrongAnswers = UserInterface.IsCreateMoreWrongAnswers();
                 } while (wantsToCreateMoreWrongAnswers == Constants.USER_YES_CHOICE) ;
+                questionAndAnswerList.Add(userQuestion);
 
             } while (userStillNeedsMoreQuestions) ;
         }
