@@ -14,9 +14,9 @@
                 userQuestion.questionWording = Console.ReadLine();
                 UserInterface.PrintEnterCorrectAnswerMessage();
                 userQuestion.correctAnswerWording = Console.ReadLine();
-                UserInterface.PrintEnterWrongAnswersMessage();
                 do
                 {
+                    UserInterface.PrintEnterWrongAnswersMessage();
                     userQuestion.wrongAnswersList.Add(Console.ReadLine());
                     wantsToCreateMoreWrongAnswers = UserInterface.IsCreateMoreWrongAnswers();
                 } while (wantsToCreateMoreWrongAnswers == Constants.USER_YES_CHOICE);
