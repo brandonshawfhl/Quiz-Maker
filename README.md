@@ -15,5 +15,8 @@ answers one at a time and each time when they are finished, they will be asked w
 be asked if they would like to create another question or not.
 ### Question and Answers List
 These questions that the user creates, will be stored in a list to be accessed later when the user is ready to try out their quiz.
-## User Tries Out Quiz
-This part of the program is something I haven't figured out yet.
+## Obtain a Copy
+User is then prompted to decide whether or not they would like a copy of the quiz. If the user decides yes, then a copy will be transferred to their computer.
+
+## User Takes the Quiz
+User is then prompted to decide whether or not they want to try the quiz they just made. User will be presented with all of the questions in their quiz in random order with the answer choices in random order. The user will be prompted at the end of the quiz to decide if they want to take their quiz again, 
