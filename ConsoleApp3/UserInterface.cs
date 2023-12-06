@@ -38,16 +38,16 @@
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like a copy of this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-            char wantsToCreateMoreQuestions = Char.ToUpper(Console.ReadKey(true).KeyChar);
-            return wantsToCreateMoreQuestions;
+            char wantsACopy = Char.ToUpper(Console.ReadKey(true).KeyChar);
+            return wantsACopy;
         }
 
         public static char IsUserTakesTheQuiz()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to take your quiz?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-            char wantsToCreateMoreQuestions = Char.ToUpper(Console.ReadKey(true).KeyChar);
-            return wantsToCreateMoreQuestions;
+            char wantsToTakeQuiz = Char.ToUpper(Console.ReadKey(true).KeyChar);
+            return wantsToTakeQuiz;
         }
     }
 }
