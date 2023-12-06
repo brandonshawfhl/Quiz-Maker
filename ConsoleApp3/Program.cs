@@ -21,6 +21,15 @@
                 questionAndAnswerList.Add(userQuestion);
                 userStillNeedsMoreQuestions = UserInterface.IsCreateMoreQuestions();
             } while (userStillNeedsMoreQuestions == Constants.USER_YES_CHOICE) ;
+
+            char userWantsACopy = UserInterface.IsUserWantsACopy();
+
+            char userTakesTheQuiz = Constants.USER_YES_CHOICE;
+            {
+                userTakesTheQuiz = UserInterface.IsUserTakesTheQuiz();
+            } while (userTakesTheQuiz == Constants.USER_YES_CHOICE) ;
+
+            
         }
     }
 
