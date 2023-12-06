@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             List<QuestionAndAnswers> questionAndAnswerList = new List<QuestionAndAnswers>();
-            bool userStillNeedsMoreQuestions = true;
+            char userStillNeedsMoreQuestions = Constants.USER_YES_CHOICE;
             char wantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
             {
                 UserInterface.PrintWelcomeMessage();
@@ -19,8 +19,8 @@
                     wantsToCreateMoreWrongAnswers = UserInterface.IsCreateMoreWrongAnswers();
                 } while (wantsToCreateMoreWrongAnswers == Constants.USER_YES_CHOICE) ;
                 questionAndAnswerList.Add(userQuestion);
-
-            } while (userStillNeedsMoreQuestions) ;
+                userStillNeedsMoreQuestions = UserInterface.IsCreateMoreQuestions();
+            } while (userStillNeedsMoreQuestions == Constants.USER_YES_CHOICE) ;
         }
     }
 
