@@ -18,35 +18,42 @@
             Console.WriteLine("Please enter the incorrect answers that will be listed as choices for this question.");
         }
 
-        public static char IsCreateMoreWrongAnswers()
+        public static char IsMoreWrongAnswers()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to create more wrong answers for this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-            char wantsToCreateMoreWrongAnswers = Char.ToUpper(Console.ReadKey(true).KeyChar);
+            char wantsToCreateMoreWrongAnswers = char.ToUpper(Console.ReadKey(true).KeyChar);
             return wantsToCreateMoreWrongAnswers;
         }
 
-        public static char IsCreateMoreQuestions()
+        public static char IsMoreQuestions()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to create another question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-            char wantsToCreateMoreQuestions = Char.ToUpper(Console.ReadKey(true).KeyChar);
+
+            ConsoleKeyInfo i = Console.ReadKey(true);
+
+            char c = i.KeyChar;
+
+            char upperChar = char.ToUpper(c);
+
+            char wantsToCreateMoreQuestions = char.ToUpper(Console.ReadKey(true).KeyChar);
             return wantsToCreateMoreQuestions;
         }
 
-        public static char IsUserWantsACopy()
+        public static char IsCopyQuiz()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like a copy of this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-            char wantsACopy = Char.ToUpper(Console.ReadKey(true).KeyChar);
+            char wantsACopy = char.ToUpper(Console.ReadKey(true).KeyChar);
             return wantsACopy;
         }
 
-        public static char IsUserTakesTheQuiz()
+        public static char IsTakeQuiz()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to take your quiz?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-            char wantsToTakeQuiz = Char.ToUpper(Console.ReadKey(true).KeyChar);
+            char wantsToTakeQuiz = char.ToUpper(Console.ReadKey(true).KeyChar);
             return wantsToTakeQuiz;
         }
     }

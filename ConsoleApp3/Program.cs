@@ -5,9 +5,10 @@
         static void Main(string[] args)
         {
             List<QuestionAndAnswers> questionAndAnswerList = new List<QuestionAndAnswers>();
-            char userStillNeedsMoreQuestions = Constants.USER_YES_CHOICE;
-            char wantsToCreateMoreWrongAnswers = Constants.USER_YES_CHOICE;
-                UserInterface.PrintWelcomeMessage();
+            char moreQuestions = Constants.USER_YES_CHOICE;
+            char moreWrongAnswers = Constants.USER_YES_CHOICE;
+            UserInterface.PrintWelcomeMessage();
+
             do
             {
                 QuestionAndAnswers userQuestion = new QuestionAndAnswers();
@@ -19,26 +20,27 @@
                 {
                     UserInterface.PrintEnterWrongAnswersMessage();
                     userQuestion.wrongAnswersList.Add(Console.ReadLine());
-                    wantsToCreateMoreWrongAnswers = UserInterface.IsCreateMoreWrongAnswers();
-                } while (wantsToCreateMoreWrongAnswers == Constants.USER_YES_CHOICE);
+                    moreWrongAnswers = UserInterface.IsMoreWrongAnswers();
+                } while (moreWrongAnswers == Constants.USER_YES_CHOICE);
 
                 questionAndAnswerList.Add(userQuestion);
-                userStillNeedsMoreQuestions = UserInterface.IsCreateMoreQuestions();
-            } while (userStillNeedsMoreQuestions == Constants.USER_YES_CHOICE);
+                moreQuestions = UserInterface.IsMoreQuestions();
+            }
+            while (moreQuestions == Constants.USER_YES_CHOICE);
 
-            char userWantsACopy = UserInterface.IsUserWantsACopy();
+            char saveQuizCopy = UserInterface.IsCopyQuiz();
 
-            char userTakesTheQuiz = Constants.USER_YES_CHOICE;
+            char takeQuiz = Constants.USER_YES_CHOICE;
             do
             {
                 foreach (object QuestionAndAnswers in questionAndAnswerList)
                 {
 
                 }
-                userTakesTheQuiz = UserInterface.IsUserTakesTheQuiz();
-            } while (userTakesTheQuiz == Constants.USER_YES_CHOICE) ;
+                takeQuiz = UserInterface.IsTakeQuiz();
+            } while (takeQuiz == Constants.USER_YES_CHOICE);
 
-            
+
         }
     }
 
