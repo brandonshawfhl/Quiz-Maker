@@ -28,8 +28,7 @@
             }
             while (moreQuestions == Constants.USER_YES_CHOICE);
 
-            char saveQuizCopy = UserInterface.IsCopyQuiz();
-
+            char saveQuiz = UserInterface.IsSaveQuiz();
             char takeQuiz = Constants.USER_YES_CHOICE;
             do
             {

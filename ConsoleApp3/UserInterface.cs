@@ -26,22 +26,26 @@
             return wantsToCreateMoreWrongAnswers;
         }
 
-        public static char IsMoreQuestions()
+        public static bool IsMoreQuestions()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to create another question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            char anotherQuestion = 'N';
+            char upperAnotherQuestion = char.ToUpper(anotherQuestion);
+            bool moreQuestions = upperAnotherQuestion == char.ToUpper(anotherQuestion);
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            anotherQuestion = userInput.KeyChar;
+            upperAnotherQuestion = char.ToUpper(anotherQuestion);
+            if (upperAnotherQuestion == Constants.USER_YES_CHOICE)
+            {
+                moreQuestions = true;
+            }
 
-            ConsoleKeyInfo i = Console.ReadKey(true);
-
-            char c = i.KeyChar;
-
-            char upperChar = char.ToUpper(c);
-
-            char wantsToCreateMoreQuestions = char.ToUpper(Console.ReadKey(true).KeyChar);
-            return wantsToCreateMoreQuestions;
+            
+            return moreQuestions;
         }
 
-        public static char IsCopyQuiz()
+        public static char IsSaveQuiz()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like a copy of this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
