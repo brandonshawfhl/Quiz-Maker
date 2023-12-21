@@ -8,17 +8,17 @@
             Console.WriteLine("Please type out the whole question as you would like it printed.");
         }
 
-        public static void PrintEnterCorrectAnswerMessage()
+        public static void PromptForCorrectAnswer()
         {
             Console.WriteLine("Please enter the correct answer for this question.");
         }
 
-        public static void PrintEnterWrongAnswersMessage()
+        public static void PromptForWrongAnswers()
         {
             Console.WriteLine("Please enter the incorrect answers that will be listed as choices for this question.");
         }
 
-        public static bool IsMoreWrongAnswers()
+        public static bool GetMoreWrongAnswers()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to create more wrong answers for this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
@@ -30,7 +30,7 @@
             return moreWrongAnswers;
         }
 
-        public static bool IsMoreQuestions()
+        public static bool GetMoreQuestions()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to create another question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");

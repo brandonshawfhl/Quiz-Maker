@@ -13,18 +13,18 @@
             {
                 QuestionAndAnswers userQuestion = new QuestionAndAnswers();
                 userQuestion.questionWording = Console.ReadLine();
-                UserInterface.PrintEnterCorrectAnswerMessage();
+                UserInterface.PromptForCorrectAnswer();
 
                 userQuestion.correctAnswerWording = Console.ReadLine();
                 do
                 {
-                    UserInterface.PrintEnterWrongAnswersMessage();
+                    UserInterface.PromptForWrongAnswers();
                     userQuestion.wrongAnswersList.Add(Console.ReadLine());
-                    moreWrongAnswers = UserInterface.IsMoreWrongAnswers();
+                    moreWrongAnswers = UserInterface.GetMoreWrongAnswers();
                 } while (moreWrongAnswers);
 
                 questionAndAnswerList.Add(userQuestion);
-                moreQuestions = UserInterface.IsMoreQuestions();
+                moreQuestions = UserInterface.GetMoreQuestions();
             }
             while (moreQuestions);
 
