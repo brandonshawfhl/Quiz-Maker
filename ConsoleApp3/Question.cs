@@ -10,6 +10,6 @@ namespace Quiz_Maker
     {
         public string printQuestion;
         public string correctAnswer;
-        public List<String> wrongAnswers;
+        public List<string> wrongAnswers;
     }
 }

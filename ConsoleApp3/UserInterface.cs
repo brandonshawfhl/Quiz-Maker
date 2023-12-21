@@ -21,27 +21,32 @@
             return correctAnswer;
         }
 
-        public static void PromptForWrongAnswers()
+        public static List<string> PromptForWrongAnswers()
         {
-            Console.WriteLine("Please enter the incorrect answers that will be listed as choices for this question.");
-        }
-
-        public static bool GetMoreWrongAnswers()
-        {
-            Console.WriteLine("\n");
-            Console.WriteLine($"Would you like to create more wrong answers for this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
             char anotherWrongAnswer = 'N';
             char upperAnotherWrongAnswer = 'N';
             bool moreWrongAnswers = upperAnotherWrongAnswer == Constants.USER_YES_CHOICE;
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            anotherWrongAnswer = userInput.KeyChar;
-            return moreWrongAnswers;
+            List<string> wrongAnswerList = new List<string>();
+            while (moreWrongAnswers)
+            {
+                string wrongAnswer = Console.ReadLine();
+                wrongAnswerList.Add(wrongAnswer);
+                Console.WriteLine("\n");
+                Console.WriteLine($"Would you like to create more wrong answers for this question?");
+                Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+                ConsoleKeyInfo userInput = Console.ReadKey(true);
+                anotherWrongAnswer = userInput.KeyChar;
+                upperAnotherWrongAnswer = char.ToUpper(anotherWrongAnswer);
+            }
+            return wrongAnswerList;
         }
 
         public static bool GetMoreQuestions()
         {
             Console.WriteLine("\n");
-            Console.WriteLine($"Would you like to create another question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            Console.WriteLine("Would you like to create another question?");
+            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
             char anotherQuestion = 'N';
             char upperAnotherQuestion = 'N';
             bool moreQuestions = upperAnotherQuestion == Constants.USER_YES_CHOICE;
@@ -54,7 +59,8 @@
         public static bool IsSaveQuiz()
         {
             Console.WriteLine("\n");
-            Console.WriteLine($"Would you like a copy of this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            Console.WriteLine("Would you like a copy of this question?");
+            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
             char saveAnotherQuiz = 'N';
             char upperSaveAnotherQuiz = 'N';
             bool saveQuiz = upperSaveAnotherQuiz == Constants.USER_YES_CHOICE;
@@ -67,7 +73,8 @@
         public static bool IsTakeQuiz()
         {
             Console.WriteLine("\n");
-            Console.WriteLine($"Would you like to take your quiz?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            Console.WriteLine("Would you like to take your quiz?");
+            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
             char takeAnotherQuiz = 'N';
             char upperTakeAnotherQuiz = 'N';
             bool takeQuiz = upperTakeAnotherQuiz == Constants.USER_YES_CHOICE;

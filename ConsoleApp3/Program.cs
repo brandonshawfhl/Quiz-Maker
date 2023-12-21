@@ -13,9 +13,9 @@
             {
                 QuestionAndAnswers userQuestion = new QuestionAndAnswers();
                 userQuestion.questionWording = UserInterface.PromptForQuestion();
-                userQuestion.correctAnswerWording = UserInterface.PromptForCorrectAnswer();
+                userQuestion.correctAnswer = UserInterface.PromptForCorrectAnswer();
 
-                userQuestion.correctAnswerWording = Console.ReadLine();
+                
                 do
                 {
                     UserInterface.PromptForWrongAnswers();
