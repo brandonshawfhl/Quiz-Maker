@@ -27,17 +27,21 @@
             char upperAnotherWrongAnswer = Constants.USER_YES_CHOICE;
             bool moreWrongAnswers = true;
             List<string> wrongAnswerList = new List<string>();
+
             while (moreWrongAnswers)
             {
                 Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
                 string wrongAnswer = Console.ReadLine();
                 wrongAnswerList.Add(wrongAnswer);
+
                 Console.WriteLine("\n");
                 Console.WriteLine($"Would you like to create more wrong answers for this question?");
                 Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
                 anotherWrongAnswer = userInput.KeyChar;
                 upperAnotherWrongAnswer = char.ToUpper(anotherWrongAnswer);
+
                 if (upperAnotherWrongAnswer == Constants.USER_YES_CHOICE)
                 {
                     moreWrongAnswers = true;
@@ -56,6 +60,7 @@
             Console.WriteLine("\n");
             Console.WriteLine("Would you like to create another question?");
             Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+
             char anotherQuestion = 'N';
             char upperAnotherQuestion = 'N';
             bool moreQuestions = upperAnotherQuestion == Constants.USER_YES_CHOICE;
@@ -70,6 +75,7 @@
             Console.WriteLine("\n");
             Console.WriteLine("Would you like a copy of this question?");
             Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+
             char saveAnotherQuiz = 'N';
             char upperSaveAnotherQuiz = 'N';
             bool saveQuiz = upperSaveAnotherQuiz == Constants.USER_YES_CHOICE;
@@ -84,6 +90,7 @@
             Console.WriteLine("\n");
             Console.WriteLine("Would you like to take your quiz?");
             Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+
             char takeAnotherQuiz = 'N';
             char upperTakeAnotherQuiz = 'N';
             bool takeQuiz = upperTakeAnotherQuiz == Constants.USER_YES_CHOICE;

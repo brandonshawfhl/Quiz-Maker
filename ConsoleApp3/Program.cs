@@ -2,6 +2,7 @@
 {
     internal class Program
     {
+        public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
             List<QuestionAndAnswers> questionAndAnswerList = new List<QuestionAndAnswers>();
@@ -14,7 +15,7 @@
                 userQuestion.questionWording = UserInterface.PromptForQuestion();
                 userQuestion.correctAnswer = UserInterface.PromptForCorrectAnswer();
                 userQuestion.wrongAnswersList = UserInterface.PromptForWrongAnswers();
-                
+
                 questionAndAnswerList.Add(userQuestion);
                 moreQuestions = UserInterface.GetMoreQuestions();
             }
