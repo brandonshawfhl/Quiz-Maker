@@ -18,12 +18,16 @@
             Console.WriteLine("Please enter the incorrect answers that will be listed as choices for this question.");
         }
 
-        public static char IsMoreWrongAnswers()
+        public static bool IsMoreWrongAnswers()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to create more wrong answers for this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-            char wantsToCreateMoreWrongAnswers = char.ToUpper(Console.ReadKey(true).KeyChar);
-            return wantsToCreateMoreWrongAnswers;
+            char anotherWrongAnswer = 'N';
+            char upperAnotherWrongAnswer = 'N';
+            bool moreWrongAnswers = upperAnotherWrongAnswer == Constants.USER_YES_CHOICE;
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            anotherWrongAnswer = userInput.KeyChar;
+            return moreWrongAnswers;
         }
 
         public static bool IsMoreQuestions()
@@ -31,17 +35,11 @@
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to create another question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
             char anotherQuestion = 'N';
-            char upperAnotherQuestion = char.ToUpper(anotherQuestion);
-            bool moreQuestions = upperAnotherQuestion == char.ToUpper(anotherQuestion);
+            char upperAnotherQuestion = 'N';
+            bool moreQuestions = upperAnotherQuestion == Constants.USER_YES_CHOICE;
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             anotherQuestion = userInput.KeyChar;
             upperAnotherQuestion = char.ToUpper(anotherQuestion);
-            if (upperAnotherQuestion == Constants.USER_YES_CHOICE)
-            {
-                moreQuestions = true;
-            }
-
-            
             return moreQuestions;
         }
 
@@ -49,6 +47,8 @@
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like a copy of this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+
             char wantsACopy = char.ToUpper(Console.ReadKey(true).KeyChar);
             return wantsACopy;
         }

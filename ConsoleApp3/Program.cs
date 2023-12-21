@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
             List<QuestionAndAnswers> questionAndAnswerList = new List<QuestionAndAnswers>();
-            char moreQuestions = Constants.USER_YES_CHOICE;
-            char moreWrongAnswers = Constants.USER_YES_CHOICE;
+            bool moreQuestions = false;
+            bool moreWrongAnswers = false;
             UserInterface.PrintWelcomeMessage();
 
             do
@@ -21,12 +21,12 @@
                     UserInterface.PrintEnterWrongAnswersMessage();
                     userQuestion.wrongAnswersList.Add(Console.ReadLine());
                     moreWrongAnswers = UserInterface.IsMoreWrongAnswers();
-                } while (moreWrongAnswers == Constants.USER_YES_CHOICE);
+                } while (moreWrongAnswers);
 
                 questionAndAnswerList.Add(userQuestion);
                 moreQuestions = UserInterface.IsMoreQuestions();
             }
-            while (moreQuestions == Constants.USER_YES_CHOICE);
+            while (moreQuestions);
 
             char saveQuiz = UserInterface.IsSaveQuiz();
             char takeQuiz = Constants.USER_YES_CHOICE;
