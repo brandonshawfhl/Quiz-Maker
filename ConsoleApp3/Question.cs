@@ -8,8 +8,8 @@ namespace Quiz_Maker
 {
     internal class Question
     {
-        public string PrintQuestion;
-        public string CorrectAnswer;
-        public List<String> WrongAnswers;
+        public string printQuestion;
+        public string correctAnswer;
+        public List<String> wrongAnswers;
     }
 }

@@ -14,9 +14,11 @@
             return userQuestion;
         }
 
-        public static void PromptForCorrectAnswer()
+        public static string PromptForCorrectAnswer()
         {
             Console.WriteLine("Please enter the correct answer for this question.");
+            string correctAnswer = Console.ReadLine();
+            return correctAnswer;
         }
 
         public static void PromptForWrongAnswers()
