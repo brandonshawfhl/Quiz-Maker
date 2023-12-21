@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
             List<QuestionAndAnswers> questionAndAnswerList = new List<QuestionAndAnswers>();
-            bool moreQuestions = false;
-            bool moreWrongAnswers = false;
+            bool moreQuestions = true;
+            bool moreWrongAnswers = true;
             UserInterface.PrintWelcomeMessage();
 
             do
@@ -29,7 +29,7 @@
             while (moreQuestions);
 
             bool saveQuiz = UserInterface.IsSaveQuiz();
-            bool takeQuiz = UserInterface.IsTakeQuiz();
+            bool takeQuiz = true;
             do
             {
                 foreach (object QuestionAndAnswers in questionAndAnswerList)
