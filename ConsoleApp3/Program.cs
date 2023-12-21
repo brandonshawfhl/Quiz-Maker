@@ -12,7 +12,7 @@
             do
             {
                 QuestionAndAnswers userQuestion = new QuestionAndAnswers();
-                userQuestion.questionWording = Console.ReadLine();
+                userQuestion.questionWording = UserInterface.PromptForQuestion();
                 UserInterface.PromptForCorrectAnswer();
 
                 userQuestion.correctAnswerWording = Console.ReadLine();

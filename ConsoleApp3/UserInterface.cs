@@ -5,7 +5,13 @@
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("Welcome to Quiz Maker where you can make your own quiz!");
+        }
+
+        public static string PromptForQuestion()
+        {
             Console.WriteLine("Please type out the whole question as you would like it printed.");
+            string userQuestion = Console.ReadLine();
+            return userQuestion;
         }
 
         public static void PromptForCorrectAnswer()
