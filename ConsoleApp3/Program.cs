@@ -6,27 +6,18 @@
         {
             List<QuestionAndAnswers> questionAndAnswerList = new List<QuestionAndAnswers>();
             bool moreQuestions = true;
-            bool moreWrongAnswers = true;
             UserInterface.PrintWelcomeMessage();
 
-            do
+            while (moreQuestions)
             {
                 QuestionAndAnswers userQuestion = new QuestionAndAnswers();
                 userQuestion.questionWording = UserInterface.PromptForQuestion();
                 userQuestion.correctAnswer = UserInterface.PromptForCorrectAnswer();
-
+                userQuestion.wrongAnswersList = UserInterface.PromptForWrongAnswers();
                 
-                do
-                {
-                    UserInterface.PromptForWrongAnswers();
-                    userQuestion.wrongAnswersList.Add(Console.ReadLine());
-                    moreWrongAnswers = UserInterface.GetMoreWrongAnswers();
-                } while (moreWrongAnswers);
-
                 questionAndAnswerList.Add(userQuestion);
                 moreQuestions = UserInterface.GetMoreQuestions();
             }
-            while (moreQuestions);
 
             bool saveQuiz = UserInterface.IsSaveQuiz();
             bool takeQuiz = true;

@@ -23,13 +23,13 @@
 
         public static List<string> PromptForWrongAnswers()
         {
-            Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
             char anotherWrongAnswer = 'N';
-            char upperAnotherWrongAnswer = 'N';
-            bool moreWrongAnswers = upperAnotherWrongAnswer == Constants.USER_YES_CHOICE;
+            char upperAnotherWrongAnswer = Constants.USER_YES_CHOICE;
+            bool moreWrongAnswers = true;
             List<string> wrongAnswerList = new List<string>();
             while (moreWrongAnswers)
             {
+                Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
                 string wrongAnswer = Console.ReadLine();
                 wrongAnswerList.Add(wrongAnswer);
                 Console.WriteLine("\n");
@@ -38,6 +38,15 @@
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
                 anotherWrongAnswer = userInput.KeyChar;
                 upperAnotherWrongAnswer = char.ToUpper(anotherWrongAnswer);
+                if (upperAnotherWrongAnswer == Constants.USER_YES_CHOICE)
+                {
+                    moreWrongAnswers = true;
+                }
+
+                else 
+                { 
+                    moreWrongAnswers = false;
+                }
             }
             return wrongAnswerList;
         }
