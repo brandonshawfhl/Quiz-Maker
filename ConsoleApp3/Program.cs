@@ -28,8 +28,8 @@
             }
             while (moreQuestions);
 
-            char saveQuiz = UserInterface.IsSaveQuiz();
-            char takeQuiz = Constants.USER_YES_CHOICE;
+            bool saveQuiz = UserInterface.IsSaveQuiz();
+            bool takeQuiz = UserInterface.IsTakeQuiz();
             do
             {
                 foreach (object QuestionAndAnswers in questionAndAnswerList)
@@ -37,7 +37,7 @@
 
                 }
                 takeQuiz = UserInterface.IsTakeQuiz();
-            } while (takeQuiz == Constants.USER_YES_CHOICE);
+            } while (takeQuiz);
 
 
         }

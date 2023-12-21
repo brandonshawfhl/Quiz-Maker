@@ -43,22 +43,30 @@
             return moreQuestions;
         }
 
-        public static char IsSaveQuiz()
+        public static bool IsSaveQuiz()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like a copy of this question?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            char userInputSaveQuiz = 'N';
+            char upperUserInputSaveQuiz = 'N';
+            bool saveQuiz = upperUserInputSaveQuiz == Constants.USER_YES_CHOICE;
             ConsoleKeyInfo userInput = Console.ReadKey(true);
-
-            char wantsACopy = char.ToUpper(Console.ReadKey(true).KeyChar);
-            return wantsACopy;
+            userInputSaveQuiz = userInput.KeyChar;
+            upperUserInputSaveQuiz = char.ToUpper(upperUserInputSaveQuiz);
+            return saveQuiz;
         }
 
-        public static char IsTakeQuiz()
+        public static bool IsTakeQuiz()
         {
             Console.WriteLine("\n");
             Console.WriteLine($"Would you like to take your quiz?({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-            char wantsToTakeQuiz = char.ToUpper(Console.ReadKey(true).KeyChar);
-            return wantsToTakeQuiz;
+            char userInputTakeQuiz = 'N';
+            char upperUserInputTakeQuiz = 'N';
+            bool takeQuiz = upperUserInputTakeQuiz == Constants.USER_YES_CHOICE;
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            userInputTakeQuiz = userInput.KeyChar;
+            upperUserInputTakeQuiz = char.ToUpper(userInputTakeQuiz);
+            return takeQuiz;
         }
     }
 }
