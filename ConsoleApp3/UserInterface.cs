@@ -52,7 +52,7 @@
             return moreQuestions;
         }
 
-        public static bool IsSaveQuiz()
+        public static bool PromptForSaveQuiz()
         {
             Console.WriteLine("\n");
             Console.WriteLine("Would you like a copy of this question?");
@@ -63,7 +63,7 @@
             return saveQuiz;
         }
 
-        public static bool IsTakeQuiz()
+        public static bool PromptForTakeQuiz()
         {
             Console.WriteLine("\n");
             Console.WriteLine("Would you like to take your quiz?");

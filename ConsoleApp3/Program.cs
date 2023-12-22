@@ -20,7 +20,7 @@
                 moreQuestions = UserInterface.GetMoreQuestions();
             }
 
-            bool saveQuiz = UserInterface.IsSaveQuiz();
+            bool saveQuiz = UserInterface.PromptForSaveQuiz();
             bool takeQuiz = true;
             do
             {
@@ -28,7 +28,7 @@
                 {
 
                 }
-                takeQuiz = UserInterface.IsTakeQuiz();
+                takeQuiz = UserInterface.PromptForTakeQuiz();
             } while (takeQuiz);
 
 
