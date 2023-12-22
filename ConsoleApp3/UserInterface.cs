@@ -41,7 +41,7 @@
             return wrongAnswerList;
         }
 
-        public static bool GetMoreQuestions()
+        public static bool PromptForMoreQuestions()
         {
             Console.WriteLine("\n");
             Console.WriteLine("Would you like to create another question?");

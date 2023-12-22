@@ -17,7 +17,7 @@
                 userQuestion.wrongAnswersList = UserInterface.PromptForWrongAnswers();
 
                 questionAndAnswerList.Add(userQuestion);
-                moreQuestions = UserInterface.GetMoreQuestions();
+                moreQuestions = UserInterface.PromptForMoreQuestions();
             }
 
             bool saveQuiz = UserInterface.PromptForSaveQuiz();
