@@ -47,12 +47,8 @@
             Console.WriteLine("Would you like to create another question?");
             Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
 
-            char anotherQuestion = 'N';
-            char upperAnotherQuestion = 'N';
-            bool moreQuestions = upperAnotherQuestion == Constants.USER_YES_CHOICE;
             ConsoleKeyInfo userInput = Console.ReadKey(true);
-            anotherQuestion = userInput.KeyChar;
-            upperAnotherQuestion = char.ToUpper(anotherQuestion);
+            bool moreQuestions = userInput.Key == Constants.USER_YES_CHOICE;
             return moreQuestions;
         }
 
@@ -62,12 +58,8 @@
             Console.WriteLine("Would you like a copy of this question?");
             Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
 
-            char saveAnotherQuiz = 'N';
-            char upperSaveAnotherQuiz = 'N';
-            bool saveQuiz = upperSaveAnotherQuiz == Constants.USER_YES_CHOICE;
             ConsoleKeyInfo userInput = Console.ReadKey(true);
-            saveAnotherQuiz = userInput.KeyChar;
-            upperSaveAnotherQuiz = char.ToUpper(upperSaveAnotherQuiz);
+            bool saveQuiz = userInput.Key == Constants.USER_YES_CHOICE;
             return saveQuiz;
         }
 
@@ -77,12 +69,8 @@
             Console.WriteLine("Would you like to take your quiz?");
             Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
 
-            char takeAnotherQuiz = 'N';
-            char upperTakeAnotherQuiz = 'N';
-            bool takeQuiz = upperTakeAnotherQuiz == Constants.USER_YES_CHOICE;
             ConsoleKeyInfo userInput = Console.ReadKey(true);
-            takeAnotherQuiz = userInput.KeyChar;
-            upperTakeAnotherQuiz = char.ToUpper(takeAnotherQuiz);
+            bool takeQuiz = userInput.Key == Constants.USER_YES_CHOICE;
             return takeQuiz;
         }
     }
