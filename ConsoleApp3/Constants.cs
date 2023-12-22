@@ -2,6 +2,6 @@
 {
     internal class Constants
     {
-        public const char USER_YES_CHOICE = 'Y';
+        public const ConsoleKey USER_YES_CHOICE = ConsoleKey.Y;
     }
 }

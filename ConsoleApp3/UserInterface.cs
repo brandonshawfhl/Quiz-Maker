@@ -23,11 +23,8 @@
 
         public static List<string> PromptForWrongAnswers()
         {
-            char anotherWrongAnswer = 'N';
-            char upperAnotherWrongAnswer = Constants.USER_YES_CHOICE;
             bool moreWrongAnswers = true;
             List<string> wrongAnswerList = new List<string>();
-
             while (moreWrongAnswers)
             {
                 Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
@@ -39,18 +36,7 @@
                 Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
 
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
-                anotherWrongAnswer = userInput.KeyChar;
-                upperAnotherWrongAnswer = char.ToUpper(anotherWrongAnswer);
-
-                if (upperAnotherWrongAnswer == Constants.USER_YES_CHOICE)
-                {
-                    moreWrongAnswers = true;
-                }
-
-                else 
-                { 
-                    moreWrongAnswers = false;
-                }
+                moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
             }
             return wrongAnswerList;
         }
