@@ -52,26 +52,16 @@
             return moreQuestions;
         }
 
-        public static bool PromptForSaveQuiz()
+        public static bool PromptForQuizAction()
         {
             Console.WriteLine("\n");
-            Console.WriteLine("Would you like a copy of this question?");
-            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-
+            Console.WriteLine("What would you like to do?(0 - Take quiz, 1 - Save quiz and 2 - Load a previously saved quiz");
+            
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool saveQuiz = userInput.Key == Constants.USER_YES_CHOICE;
             return saveQuiz;
         }
 
-        public static bool PromptForTakeQuiz()
-        {
-            Console.WriteLine("\n");
-            Console.WriteLine("Would you like to take your quiz?");
-            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool takeQuiz = userInput.Key == Constants.USER_YES_CHOICE;
-            return takeQuiz;
-        }
+       
     }
 }

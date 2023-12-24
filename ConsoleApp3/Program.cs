@@ -1,4 +1,10 @@
-﻿namespace Quiz_Maker
+﻿            enum QuizAction
+        {
+            Take,
+            Save,
+            Load
+        }
+namespace Quiz_Maker
 {
     internal class Program
     {
@@ -20,8 +26,8 @@
                 moreQuestions = UserInterface.PromptForMoreQuestions();
             }
 
-            bool saveQuiz = UserInterface.PromptForSaveQuiz();
-            bool takeQuiz = true;
+        bool saveQuiz = UserInterface.PromptForSaveQuiz();
+        bool takeQuiz = true;
             do
             {
                 foreach (object QuestionAndAnswers in questionAndAnswerList)
