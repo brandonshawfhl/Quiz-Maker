@@ -12,9 +12,9 @@
             while (moreQuestions)
             {
                 QuestionAndAnswers userQuestion = new QuestionAndAnswers();
-                userQuestion.questionWording = UserInterface.PromptForQuestion();
+                userQuestion.printQuestion = UserInterface.PromptForQuestion();
                 userQuestion.correctAnswer = UserInterface.PromptForCorrectAnswer();
-                userQuestion.wrongAnswersList = UserInterface.PromptForWrongAnswers();
+                userQuestion.wrongAnswers = UserInterface.PromptForWrongAnswers();
 
                 questionAndAnswerList.Add(userQuestion);
                 moreQuestions = UserInterface.PromptForMoreQuestions();

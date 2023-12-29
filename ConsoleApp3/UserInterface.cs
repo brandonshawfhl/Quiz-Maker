@@ -69,14 +69,14 @@ namespace Quiz_Maker
 
         public static void PromptForQuizAction(QuizAction choice)
         {
-            XmlSerializer saveQuiz = new XmlSerializer(typeof(TakeQuiz));
+            XmlSerializer saveQuiz = new XmlSerializer(typeof(List<Question>));
             Console.WriteLine("\n");
             Console.WriteLine("What would you like to do?((0) - Take quiz, (1) - Save quiz and (2) - Load a previously saved quiz");
             switch (choice)
             {
                 case QuizAction.Load:
                     break;
-                case QuizAction.Save:XmlSerializer(TakingQuiz())
+                case QuizAction.Save:XmlSerializer()
                     break;
                 case QuizAction.Take:
                     break;
