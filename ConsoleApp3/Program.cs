@@ -2,12 +2,6 @@
 {
     internal class Program
     {
-        enum QuizAnswers
-        {
-            CorrectAnswer,
-            WrongAnswers
-        }
-
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {

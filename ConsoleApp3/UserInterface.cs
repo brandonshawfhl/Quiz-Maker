@@ -1,4 +1,6 @@
-﻿namespace Quiz_Maker
+﻿using System.Xml.Serialization;
+
+namespace Quiz_Maker
 {
     internal class UserInterface
     {
@@ -9,6 +11,12 @@
             Load
         }
 
+        enum TakeQuiz
+        {
+            Question,
+            CorrectAnswer,
+            WrongAnswers
+        }
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("Welcome to Quiz Maker where you can make your own quiz!");
@@ -61,23 +69,25 @@
 
         public static void PromptForQuizAction(QuizAction choice)
         {
+            XmlSerializer saveQuiz = new XmlSerializer(typeof(TakeQuiz));
             Console.WriteLine("\n");
             Console.WriteLine("What would you like to do?((0) - Take quiz, (1) - Save quiz and (2) - Load a previously saved quiz");
             switch (choice)
             {
                 case QuizAction.Load:
                     break;
-                case QuizAction.Save:
+                case QuizAction.Save:XmlSerializer(TakingQuiz())
                     break;
                 case QuizAction.Take:
                     break;
             }
 
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool saveQuiz = userInput.Key == Constants.USER_YES_CHOICE;
-            return saveQuiz;
+            
         }
 
+        public static void TakingQuiz(TakeQuiz now)
+        {
 
+        }
     }
 }
