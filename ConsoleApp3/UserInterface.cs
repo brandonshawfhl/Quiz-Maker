@@ -2,6 +2,13 @@
 {
     internal class UserInterface
     {
+        enum QuizAction
+        {
+            Take,
+            Save,
+            Load
+        }
+
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("Welcome to Quiz Maker where you can make your own quiz!");
@@ -52,16 +59,25 @@
             return moreQuestions;
         }
 
-        public static bool PromptForQuizAction()
+        public static void PromptForQuizAction(QuizAction choice)
         {
             Console.WriteLine("\n");
-            Console.WriteLine("What would you like to do?(0 - Take quiz, 1 - Save quiz and 2 - Load a previously saved quiz");
-            
+            Console.WriteLine("What would you like to do?((0) - Take quiz, (1) - Save quiz and (2) - Load a previously saved quiz");
+            switch (choice)
+            {
+                case QuizAction.Load:
+                    break;
+                case QuizAction.Save:
+                    break;
+                case QuizAction.Take:
+                    break;
+            }
+
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool saveQuiz = userInput.Key == Constants.USER_YES_CHOICE;
             return saveQuiz;
         }
 
-       
+
     }
 }

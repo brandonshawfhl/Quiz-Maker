@@ -1,13 +1,13 @@
-﻿            enum QuizAction
-        {
-            Take,
-            Save,
-            Load
-        }
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
     internal class Program
     {
+        enum QuizAnswers
+        {
+            CorrectAnswer,
+            WrongAnswers
+        }
+
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
@@ -26,8 +26,8 @@ namespace Quiz_Maker
                 moreQuestions = UserInterface.PromptForMoreQuestions();
             }
 
-        bool saveQuiz = UserInterface.PromptForSaveQuiz();
-        bool takeQuiz = true;
+            bool saveQuiz = UserInterface.PromptForQuizAction();
+            bool takeQuiz = true;
             do
             {
                 foreach (object QuestionAndAnswers in questionAndAnswerList)
