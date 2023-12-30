@@ -79,6 +79,7 @@ namespace Quiz_Maker
             {
                 case QuizAction.Take:
 
+
                     break;
 
                 case QuizAction.Save:
@@ -97,11 +98,6 @@ namespace Quiz_Maker
                     }
                     break;
             }
-
-
-            public static void TakingQuiz(TakeQuiz now)
-            {
-
-            }
         }
     }
+}
