@@ -5,7 +5,7 @@
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
-            List<QuestionAndAnswers> questionAndAnswerList = new List<QuestionAndAnswers>();
+            List<QuestionAndAnswers> questionAndAnswersList = new List<QuestionAndAnswers>();
             bool moreQuestions = true;
             UserInterface.PrintWelcomeMessage();
 
@@ -16,7 +16,7 @@
                 userQuestion.correctAnswer = UserInterface.PromptForCorrectAnswer();
                 userQuestion.wrongAnswers = UserInterface.PromptForWrongAnswers();
 
-                questionAndAnswerList.Add(userQuestion);
+                questionAndAnswersList.Add(userQuestion);
                 moreQuestions = UserInterface.PromptForMoreQuestions();
             }
 
@@ -24,7 +24,7 @@
             bool takeQuiz = true;
             do
             {
-                foreach (object QuestionAndAnswers in questionAndAnswerList)
+                foreach (object QuestionAndAnswers in questionAndAnswersList)
                 {
 
                 }
