@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.IO;
+using System.Xml.Serialization;
 
 namespace Quiz_Maker
 {
@@ -14,9 +15,11 @@ namespace Quiz_Maker
         enum TakeQuiz
         {
             Question,
-            CorrectAnswer,
+            RightAnswer,
             WrongAnswers
         }
+
+
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("Welcome to Quiz Maker where you can make your own quiz!");
@@ -32,8 +35,8 @@ namespace Quiz_Maker
         public static string PromptForCorrectAnswer()
         {
             Console.WriteLine("Please enter the correct answer for this question.");
-            string correctAnswer = Console.ReadLine();
-            return correctAnswer;
+            string rightAnswer = Console.ReadLine();
+            return rightAnswer;
         }
 
         public static List<string> PromptForWrongAnswers()
@@ -67,20 +70,20 @@ namespace Quiz_Maker
             return moreQuestions;
         }
 
-        public static void PromptForQuizAction(List<QuestionAndAnswers> questionAndAnswersList)
+        public static void QuizOptions(List<QuestionAndAnswers> questionAndAnswersList)
         {
             QuizAction choice = new QuizAction();
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
             List<QuestionAndAnswers> quizActionList = new List<QuestionAndAnswers>();
             var path = @"C:\tmp\questionAndAnswersList.xml";
-            Console.WriteLine("\n");
-            Console.WriteLine("What would you like to do?((0) - Take quiz, (1) - Save quiz and (2) - Load a previously saved quiz");
             switch (choice)
             {
                 case QuizAction.Take:
+                    Console.WriteLine();
+                    path = Console.ReadLine();
+                    using (FileStream file = File.OpenRead(path))
+                        break;
 
-
-                    break;
 
                 case QuizAction.Save:
                     path = Console.ReadLine();
@@ -98,6 +101,14 @@ namespace Quiz_Maker
                     }
                     break;
             }
+        }
+
+        public static int PromptForQuizAction()
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("What would you like to do?((0) - Take quiz, (1) - Save quiz and (2) - Load a previously saved quiz");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            return choice;
         }
     }
 }

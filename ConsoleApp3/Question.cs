@@ -3,7 +3,7 @@
     internal class QuestionAndAnswers
     {
         public string printQuestion;
-        public string correctAnswer;
+        public string rightAnswer;
         public List<string> wrongAnswers;
     }
 }
