@@ -5,13 +5,6 @@ namespace Quiz_Maker
 {
     internal class UserInterface
     {
-        enum QuizAction
-        {
-            Take,
-            Save,
-            Load
-        }
-
         enum TakeQuiz
         {
             Question,
@@ -70,45 +63,11 @@ namespace Quiz_Maker
             return moreQuestions;
         }
 
-        public static void QuizOptions(List<QuestionAndAnswers> questionAndAnswersList)
-        {
-            QuizAction choice = new QuizAction();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
-            List<QuestionAndAnswers> quizActionList = new List<QuestionAndAnswers>();
-            var path = @"C:\tmp\questionAndAnswersList.xml";
-            switch (choice)
-            {
-                case QuizAction.Take:
-                    Console.WriteLine();
-                    path = Console.ReadLine();
-                    using (FileStream file = File.OpenRead(path))
-                        break;
-
-
-                case QuizAction.Save:
-                    path = Console.ReadLine();
-                    using (FileStream file = File.Create(path))
-                    {
-                        serializer.Serialize(file, questionAndAnswersList);
-                    }
-                    break;
-
-                case QuizAction.Load:
-                    path = Console.ReadLine();
-                    using (FileStream file = File.OpenRead(path))
-                    {
-                        quizActionList = serializer.Deserialize(file) as List<QuestionAndAnswers>;
-                    }
-                    break;
-            }
-        }
-
         public static int PromptForQuizAction()
         {
-            Console.WriteLine("\n");
-            Console.WriteLine("What would you like to do?((0) - Take quiz, (1) - Save quiz and (2) - Load a previously saved quiz");
-            int choice = Convert.ToInt32(Console.ReadLine());
-            return choice;
+            Console.WriteLine("What would you like to do?(0 to take a quiz, 1 to save a quiz and 2 to load a quiz)\n");
+            int quizAction = Convert.ToInt32(Console.ReadLine());
+            return quizAction;
         }
     }
 }

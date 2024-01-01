@@ -21,9 +21,8 @@
                 moreQuestions = UserInterface.PromptForMoreQuestions();
             }
 
-            bool saveQuiz = UserInterface.PromptForQuizAction();
-            bool takeQuiz = true;
-           
+            Logic.PromptUserInterface.PromptForQuizAction();
+           F
 
 
         }
