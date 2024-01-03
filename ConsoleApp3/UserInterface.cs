@@ -64,5 +64,14 @@ namespace Quiz_Maker
             int quizAction = Convert.ToInt32(Console.ReadLine());
             return quizAction;
         }
+
+        public static List <QuestionAndAnswers> TakeQuiz(List<QuestionAndAnswers> questionAndAnswers)
+        {
+            bool moreQuestions = true;
+            if(moreQuestions)
+            {
+                questionAndAnswers.
+            }
+        }
     }
 }
