@@ -5,8 +5,8 @@
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
-
-            List<QuestionAndAnswers> questionAndAnswersList = new List<QuestionAndAnswers>();
+            List<QuestionAndAnswers> questionAndAnswers = new List<QuestionAndAnswers>();
+            List<QuestionAndAnswers> quizAction = new List<QuestionAndAnswers>();
             QuestionAndAnswers userQuestion = new QuestionAndAnswers();
             bool moreQuestions = true;
             UserInterface.PrintWelcomeMessage();
@@ -17,13 +17,13 @@
                 userQuestion.rightAnswer = UserInterface.PromptForCorrectAnswer();
                 userQuestion.wrongAnswers = UserInterface.PromptForWrongAnswers();
 
-                questionAndAnswersList.Add(userQuestion);
+                questionAndAnswers.Add(userQuestion);
                 moreQuestions = UserInterface.PromptForMoreQuestions();
             }
 
-            Logic.PromptUserInterface.PromptForQuizAction();
-           F
-
+            int quizAction = UserInterface.PromptForQuizAction();
+            Logic.QuizOptions(questionAndAnswers, Enum.QuizAction choice);
+           
 
         }
     }

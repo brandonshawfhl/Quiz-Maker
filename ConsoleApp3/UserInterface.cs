@@ -5,12 +5,7 @@ namespace Quiz_Maker
 {
     internal class UserInterface
     {
-        enum TakeQuiz
-        {
-            Question,
-            RightAnswer,
-            WrongAnswers
-        }
+        
 
 
         public static void PrintWelcomeMessage()
