@@ -14,7 +14,8 @@
             {
                 userQuestion.printQuestion = UserInterface.PromptForQuestion();
                 userQuestion.rightAnswer = UserInterface.PromptForCorrectAnswer();
-                userQuestion.wrongAnswers = UserInterface.PromptForWrongAnswers();
+                userQuestion.allAnswers = UserInterface.PromptForWrongAnswers();
+                userQuestion.allAnswers.Add(userQuestion.rightAnswer);
 
                 questionAndAnswers.Add(userQuestion);
                 moreQuestions = UserInterface.PromptForMoreQuestions();
