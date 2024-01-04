@@ -1,8 +1,8 @@
 ﻿namespace Quiz_Maker
 {
-    internal class @enum
+    internal class Enum
     {
-        enum QuizAction
+        public enum QuizAction
         {
             Take,
             Save,

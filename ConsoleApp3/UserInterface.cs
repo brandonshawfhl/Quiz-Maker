@@ -5,7 +5,7 @@ namespace Quiz_Maker
 {
     internal class UserInterface
     {
-        
+
 
 
         public static void PrintWelcomeMessage()
@@ -65,12 +65,17 @@ namespace Quiz_Maker
             return quizAction;
         }
 
-        public static List <QuestionAndAnswers> TakeQuiz(List<QuestionAndAnswers> questionAndAnswers)
+        public static List<QuestionAndAnswers> TakeQuiz(List<QuestionAndAnswers> questionAndAnswers)
         {
-            bool moreQuestions = true;
-            if(moreQuestions)
+            bool moreQuestions;
+            if (moreQuestions)
             {
-                questionAndAnswers.
+                questionAndAnswers.printQuestion;
+                questionAndAnswers.rightAnswer;
+                questionAndAnswers.wrongAnswers;
+
+                ConsoleKeyInfo userInput = Console.ReadKey(true);
+                moreQuestions = (userInput.Key == Constants.USER_YES_CHOICE);
             }
         }
     }

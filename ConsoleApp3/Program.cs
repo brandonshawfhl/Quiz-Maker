@@ -6,7 +6,6 @@
         static void Main(string[] args)
         {
             List<QuestionAndAnswers> questionAndAnswers = new List<QuestionAndAnswers>();
-            List<QuestionAndAnswers> quizAction = new List<QuestionAndAnswers>();
             QuestionAndAnswers userQuestion = new QuestionAndAnswers();
             bool moreQuestions = true;
             UserInterface.PrintWelcomeMessage();
