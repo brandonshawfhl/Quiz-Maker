@@ -20,23 +20,19 @@ namespace Quiz_Maker
             return userQuestion;
         }
 
-        public static string PromptForCorrectAnswer()
+        public static string[,] PromptForAnswers()
         {
+            string[,] answerArray;
+            List<string> answerList = new List<string>();
             Console.WriteLine("Please enter the correct answer for this question.");
-            string rightAnswer = Console.ReadLine();
-            return rightAnswer;
-        }
+            answerList.Add(Console.ReadLine());
 
-        public static List<string> PromptForWrongAnswers()
-        {
             bool moreWrongAnswers = true;
-            List<string> wrongAnswerList = new List<string>();
             while (moreWrongAnswers)
             {
                 Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
-                string wrongAnswer = Console.ReadLine();
-                wrongAnswerList.Add(wrongAnswer);
-
+                answerList.Add(Console.ReadLine());
+                
                 Console.WriteLine("\n");
                 Console.WriteLine($"Would you like to create more wrong answers for this question?");
                 Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
@@ -44,7 +40,7 @@ namespace Quiz_Maker
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
                 moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
             }
-            return wrongAnswerList;
+            return answerArray;
         }
 
         public static bool PromptForMoreQuestions()

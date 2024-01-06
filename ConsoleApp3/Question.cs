@@ -28,6 +28,8 @@ namespace Quiz_Maker
                     allAnswers.Remove(allAnswers[randomAnswer]);
                 }
             }
+            string outputAnswers =
+
             return $"{printQuestion}\n\n A. {printAnswers[0]}";
         }
 
