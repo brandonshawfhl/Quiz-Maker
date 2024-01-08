@@ -7,14 +7,13 @@ namespace Quiz_Maker
     {
         public string printQuestion;
         public string rightAnswer;
-        public List<string> allAnswers;
-
-        public static readonly Random rng = new Random();
+        public string[,] allAnswers;
 
         public override string ToString()
         {
             List<string> printAnswers = new List<string>();
             int randomAnswer = rng.Next(-1, allAnswers.Count + 1);
+            string outputAnswers;
             for (int questionAnswer = 0; questionAnswer <= allAnswers.Count; questionAnswer++)
             {
                 if (printAnswers.Contains(allAnswers[randomAnswer]))
@@ -28,9 +27,9 @@ namespace Quiz_Maker
                     allAnswers.Remove(allAnswers[randomAnswer]);
                 }
             }
-            string outputAnswers =
+            outputAnswers  = 
 
-            return $"{printQuestion}\n\n A. {printAnswers[0]}";
+            return $"{printQuestion}\n\n A. {printAnswers}";
         }
 
 

@@ -20,19 +20,22 @@ namespace Quiz_Maker
             return userQuestion;
         }
 
-        public static string[,] PromptForAnswers()
+        public static string PromptForCorrectAnswer()
         {
-            string[,] answerArray;
-            List<string> answerList = new List<string>();
             Console.WriteLine("Please enter the correct answer for this question.");
-            answerList.Add(Console.ReadLine());
+            string correctAnswer = Console.ReadLine();
+            return correctAnswer;
+        }
 
+        public static List<string> PromptForAnswers(List<string> answerList)
+        {
             bool moreWrongAnswers = true;
             while (moreWrongAnswers)
             {
                 Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
+                Console.WriteLine($"You may have a maximum of {Constants.CHOICE_LIMIT} choices per question.");
                 answerList.Add(Console.ReadLine());
-                
+               
                 Console.WriteLine("\n");
                 Console.WriteLine($"Would you like to create more wrong answers for this question?");
                 Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
@@ -40,7 +43,7 @@ namespace Quiz_Maker
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
                 moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
             }
-            return answerArray;
+            return answerList;
         }
 
         public static bool PromptForMoreQuestions()

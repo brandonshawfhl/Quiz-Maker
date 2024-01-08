@@ -14,9 +14,12 @@
             {
                 userQuestion.printQuestion = UserInterface.PromptForQuestion();
                 userQuestion.rightAnswer = UserInterface.PromptForCorrectAnswer();
-                userQuestion.allAnswers = UserInterface.PromptForWrongAnswers();
-                userQuestion.allAnswers.Add(userQuestion.rightAnswer);
-
+                List<string> answerList = new List<string>()
+                {
+                    userQuestion.rightAnswer
+                };
+                answerList = UserInterface.PromptForAnswers(answerList);
+                string[,] answerArray = Logic.AnswerArray(answerList);
                 questionAndAnswers.Add(userQuestion);
                 moreQuestions = UserInterface.PromptForMoreQuestions();
             }
