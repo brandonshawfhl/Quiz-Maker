@@ -26,7 +26,7 @@
 
             int quizAction = UserInterface.PromptForQuizAction();
             Logic.QuizOptions(questionAndAnswers, quizAction);
-            QuestionAndAnswers.PrintQuestionAndAnswers(userQuestion);
+            Logic.PrintQuestionAndAnswers(questionAndAnswers);
 
         }
     }

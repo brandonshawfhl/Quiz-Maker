@@ -51,5 +51,18 @@ namespace Quiz_Maker
             return answerArray;
         }
 
+        public static void PrintQuestionAndAnswers(List<QuestionAndAnswers> questionAndAnswers)
+        {
+            for (int questionNumber = 0; questionNumber <= questionAndAnswers.Count; questionNumber++)
+            {
+                QuestionAndAnswers userQuestion = questionAndAnswers[0];
+                Console.WriteLine(userQuestion.printQuestion);
+                for (int allAnswersCount = 0; allAnswersCount <= userQuestion.allAnswers.Length; allAnswersCount++)
+                {
+                    Console.WriteLine($"{userQuestion.allAnswers[0, allAnswersCount]}{userQuestion.allAnswers[1, allAnswersCount]}");
+                }
+                Console.WriteLine("\n\n");
+            }
+        }
     }
 }
