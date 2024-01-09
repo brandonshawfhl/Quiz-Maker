@@ -4,7 +4,7 @@ namespace Quiz_Maker
 {
     internal class Logic
     {
-        public static void QuizOptions(List<QuestionAndAnswers> questionAndAnswersFile, List<QuestionAndAnswers> quizAction, Enum.QuizAction choice)
+        public static void QuizOptions(List<QuestionAndAnswers> questionAndAnswersFile, Enum.QuizAction choice)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
             var path = @"C:\tmp\questionAndAnswersList.xml";

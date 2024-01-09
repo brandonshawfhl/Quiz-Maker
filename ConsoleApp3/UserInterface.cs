@@ -63,19 +63,5 @@ namespace Quiz_Maker
             int quizAction = Convert.ToInt32(Console.ReadLine());
             return quizAction;
         }
-
-        public static List<QuestionAndAnswers> TakeQuiz(List<QuestionAndAnswers> questionAndAnswers)
-        {
-            bool moreQuestions;
-            if (moreQuestions)
-            {
-                questionAndAnswers.printQuestion;
-                questionAndAnswers.rightAnswer;
-                questionAndAnswers.wrongAnswers;
-
-                ConsoleKeyInfo userInput = Console.ReadKey(true);
-                moreQuestions = (userInput.Key == Constants.USER_YES_CHOICE);
-            }
-        }
     }
 }

@@ -9,7 +9,7 @@
             QuestionAndAnswers userQuestion = new QuestionAndAnswers();
             bool moreQuestions = true;
             UserInterface.PrintWelcomeMessage();
-
+           
             while (moreQuestions)
             {
                 userQuestion.printQuestion = UserInterface.PromptForQuestion();
@@ -24,8 +24,9 @@
                 moreQuestions = UserInterface.PromptForMoreQuestions();
             }
 
+            Enum.QuizAction choice = new Enum.QuizAction();
             int quizAction = UserInterface.PromptForQuizAction();
-            Logic.QuizOptions(questionAndAnswers, Enum.QuizAction choice);
+            Logic.QuizOptions(questionAndAnswers, choice);
            
 
         }
