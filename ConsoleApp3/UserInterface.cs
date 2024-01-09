@@ -57,10 +57,16 @@ namespace Quiz_Maker
         public static int PromptForQuizAction()
         {
             int quizAction = 0;
-            while (quizAction < Constants.SAVE_CHOICE && quizAction > Constants.LOAD_CHOICE)
+            while (quizAction < Constants.MAKE_CHOICE && quizAction > Constants.LOAD_CHOICE)
             {
-                Console.WriteLine("What would you like to do?(1 to save a quiz and 2 to load a quiz)\n");
+                Console.WriteLine("What would you like to do?(0 to make a quiz, 1 to save a quiz and 2 to load a quiz)\n");
                 quizAction = Convert.ToInt32(Console.ReadLine());
+                
+                if(quizAction == Constants.MAKE_CHOICE)
+                {
+                    Console.WriteLine("Beginng the quiz making process now!");
+                }
+
                 if (quizAction == Constants.SAVE_CHOICE)
                 {
                     Console.WriteLine("Saving your quiz now!");
