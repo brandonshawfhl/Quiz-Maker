@@ -37,11 +37,21 @@ namespace Quiz_Maker
         public static string[,] AnswerArray(List<string> answerList)
         {
             string[,] answerArray = new string[Constants.ANSWER_COLUMN, Constants.CHOICE_LIMIT];
+            answerArray[0, Constants.LETTER_A] = "A.\t";
+            answerArray[0, Constants.LETTER_B] = "B.\t";
+            answerArray[0, Constants.LETTER_C] = "C.\t";
+            answerArray[0, Constants.LETTER_D] = "D.\t";
+            answerArray[0, Constants.LETTER_E] = "E.\t";
+            answerArray[0, Constants.LETTER_F] = "F.\t";
+            answerArray[0, Constants.LETTER_G] = "G.\t";
+            answerArray[0, Constants.LETTER_H] = "H.\t";
+            answerArray[0, Constants.LETTER_I] = "I.\t";
+            answerArray[0, Constants.LETTER_J] = "J.\t";
             int answerListCount = answerList.Count();
             for (int answerNumber = 1; answerNumber <= answerListCount; answerNumber++)
             {
                 int randomNumber = Program.rng.Next(-1, answerList.Count);
-                answerList[randomNumber] = answerArray[answerNumber, answerNumber];
+                answerList[randomNumber] = answerArray[1, answerNumber];
                 answerList.Remove(answerList[randomNumber]);
             }
             return answerArray;

@@ -13,13 +13,13 @@
             while (moreQuestions)
             {
                 userQuestion.printQuestion = UserInterface.PromptForQuestion();
-                userQuestion.rightAnswer = UserInterface.PromptForCorrectAnswer();
+                userQuestion.correctAnswer = UserInterface.PromptForCorrectAnswer();
                 List<string> answerList = new List<string>()
                 {
-                    userQuestion.rightAnswer
+                    userQuestion.correctAnswer
                 };
                 answerList = UserInterface.PromptForAnswers(answerList);
-                string[,] answerArray = Logic.AnswerArray(answerList);
+                userQuestion.allAnswers = Logic.AnswerArray(answerList);
                 questionAndAnswers.Add(userQuestion);
                 moreQuestions = UserInterface.PromptForMoreQuestions();
             }
