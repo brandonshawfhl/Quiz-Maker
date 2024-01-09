@@ -16,6 +16,8 @@
         public const int LETTER_I = 8;
         public const int LETTER_J = 9;
         public const int LETTER_K = 10;
+        public const int SAVE_CHOICE = 1;
+        public const int LOAD_CHOICE = 2;
 
     }
 }

@@ -4,34 +4,28 @@ namespace Quiz_Maker
 {
     internal class Logic
     {
-        public static void QuizOptions(List<QuestionAndAnswers> questionAndAnswersFile, Enum.QuizAction choice)
+        public static List<QuestionAndAnswers> QuizOptions(List<QuestionAndAnswers> questionAndAnswersFile, int quizAction)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
             var path = @"C:\tmp\questionAndAnswersList.xml";
-            switch (choice)
+            if (quizAction == Constants.SAVE_CHOICE)
             {
-                case Enum.QuizAction.Take:
-                    Console.WriteLine();
-                    path = Console.ReadLine();
-                    using (FileStream file = File.OpenRead(path))
-                        break;
-
-                case Enum.QuizAction.Save:
-                    path = Console.ReadLine();
-                    using (FileStream file = File.Create(path))
-                    {
-                        serializer.Serialize(file, questionAndAnswersFile);
-                    }
-                    break;
-
-                case Enum.QuizAction.Load:
-                    path = Console.ReadLine();
-                    using (FileStream file = File.OpenRead(path))
-                    {
-                        questionAndAnswersFile = serializer.Deserialize(file) as List<QuestionAndAnswers>;
-                    }
-                    break;
+                path = Console.ReadLine();
+                using (FileStream file = File.Create(path))
+                {
+                    serializer.Serialize(file, questionAndAnswersFile);
+                }
             }
+
+                if(quizAction == Constants.LOAD_CHOICE)
+            {
+                path = Console.ReadLine();
+                using (FileStream file = File.OpenRead(path))
+                {
+                    questionAndAnswersFile = serializer.Deserialize(file) as List<QuestionAndAnswers>;
+                }
+            }
+            return questionAndAnswersFile;
         }
 
         public static string[,] AnswerArray(List<string> answerList)

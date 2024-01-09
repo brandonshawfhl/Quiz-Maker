@@ -24,9 +24,8 @@
                 moreQuestions = UserInterface.PromptForMoreQuestions();
             }
 
-            Enum.QuizAction choice = new Enum.QuizAction();
             int quizAction = UserInterface.PromptForQuizAction();
-            Logic.QuizOptions(questionAndAnswers, choice);
+            Logic.QuizOptions(questionAndAnswers, quizAction);
            
 
         }
