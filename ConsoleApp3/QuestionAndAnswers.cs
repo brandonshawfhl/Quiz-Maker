@@ -9,12 +9,17 @@ namespace Quiz_Maker
         public string correctAnswer;
         public string[,] allAnswers;
 
-        public void PrintQuestionAndAnswers(QuestionAndAnswers userQuestion)
+        public void PrintQuestionAndAnswers(List<QuestionAndAnswers> questionAndAnswers)
         {
-            Console.WriteLine(userQuestion.printQuestion);
-            for (int allAnswersCount = 0; allAnswersCount <= allAnswers.Length; allAnswersCount++)
+            for (int questionNumber = 0; questionNumber <= questionAndAnswers.Count; questionNumber++)
             {
-                Console.WriteLine($"{userQuestion.allAnswers[1, allAnswersCount]}");
+                QuestionAndAnswers userQuestion = questionAndAnswers[0];
+                Console.WriteLine(userQuestion.printQuestion);
+                for (int allAnswersCount = 0; allAnswersCount <= allAnswers.Length; allAnswersCount++)
+                {
+                    Console.WriteLine($"{userQuestion.allAnswers[0, allAnswersCount]}{userQuestion.allAnswers[1, allAnswersCount]}");
+                }
+                Console.WriteLine("\n\n");
             }
         }
     }
