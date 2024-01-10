@@ -9,9 +9,10 @@
             QuestionAndAnswers userQuestion = new QuestionAndAnswers();
             bool moreQuestions = true;
             UserInterface.PrintWelcomeMessage();
-            int quizAction = UserInterface.PromptForQuizAction();
+            QuizChoice.QuizOptions quizChoice = new QuizChoice.QuizOptions();
+            quizChoice = UserInterface.PromptForQuizAction();
 
-            while (quizAction == Constants.MAKE_CHOICE)
+            if (quizChoice == QuizChoice.QuizOptions.Make)
             {
                 while (moreQuestions)
                 {
@@ -28,7 +29,17 @@
                 }
             }
 
-            Logic.GetQuizOptions(questionAndAnswers, quizAction);
+            if (quizChoice == QuizChoice.QuizOptions.Load)
+            {
+
+            }
+
+            if (quizChoice == QuizChoice.QuizOptions.Save)
+            {
+
+            }
+
+            Logic.GetQuizOptions(questionAndAnswers, quizChoice);
             Logic.PrintQuestionAndAnswers(questionAndAnswers);
 
         }
