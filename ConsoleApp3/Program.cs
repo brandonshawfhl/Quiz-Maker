@@ -28,7 +28,7 @@
                 }
             }
 
-            Logic.QuizOptions(questionAndAnswers, quizAction);
+            Logic.GetQuizOptions(questionAndAnswers, quizAction);
             Logic.PrintQuestionAndAnswers(questionAndAnswers);
 
         }
