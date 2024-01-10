@@ -13,7 +13,6 @@
 
             while (quizAction == Constants.MAKE_CHOICE)
             {
-
                 while (moreQuestions)
                 {
                     userQuestion.printQuestion = UserInterface.PromptForQuestion();
@@ -23,7 +22,7 @@
                     userQuestion.correctAnswer
                 };
                     answerList = UserInterface.PromptForAnswers(answerList);
-                    userQuestion.allAnswers = Logic.AnswerArray(answerList);
+                    userQuestion.allAnswers = Logic.GetAnswerArray(answerList);
                     questionAndAnswers.Add(userQuestion);
                     moreQuestions = UserInterface.PromptForMoreQuestions();
                 }

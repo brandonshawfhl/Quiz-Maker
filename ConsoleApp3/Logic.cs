@@ -28,7 +28,7 @@ namespace Quiz_Maker
             return questionAndAnswersFile;
         }
 
-        public static string[,] AnswerArray(List<string> answerList)
+        public static string[,] GetAnswerArray(List<string> answerList)
         {
             string[,] answerArray = new string[Constants.ANSWER_COLUMN, Constants.CHOICE_LIMIT];
             answerArray[0, Constants.LETTER_A] = "A.\t";

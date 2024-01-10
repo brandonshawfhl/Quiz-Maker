@@ -5,18 +5,29 @@ namespace Quiz_Maker
 {
     internal class UserInterface
     {
+        /// <summary>
+        /// Writes a message welcoming user to the program.
+        /// </summary>
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("Welcome to Quiz Maker where you can make your own quiz!");
         }
 
+        /// <summary>
+        /// Prompts user for the question in the way they want it to read.
+        /// </summary>
+        /// <returns>a string typed by the user that will be used to print their question</returns>
         public static string PromptForQuestion()
         {
             Console.WriteLine("Please type out the whole question as you would like it printed.");
             string userQuestion = Console.ReadLine();
             return userQuestion;
         }
-
+        
+        /// <summary>
+        /// prompts the user for the corret answer to the question
+        /// </summary>
+        /// <returns>a string that the user types themselves that will be used as the correct answer for their question</returns>
         public static string PromptForCorrectAnswer()
         {
             Console.WriteLine("Please enter the correct answer for this question.");
@@ -24,6 +35,11 @@ namespace Quiz_Maker
             return correctAnswer;
         }
 
+        /// <summary>
+        /// prompts the user for the rest of the answers they would like listed as choices that are not correct
+        /// </summary>
+        /// <param name="answerList">the list that will be filled by this method</param>
+        /// <returns>a list of strings that the user types that will be used as the other choices for the question</returns>
         public static List<string> PromptForAnswers(List<string> answerList)
         {
             bool moreWrongAnswers = true;
@@ -43,6 +59,10 @@ namespace Quiz_Maker
             return answerList;
         }
 
+        /// <summary>
+        /// prompts the user to decide whehther or not they would like to create more answers for their quiz
+        /// </summary>
+        /// <returns>a true or false based on the user's answer</returns>
         public static bool PromptForMoreQuestions()
         {
             Console.WriteLine("\n");
@@ -54,6 +74,10 @@ namespace Quiz_Maker
             return moreQuestions;
         }
 
+        /// <summary>
+        /// prompts the user to decide how they would like to use this program
+        /// </summary>
+        /// <returns>returns an integer representing their choice</returns>
         public static int PromptForQuizAction()
         {
             int quizAction = 0;
