@@ -5,6 +5,7 @@ namespace Quiz_Maker
 {
     internal class UserInterface
     {
+        enum QuizChoic
         /// <summary>
         /// Writes a message welcoming user to the program.
         /// </summary>
@@ -86,6 +87,8 @@ namespace Quiz_Maker
                 Console.WriteLine("What would you like to do?(0 to make a quiz, 1 to save a quiz and 2 to load a quiz)\n");
                 quizAction = Convert.ToInt32(Console.ReadLine());
                 
+                switch
+                    case QuizChoice.QuizChoice
                 if(quizAction == Constants.MAKE_CHOICE)
                 {
                     Console.WriteLine("Beginng the quiz making process now!");

@@ -4,7 +4,13 @@ namespace Quiz_Maker
 {
     internal class Logic
     {
-        public static List<QuestionAndAnswers> QuizOptions(List<QuestionAndAnswers> questionAndAnswersFile, int quizAction)
+        /// <summary>
+        /// either saves or loads a file with a quiz on it
+        /// </summary>
+        /// <param name="questionAndAnswersFile">the list that will be store the file</param>
+        /// <param name="quizAction">an integer representing the users choice</param>
+        /// <returns>a list that can be used to run a quiz</returns>
+        public static List<QuestionAndAnswers> GetQuizOptions(List<QuestionAndAnswers> questionAndAnswersFile, int quizAction)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
             var path = @"C:\tmp\questionAndAnswersList.xml";
@@ -28,6 +34,11 @@ namespace Quiz_Maker
             return questionAndAnswersFile;
         }
 
+        /// <summary>
+        /// populates an array that will be used to print the answer choices for a question
+        /// </summary>
+        /// <param name="answerList">a list of answers that will be filled</param>
+        /// <returns>the filled list of answers</returns>
         public static string[,] GetAnswerArray(List<string> answerList)
         {
             string[,] answerArray = new string[Constants.ANSWER_COLUMN, Constants.CHOICE_LIMIT];
@@ -51,6 +62,10 @@ namespace Quiz_Maker
             return answerArray;
         }
 
+        /// <summary>
+        /// prints the question with its answer choices
+        /// </summary>
+        /// <param name="questionAndAnswers">List of questions to print</param>
         public static void PrintQuestionAndAnswers(List<QuestionAndAnswers> questionAndAnswers)
         {
             for (int questionNumber = 0; questionNumber <= questionAndAnswers.Count; questionNumber++)
