@@ -10,26 +10,26 @@ namespace Quiz_Maker
         /// <param name="questionAndAnswersFile">the list that will be store the file</param>
         /// <param name="quizAction">an integer representing the users choice</param>
         /// <returns>a list that can be used to run a quiz</returns>
-        public static List<QuestionAndAnswers> GetQuizOptions(List<QuestionAndAnswers> questionAndAnswersFile, int quizAction)
+        public static List<QuestionAndAnswers> SaveQuiz(List<QuestionAndAnswers> questionAndAnswersFile)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
             var path = @"C:\tmp\questionAndAnswersList.xml";
-            if (quizAction == Constants.SAVE_CHOICE)
+            path = Console.ReadLine();
+            using (FileStream file = File.Create(path))
             {
-                path = Console.ReadLine();
-                using (FileStream file = File.Create(path))
-                {
-                    serializer.Serialize(file, questionAndAnswersFile);
-                }
+                serializer.Serialize(file, questionAndAnswersFile);
             }
+            return questionAndAnswersFile;
+        }
 
-                if(quizAction == Constants.LOAD_CHOICE)
+        public static List<QuestionAndAnswers> LoadQuiz(List<QuestionAndAnswers> questionAndAnswersFile)
+        {
+            XmlSerializer serializer = new XmlSerializer (typeof(List<QuestionAndAnswers>));
+            var path = @"C:\tmp\questionAndAnswersList.xml";
+            path = Console.ReadLine();
+            using (FileStream file = File.OpenRead(path))
             {
-                path = Console.ReadLine();
-                using (FileStream file = File.OpenRead(path))
-                {
-                    questionAndAnswersFile = serializer.Deserialize(file) as List<QuestionAndAnswers>;
-                }
+                questionAndAnswersFile = serializer.Deserialize(file) as List<QuestionAndAnswers>;
             }
             return questionAndAnswersFile;
         }
