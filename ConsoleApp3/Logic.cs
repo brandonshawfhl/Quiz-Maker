@@ -5,10 +5,9 @@ namespace Quiz_Maker
     internal class Logic
     {
         /// <summary>
-        /// either saves or loads a file with a quiz on it
+        /// saves a quiz that the user made
         /// </summary>
-        /// <param name="questionAndAnswersFile">the list that will be store the file</param>
-        /// <param name="quizAction">an integer representing the users choice</param>
+        /// <param name="questionAndAnswersFile">the list that will store the file</param>
         /// <returns>a list that can be used to run a quiz</returns>
         public static List<QuestionAndAnswers> SaveQuiz(List<QuestionAndAnswers> questionAndAnswersFile)
         {
@@ -22,6 +21,11 @@ namespace Quiz_Maker
             return questionAndAnswersFile;
         }
 
+        /// <summary>
+        /// loads a quiz from a file
+        /// </summary>
+        /// <param name="questionAndAnswersFile">a list that will store the loaded file</param>
+        /// <returns>a loaded file that can run a quiz</returns>
         public static List<QuestionAndAnswers> LoadQuiz(List<QuestionAndAnswers> questionAndAnswersFile)
         {
             XmlSerializer serializer = new XmlSerializer (typeof(List<QuestionAndAnswers>));
@@ -35,7 +39,7 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// populates an array that will be used to print the answer choices for a question
+        /// populates an array that will be used to print the answer choices for a question in random order
         /// </summary>
         /// <param name="answerList">a list of answers that will be filled</param>
         /// <returns>the filled list of answers</returns>

@@ -31,15 +31,14 @@
 
             if (quizChoice == QuizChoice.QuizOptions.Load)
             {
-
+                Logic.LoadQuiz(questionAndAnswers);
             }
 
             if (quizChoice == QuizChoice.QuizOptions.Save)
             {
-
+                Logic.SaveQuiz(questionAndAnswers);
             }
 
-            Logic.GetQuizOptions(questionAndAnswers, quizChoice);
             Logic.PrintQuestionAndAnswers(questionAndAnswers);
 
         }
