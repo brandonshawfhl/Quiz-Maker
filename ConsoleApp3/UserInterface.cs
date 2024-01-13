@@ -5,7 +5,6 @@ namespace Quiz_Maker
 {
     internal class UserInterface
     {
-        enum QuizChoic
         /// <summary>
         /// Writes a message welcoming user to the program.
         /// </summary>
@@ -24,7 +23,7 @@ namespace Quiz_Maker
             string userQuestion = Console.ReadLine();
             return userQuestion;
         }
-        
+
         /// <summary>
         /// prompts the user for the corret answer to the question
         /// </summary>
@@ -78,38 +77,28 @@ namespace Quiz_Maker
         /// <summary>
         /// prompts the user to decide how they would like to use this program
         /// </summary>
-        /// <returns>returns an integer representing their choice</returns>
-        public static int PromptForQuizAction()
+        /// <returns>an enum representing the user's choice</returns>
+        public static QuizChoice.QuizOptions PromptForQuizAction()
         {
-            int quizAction = 0;
-            while (quizAction < Constants.MAKE_CHOICE && quizAction > Constants.LOAD_CHOICE)
+            Console.WriteLine("What would you like to do?(0 to make a quiz, 1 to save a quiz and 2 to load a quiz)\n");
+            string quizChoiceConversion = Console.ReadLine();
+            QuizChoice.QuizOptions quizChoice = (QuizChoice.QuizOptions)Enum.Parse(typeof(QuizChoice.QuizOptions), quizChoiceConversion);
+
+            switch (quizChoice)
             {
-                Console.WriteLine("What would you like to do?(0 to make a quiz, 1 to save a quiz and 2 to load a quiz)\n");
-                quizAction = Convert.ToInt32(Console.ReadLine());
-                
-                switch
-                    case QuizChoice.QuizChoice
-                if(quizAction == Constants.MAKE_CHOICE)
-                {
-                    Console.WriteLine("Beginng the quiz making process now!");
-                }
+                case QuizChoice.QuizOptions.Make:
+                    Console.WriteLine("Beginning the quiz making process now!");
+                    break;
 
-                if (quizAction == Constants.SAVE_CHOICE)
-                {
+                case QuizChoice.QuizOptions.Load:
                     Console.WriteLine("Saving your quiz now!");
-                }
+                    break ;
 
-                if (quizAction == Constants.LOAD_CHOICE)
-                {
+                case QuizChoice.QuizOptions.Save:
                     Console.WriteLine("Loading your quiz now!");
-                }
-
-                else
-                {
-                    Console.WriteLine("Your response was invalid. Please try again.");
-                }
+                    break;
             }
-            return quizAction;
+            return quizChoice;
         }
     }
 }

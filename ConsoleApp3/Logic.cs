@@ -12,7 +12,7 @@ namespace Quiz_Maker
         public static List<QuestionAndAnswers> SaveQuiz(List<QuestionAndAnswers> questionAndAnswersFile)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
-            var path = @"C:\tmp\questionAndAnswersList.xml";
+            var path = @"questionAndAnswersList.xml";
             path = Console.ReadLine();
             using (FileStream file = File.Create(path))
             {
@@ -29,7 +29,7 @@ namespace Quiz_Maker
         public static List<QuestionAndAnswers> LoadQuiz(List<QuestionAndAnswers> questionAndAnswersFile)
         {
             XmlSerializer serializer = new XmlSerializer (typeof(List<QuestionAndAnswers>));
-            var path = @"C:\tmp\questionAndAnswersList.xml";
+            var path = @"questionAndAnswersList.xml";
             path = Console.ReadLine();
             using (FileStream file = File.OpenRead(path))
             {
