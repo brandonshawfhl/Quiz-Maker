@@ -84,7 +84,6 @@ namespace Quiz_Maker
             string quizChoiceConversion = Console.ReadLine();
             QuizChoice.QuizOptions quizChoice = (QuizChoice.QuizOptions)Enum.Parse(typeof(QuizChoice.QuizOptions), quizChoiceConversion);
 
-            
             switch (quizChoice)
             {
                 case QuizChoice.QuizOptions.Make:

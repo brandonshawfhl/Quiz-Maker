@@ -6,16 +6,17 @@
         static void Main(string[] args)
         {
             List<QuestionAndAnswers> questionAndAnswers = new List<QuestionAndAnswers>();
-            QuestionAndAnswers userQuestion = new QuestionAndAnswers();
+            int questionNumber = 0;
             bool moreQuestions = true;
             UserInterface.PrintWelcomeMessage();
-            QuizChoice.QuizOptions quizChoice = new QuizChoice.QuizOptions();
-            quizChoice = UserInterface.PromptForQuizAction();
+            QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
 
             if (quizChoice == QuizChoice.QuizOptions.Make)
             {
                 while (moreQuestions)
                 {
+                    questionNumber++;
+                    QuestionAndAnswers userQuestion(questionNumber) = new QuestionAndAnswers();
                     userQuestion.printQuestion = UserInterface.PromptForQuestion();
                     userQuestion.correctAnswer = UserInterface.PromptForCorrectAnswer();
                     List<string> answerList = new List<string>()
