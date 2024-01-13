@@ -5,7 +5,7 @@
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
-            List<QuestionAndAnswers> questionAndAnswers = new List<QuestionAndAnswers>();
+            List<string> printQuestions = new List<string>();
             bool moreQuestions = true;
             UserInterface.PrintWelcomeMessage();
             QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
@@ -23,7 +23,7 @@
                 };
                     answerList = UserInterface.PromptForAnswers(answerList);
                     userQuestion.allAnswers = Logic.GetAnswerArray(answerList);
-                    questionAndAnswers.Add(userQuestion);
+                    printQuestions.Add(userQuestion);
                     moreQuestions = UserInterface.PromptForMoreQuestions();
                 }
             }
