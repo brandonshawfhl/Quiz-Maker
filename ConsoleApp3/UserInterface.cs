@@ -84,6 +84,7 @@ namespace Quiz_Maker
             string quizChoiceConversion = Console.ReadLine();
             QuizChoice.QuizOptions quizChoice = (QuizChoice.QuizOptions)Enum.Parse(typeof(QuizChoice.QuizOptions), quizChoiceConversion);
 
+            
             switch (quizChoice)
             {
                 case QuizChoice.QuizOptions.Make:
@@ -92,11 +93,17 @@ namespace Quiz_Maker
 
                 case QuizChoice.QuizOptions.Load:
                     Console.WriteLine("Saving your quiz now!");
-                    break ;
+                    break;
 
                 case QuizChoice.QuizOptions.Save:
                     Console.WriteLine("Loading your quiz now!");
                     break;
+
+                default:
+                    Console.WriteLine("Invalid entry. Please try again.");
+                    break;
+
+
             }
             return quizChoice;
         }
