@@ -6,7 +6,6 @@
         static void Main(string[] args)
         {
             List<QuestionAndAnswers> questionAndAnswers = new List<QuestionAndAnswers>();
-            int questionNumber = 0;
             bool moreQuestions = true;
             UserInterface.PrintWelcomeMessage();
             QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
@@ -15,8 +14,7 @@
             {
                 while (moreQuestions)
                 {
-                    questionNumber++;
-                    QuestionAndAnswers userQuestion(questionNumber) = new QuestionAndAnswers();
+                    QuestionAndAnswers userQuestion = new QuestionAndAnswers();
                     userQuestion.printQuestion = UserInterface.PromptForQuestion();
                     userQuestion.correctAnswer = UserInterface.PromptForCorrectAnswer();
                     List<string> answerList = new List<string>()
