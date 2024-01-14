@@ -5,13 +5,13 @@
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
+            bool anotherQuiz = true;
+            userQuiz madeQuiz = new userQuiz();
             UserInterface.PrintWelcomeMessage();
             QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
 
             if (quizChoice == QuizChoice.QuizOptions.Make)
             {
-                userQuiz madeQuiz = new userQuiz();
-
                 List<string> questionList = new List<string>();
                 string printQuestion = UserInterface.PromptForQuestion();
                 questionList.Add(printQuestion);
@@ -19,7 +19,7 @@
                 List<string> correctAnswersList = new List<string>();
                 string correctAnswer = UserInterface.PromptForCorrectAnswer();
                 correctAnswersList.Add(correctAnswer);
-                madeQuiz.correctAnswers = correctAnswersList();
+                madeQuiz.correctAnswers = correctAnswersList;
                 answerList = UserInterface.PromptForAnswers(correctAnswer);
                 madeQuiz.printQuestions = questionList;
                 madeQuiz.allAnswers = answerList;
@@ -27,15 +27,17 @@
 
             if (quizChoice == QuizChoice.QuizOptions.Load)
             {
-                Logic.LoadQuiz(questionAndAnswers);
+                Logic.LoadQuiz();
             }
 
             if (quizChoice == QuizChoice.QuizOptions.Save)
             {
-                Logic.SaveQuiz(questionAndAnswers);
+                Logic.SaveQuiz(madeQuiz);
             }
 
             Logic.PrintQuestionAndAnswers(questionAndAnswers);
+
+
 
         }
     }

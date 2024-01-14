@@ -93,10 +93,20 @@ namespace Quiz_Maker
                 default:
                     Console.WriteLine("Invalid entry. Please try again.");
                     break;
-
-
             }
             return quizChoice;
+        }
+
+        public static bool AnotherQuizOption()
+        {
+            bool moreQuizOptions = true;
+            Console.WriteLine("Would you like to keep going?");
+            Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            moreQuizOptions = (userInput.Key == Constants.USER_YES_CHOICE);
+
+            return moreQuizOptions;
+
         }
     }
 }
