@@ -5,6 +5,19 @@
         public const ConsoleKey USER_YES_CHOICE = ConsoleKey.Y;
         public const int ANSWER_COLUMN = 2;
         public const int CHOICE_LIMIT = 10;
+        public readonly List<string> answerChoices = new()
+            {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J"
+            };
         public const int LETTER_A = 0;
         public const int LETTER_B = 1;
         public const int LETTER_C = 2;

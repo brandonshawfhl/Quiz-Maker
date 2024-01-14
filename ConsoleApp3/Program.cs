@@ -21,8 +21,7 @@
                     List<string> answerList = new List<string>();
                     List<string> correctAnswerList = new List<string>();
                     string correctAnswer = UserInterface.PromptForCorrectAnswer();
-                    answerList = UserInterface.PromptForAnswers(answerList);
-                    correctAnswerList.Add(correctAnswer);
+                    answerList = UserInterface.PromptForAnswers(correctAnswer);
                     moreQuestions = UserInterface.PromptForMoreQuestions();
                 }
             }
