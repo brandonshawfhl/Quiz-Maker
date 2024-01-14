@@ -46,11 +46,10 @@ namespace Quiz_Maker
             while (moreWrongAnswers)
             {
                 int answerNumber = 0;
-                bool withinChoiceLimit = answerNumber <= Constants.CHOICE_LIMIT;
+                bool tooManyAnswers = answerNumber >= Constants.CHOICE_LIMIT;
                 List<string> allAnswers = new List<string>();
                 allAnswers.Add(correctAnswer);
-                while (withinChoiceLimit)
-                {
+              
                     for (answerNumber = 1; answerNumber <= Constants.CHOICE_LIMIT; answerNumber++)
                     {
                         Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
@@ -58,9 +57,14 @@ namespace Quiz_Maker
                         Console.WriteLine("\n");
                         Console.WriteLine($"Would you like to create more wrong answers for this question?");
                         Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+
+                    if (tooManyAnswers)
+                    {
+                        Console.WriteLine("You have reached the answer choice limit for this question.");
+                    }
                         allAnswers.Add(Console.ReadLine());
                     }
-                }
+                
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
                 moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
             }
