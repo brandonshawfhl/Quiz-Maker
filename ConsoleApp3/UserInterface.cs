@@ -40,11 +40,12 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="answerList">the list that will be filled by this method</param>
         /// <returns>a list of strings that the user types that will be used as the other choices for the question</returns>
-        public static List<string> PromptForAnswers(List<string> answerList)
+        public static List<string> PromptForAnswers(string correctAnswer)
         {
             bool moreWrongAnswers = true;
             while (moreWrongAnswers)
             {
+                List<string> allAnswers = new List<string>();
                 Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
                 Console.WriteLine($"You may have a maximum of {Constants.CHOICE_LIMIT} choices per question.");
                 answerList.Add(Console.ReadLine());
@@ -56,7 +57,7 @@ namespace Quiz_Maker
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
                 moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
             }
-            return answerList;
+            return allAnswers;
         }
 
         /// <summary>

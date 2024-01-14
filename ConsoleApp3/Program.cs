@@ -12,18 +12,17 @@
 
             if (quizChoice == QuizChoice.QuizOptions.Make)
             {
+
                 while (moreQuestions)
                 {
-                    QuestionAndAnswers userQuestion = new QuestionAndAnswers();
-                    userQuestion.printQuestion = UserInterface.PromptForQuestion();
-                    userQuestion.correctAnswer = UserInterface.PromptForCorrectAnswer();
-                    List<string> answerList = new List<string>()
-                {
-                    userQuestion.correctAnswer
-                };
+                    List<string> questionList = new List<string>();
+                    string printQuestion = UserInterface.PromptForQuestion();
+                    questionList.Add(printQuestion);
+                    List<string> answerList = new List<string>();
+                    List<string> correctAnswerList = new List<string>();
+                    string correctAnswer = UserInterface.PromptForCorrectAnswer();
                     answerList = UserInterface.PromptForAnswers(answerList);
-                    userQuestion.allAnswers = Logic.GetAnswerArray(answerList);
-                    printQuestions.Add(userQuestion);
+                    correctAnswerList.Add(correctAnswer);
                     moreQuestions = UserInterface.PromptForMoreQuestions();
                 }
             }
