@@ -9,10 +9,11 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="questionAndAnswersFile">the list that will store the file</param>
         /// <returns>a list that can be used to run a quiz</returns>
-        public static List<QuestionAndAnswers> SaveQuiz(List<QuestionAndAnswers> questionAndAnswersFile)
+        public static userQuiz SaveQuiz()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
-            var path = @"questionAndAnswersList.xml";
+            userQuiz 
+            XmlSerializer serializer = new XmlSerializer(typeof(userQuiz));
+            var path = @"userQuiz.xml";
             path = Console.ReadLine();
             using (FileStream file = File.Create(path))
             {
@@ -26,7 +27,7 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="questionAndAnswersFile">a list that will store the loaded file</param>
         /// <returns>a loaded file that can run a quiz</returns>
-        public static List<QuestionAndAnswers> LoadQuiz(List<QuestionAndAnswers> questionAndAnswersFile)
+        public static userQuiz LoadQuiz()
         {
             XmlSerializer serializer = new XmlSerializer (typeof(List<QuestionAndAnswers>));
             var path = @"questionAndAnswersList.xml";

@@ -42,54 +42,34 @@ namespace Quiz_Maker
         /// <returns>a list of strings that the user types that will be used as the other choices for the question</returns>
         public static List<string> PromptForAnswers(string correctAnswer)
         {
+            List<string> allAnswers = new List<string>();
             bool moreWrongAnswers = true;
             while (moreWrongAnswers)
             {
                 int answerNumber = 0;
                 bool tooManyAnswers = answerNumber >= Constants.CHOICE_LIMIT;
-                List<string> allAnswers = new List<string>();
                 allAnswers.Add(correctAnswer);
-              
-                    for (answerNumber = 1; answerNumber <= Constants.CHOICE_LIMIT; answerNumber++)
-                    {
-                        Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
-                        Console.WriteLine($"You may have a maximum of {Constants.CHOICE_LIMIT} choices per question.");
-                        Console.WriteLine("\n");
-                        Console.WriteLine($"Would you like to create more wrong answers for this question?");
-                        Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+
+                for (answerNumber = 1; answerNumber <= Constants.CHOICE_LIMIT; answerNumber++)
+                {
+                    Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
+                    Console.WriteLine($"You may have a maximum of {Constants.CHOICE_LIMIT} choices per question.");
+                    allAnswers.Add(Console.ReadLine());
+                    Console.WriteLine("\n");
+                    Console.WriteLine($"Would you like to create more wrong answers for this question?");
+                    Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+                    ConsoleKeyInfo userInput = Console.ReadKey(true);
+                    moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
 
                     if (tooManyAnswers)
                     {
                         Console.WriteLine("You have reached the answer choice limit for this question.");
                     }
-                        allAnswers.Add(Console.ReadLine());
-                    }
-                
-                ConsoleKeyInfo userInput = Console.ReadKey(true);
-                moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
+                }
             }
             return allAnswers;
         }
 
-        /// <summary>
-        /// prompts the user to decide whehther or not they would like to create more answers for their quiz
-        /// </summary>
-        /// <returns>a true or false based on the user's answer</returns>
-        public static bool PromptForMoreQuestions()
-        {
-            Console.WriteLine("\n");
-            Console.WriteLine("Would you like to create another question?");
-            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool moreQuestions = userInput.Key == Constants.USER_YES_CHOICE;
-            return moreQuestions;
-        }
-
-        /// <summary>
-        /// prompts the user to decide how they would like to use this program
-        /// </summary>
-        /// <returns>an enum representing the user's choice</returns>
         public static QuizChoice.QuizOptions PromptForQuizAction()
         {
             Console.WriteLine("What would you like to do?(0 to make a quiz, 1 to save a quiz and 2 to load a quiz)\n");

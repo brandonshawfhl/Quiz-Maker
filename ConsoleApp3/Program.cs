@@ -5,25 +5,24 @@
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
-            List<string> printQuestions = new List<string>();
-            bool moreQuestions = true;
             UserInterface.PrintWelcomeMessage();
             QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
 
             if (quizChoice == QuizChoice.QuizOptions.Make)
             {
+                userQuiz madeQuiz = new userQuiz();
 
-                while (moreQuestions)
-                {
-                    List<string> questionList = new List<string>();
-                    string printQuestion = UserInterface.PromptForQuestion();
-                    questionList.Add(printQuestion);
-                    List<string> answerList = new List<string>();
-                    List<string> correctAnswerList = new List<string>();
-                    string correctAnswer = UserInterface.PromptForCorrectAnswer();
-                    answerList = UserInterface.PromptForAnswers(correctAnswer);
-                    moreQuestions = UserInterface.PromptForMoreQuestions();
-                }
+                List<string> questionList = new List<string>();
+                string printQuestion = UserInterface.PromptForQuestion();
+                questionList.Add(printQuestion);
+                List<string> answerList = new List<string>();
+                List<string> correctAnswersList = new List<string>();
+                string correctAnswer = UserInterface.PromptForCorrectAnswer();
+                correctAnswersList.Add(correctAnswer);
+                madeQuiz.correctAnswers = correctAnswersList();
+                answerList = UserInterface.PromptForAnswers(correctAnswer);
+                madeQuiz.printQuestions = questionList;
+                madeQuiz.allAnswers = answerList;
             }
 
             if (quizChoice == QuizChoice.QuizOptions.Load)

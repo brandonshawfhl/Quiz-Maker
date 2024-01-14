@@ -2,8 +2,8 @@
 {
     internal class userQuiz
     {
-        public List<string> printQuestion;
-        public List<string> correctAnswer;
+        public List<string> printQuestions;
+        public List<string> correctAnswers;
         public List<string> allAnswers;
 
         
