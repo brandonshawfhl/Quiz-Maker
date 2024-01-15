@@ -30,7 +30,7 @@ namespace Quiz_Maker
         public static userQuiz LoadQuiz()
         {
             userQuiz loadedQuiz = new userQuiz();
-            XmlSerializer serializer = new XmlSerializer (typeof(userQuiz));
+            XmlSerializer serializer = new XmlSerializer(typeof(userQuiz));
             var path = @"userQuiz.xml";
             path = Console.ReadLine();
             using (FileStream file = File.OpenRead(path))
@@ -76,16 +76,19 @@ namespace Quiz_Maker
         {
             for (int questionNumber = 0; questionNumber <= currentQuiz.printQuestions.Count; questionNumber++)
             {
-
                 Console.WriteLine(currentQuiz.printQuestions[questionNumber]);
                 for (int allAnswersCount = 0; allAnswersCount <= currentQuiz.printQuestions.Count; allAnswersCount++)
                 {
                     List<string> allAnswersRandom = new List<string>();
-                    int randomAnswer = rng.Next(-1, currentQuiz.allAnswers.Count + 1);
-                    Console.WriteLine($"{Constants.answerChoices[allAnswersCount]}{currentQuiz.allAnswers[allAnswersCount[randomAnswer]]}");
-                    
+                    int randomAnswer = 0;
+                    while (allAnswersRandom.Contains(currentQuiz.allAnswers[questionNumber][randomAnswer]))
+                    {
+                        randomAnswer = rng.Next(-1, currentQuiz.allAnswers[questionNumber][allAnswersCount].Length + 1);
+                    }
+                    Console.WriteLine($"{Constants.answerChoices[allAnswersCount]}{currentQuiz.allAnswers[questionNumber][randomAnswer]}\n\n");
+                    allAnswersRandom.Add(currentQuiz.allAnswers[questionNumber][randomAnswer]);
                 }
-                Console.WriteLine("\n\n");
+                Console.WriteLine("\n\n\n");
             }
         }
     }

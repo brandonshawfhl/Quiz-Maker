@@ -7,16 +7,16 @@
         public const int CHOICE_LIMIT = 10;
         public static readonly List<string> answerChoices = new()
             {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J"
+            "A.\t",
+            "B.\t",
+            "C.\t",
+            "D.\t",
+            "E.\t",
+            "F.\t",
+            "G.\t",
+            "H.\t",
+            "I.\t",
+            "J.\t"
             };
         public const int LETTER_A = 0;
         public const int LETTER_B = 1;
