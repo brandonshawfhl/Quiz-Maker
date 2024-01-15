@@ -78,7 +78,7 @@ namespace Quiz_Maker
             {
 
                 Console.WriteLine(currentQuiz.printQuestions[questionNumber]);
-                for (int allAnswersCount = 0; allAnswersCount <= currentQuiz.allAnswers.Count; allAnswersCount++)
+                for (int allAnswersCount = 0; allAnswersCount <= currentQuiz.printQuestions.Count; allAnswersCount++)
                 {
                     List<string> allAnswersRandom = new List<string>();
                     int randomAnswer = rng.Next(-1, currentQuiz.allAnswers.Count + 1);

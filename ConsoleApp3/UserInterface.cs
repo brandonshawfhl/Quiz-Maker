@@ -99,14 +99,22 @@ namespace Quiz_Maker
 
         public static bool AnotherQuizOption()
         {
-            bool moreQuizOptions = true;
             Console.WriteLine("Would you like to keep going?");
             Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
-            moreQuizOptions = (userInput.Key == Constants.USER_YES_CHOICE);
+            bool moreQuizOptions = (userInput.Key == Constants.USER_YES_CHOICE);
 
             return moreQuizOptions;
 
+        }
+
+        public static bool MoreQuestions()
+        {
+            Console.WriteLine("Would you like to add another question to this quiz?");
+            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool moreQuestions = (userInput.Key == Constants.USER_YES_CHOICE);
+            return moreQuestions;
         }
     }
 }

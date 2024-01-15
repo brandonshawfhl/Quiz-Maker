@@ -4,7 +4,7 @@
     {
         public List<string> printQuestions;
         public List<string> correctAnswers;
-        public string[][] allAnswers = { new string[100], new string[10] };
+        public string[][] allAnswers;
 
         
     }
