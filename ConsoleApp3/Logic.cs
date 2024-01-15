@@ -4,6 +4,8 @@ namespace Quiz_Maker
 {
     internal class Logic
     {
+        public static Random rng = new Random();
+
         /// <summary>
         /// saves a quiz that the user made
         /// </summary>
@@ -70,15 +72,18 @@ namespace Quiz_Maker
         /// prints the question with its answer choices
         /// </summary>
         /// <param name="questionAndAnswers">List of questions to print</param>
-        public static void PrintQuestionAndAnswers(List<QuestionAndAnswers> questionAndAnswers)
+        public static void PrintQuiz(userQuiz currentQuiz)
         {
-            for (int questionNumber = 0; questionNumber <= questionAndAnswers.Count; questionNumber++)
+            for (int questionNumber = 0; questionNumber <= currentQuiz.printQuestions.Count; questionNumber++)
             {
-                QuestionAndAnswers userQuestion = questionAndAnswers[0];
-                Console.WriteLine(userQuestion.printQuestion);
-                for (int allAnswersCount = 0; allAnswersCount <= userQuestion.allAnswers.Length; allAnswersCount++)
+
+                Console.WriteLine(currentQuiz.printQuestions[questionNumber]);
+                for (int allAnswersCount = 0; allAnswersCount <= currentQuiz.allAnswers.Count; allAnswersCount++)
                 {
-                    Console.WriteLine($"{userQuestion.allAnswers[0, allAnswersCount]}{userQuestion.allAnswers[1, allAnswersCount]}");
+                    List<string> allAnswersRandom = new List<string>();
+                    int randomAnswer = rng.Next(-1, currentQuiz.allAnswers.Count + 1);
+                    Console.WriteLine($"{Constants.answerChoices[allAnswersCount]}{currentQuiz.allAnswers[allAnswersCount[randomAnswer]]}");
+                    
                 }
                 Console.WriteLine("\n\n");
             }

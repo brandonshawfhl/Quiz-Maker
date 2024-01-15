@@ -4,7 +4,7 @@
     {
         public List<string> printQuestions;
         public List<string> correctAnswers;
-        public List<string> allAnswers;
+        public List<List<string>> allAnswers;
 
         
     }
