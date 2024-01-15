@@ -127,5 +127,14 @@ namespace Quiz_Maker
             bool moreQuestions = (userInput.Key == Constants.USER_YES_CHOICE);
             return moreQuestions;
         }
+
+        public static bool PromptToTakeQuiz()
+        {
+            Console.WriteLine("Would you like to take your current quiz?");
+            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool takeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
+            return takeQuiz;
+        }
     }
 }
