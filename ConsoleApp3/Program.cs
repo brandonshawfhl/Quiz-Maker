@@ -9,34 +9,47 @@
             userQuiz madeQuiz = new userQuiz();
 
             UserInterface.PrintWelcomeMessage();
-            QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
-
-            if (quizChoice == QuizChoice.QuizOptions.Make)
+            while (anotherQuiz)
             {
-                List<string> questionList = new List<string>();
-                string printQuestion = UserInterface.PromptForQuestion();
-                questionList.Add(printQuestion);
-                List<string> answerList = new List<string>();
-                List<string> correctAnswersList = new List<string>();
-                string correctAnswer = UserInterface.PromptForCorrectAnswer();
-                correctAnswersList.Add(correctAnswer);
-                madeQuiz.correctAnswers = correctAnswersList;
-                answerList = UserInterface.PromptForAnswers(correctAnswer);
-                madeQuiz.printQuestions = questionList;
-                madeQuiz.allAnswers = answerList;
+                QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
+
+                if (quizChoice == QuizChoice.QuizOptions.Make)
+                {
+
+                    List<string> questionList = new List<string>();
+                    List<string> correctAnswersList = new List<string>();
+                    int questionNumber = -1;
+                    bool moreQuestions = true;
+                    while (moreQuestions)
+                    {
+                        questionNumber++;
+                        questionList.Add(UserInterface.PromptForQuestion());
+                        int choiceNumber = UserInterface.PromptForChoiceNumber();
+                        string correctAnswer = UserInterface.PromptForCorrectAnswer();
+                        correctAnswersList.Add(correctAnswer);
+                        string[][] answerArray = UserInterface.PromptForAnswers(correctAnswer, questionNumber, choiceNumber);
+                        moreQuestions = UserInterface.MoreQuestions();
+                        madeQuiz.allAnswers = answerArray;
+                    }
+                    madeQuiz.printQuestions = questionList;
+                    madeQuiz.correctAnswers = correctAnswersList;
+                }
+
+                if (quizChoice == QuizChoice.QuizOptions.Load)
+                {
+                    Logic.LoadQuiz();
+                }
+
+                if (quizChoice == QuizChoice.QuizOptions.Save)
+                {
+                    Logic.SaveQuiz(madeQuiz);
+                }
             }
 
-            if (quizChoice == QuizChoice.QuizOptions.Load)
-            {
-                Logic.LoadQuiz();
-            }
+                
+                userQuiz currentQuiz = new userQuiz();
+                Logic.PrintQuiz(currentQuiz);
 
-            if (quizChoice == QuizChoice.QuizOptions.Save)
-            {
-                Logic.SaveQuiz(madeQuiz);
-            }
-
-            Logic.PrintQuestionAndAnswers(questionAndAnswers);
 
 
 
