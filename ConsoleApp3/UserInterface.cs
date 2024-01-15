@@ -35,6 +35,14 @@ namespace Quiz_Maker
             return correctAnswer;
         }
 
+        public static int PromptForChoiceNumber()
+        {
+
+            Console.WriteLine("How many choices would you like the user to have for this question?");
+            int choiceNumber = Convert.ToInt32(Console.ReadLine());
+            return choiceNumber;
+        }
+        
         /// <summary>
         /// prompts the user for the rest of the answers they would like listed as choices that are not correct
         /// </summary>
