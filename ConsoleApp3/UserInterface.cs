@@ -53,26 +53,27 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="answerList">the list that will be filled by this method</param>
         /// <returns>a list of strings that the user types that will be used as the other choices for the question</returns>
-        public static string[][] PromptForAnswers(string correctAnswer, int questionNumber, int choiceNumber)
+        public static List<string> PromptForAnswers(string correctAnswer)
         {
-            string[][] allAnswers = { new string[questionNumber], new string[choiceNumber] };
+            List<string> allAnswers = new List<string>();
             bool moreWrongAnswers = true;
             while (moreWrongAnswers)
             {
                 int answerNumber = 0;
                 bool tooManyAnswers = answerNumber >= Constants.CHOICE_LIMIT;
-                allAnswers[questionNumber][0] = correctAnswer;
+                allAnswers.Add(correctAnswer);
 
                 for (answerNumber = 1; answerNumber <= Constants.CHOICE_LIMIT; answerNumber++)
                 {
                     Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
                     Console.WriteLine($"You may have a maximum of {Constants.CHOICE_LIMIT} choices per question.");
-                    allAnswers[questionNumber][answerNumber] = Console.ReadLine();
+                    allAnswers.Add(Console.ReadLine());
                     Console.WriteLine("\n");
-                    Console.WriteLine($"Would you like to create more wrong answers for this question?");
-                    Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+
                     if (tooManyAnswers == false)
                     {
+                        Console.WriteLine($"Would you like to create more wrong answers for this question?");
+                        Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
                         ConsoleKeyInfo userInput = Console.ReadKey(true);
                         moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
                     }

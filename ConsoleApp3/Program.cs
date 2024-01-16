@@ -6,33 +6,24 @@
         static void Main(string[] args)
         {
             bool anotherQuiz = true;
-            userQuiz madeQuiz = new userQuiz();
-
             UserInterface.PrintWelcomeMessage();
             while (anotherQuiz)
             {
                 QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
+                List<QuizCard> currentQuiz = new List<QuizCard>();
 
                 if (quizChoice == QuizChoice.QuizOptions.Make)
                 {
-
-                    List<string> questionList = new List<string>();
-                    List<string> correctAnswersList = new List<string>();
+                    QuizCard currentQuizCard = new QuizCard();
                     int questionNumber = -1;
                     bool moreQuestions = true;
                     while (moreQuestions)
                     {
-                        questionNumber++;
-                        questionList.Add(UserInterface.PromptForQuestion());
-                        int choiceNumber = UserInterface.PromptForChoiceNumber();
-                        string correctAnswer = UserInterface.PromptForCorrectAnswer();
-                        correctAnswersList.Add(correctAnswer);
-                        string[][] answerArray = UserInterface.PromptForAnswers(correctAnswer, questionNumber, choiceNumber);
+                        currentQuizCard.printQuestions = UserInterface.PromptForQuestion();
+                        currentQuizCard.correctAnswer = UserInterface.PromptForCorrectAnswer();
+                        currentQuizCard.allAnswers = UserInterface.PromptForAnswers(currentQuizCard.correctAnswer);
                         moreQuestions = UserInterface.MoreQuestions();
-                        madeQuiz.allAnswers = answerArray;
                     }
-                    madeQuiz.printQuestions = questionList;
-                    madeQuiz.correctAnswers = correctAnswersList;
                 }
 
                 if (quizChoice == QuizChoice.QuizOptions.Load)
@@ -46,9 +37,9 @@
                 }
             }
 
-                
-                userQuiz currentQuiz = new userQuiz();
-                Logic.PrintQuiz(currentQuiz);
+
+
+            Logic.PrintQuiz(currentQuiz);
 
 
 
