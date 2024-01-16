@@ -116,7 +116,6 @@ namespace Quiz_Maker
             bool moreQuizOptions = (userInput.Key == Constants.USER_YES_CHOICE);
 
             return moreQuizOptions;
-
         }
 
         /// <summary>
@@ -146,9 +145,9 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// prints the question with its answer choices
+        /// prints the entire quiz for the User to see on the screen
         /// </summary>
-        /// <param name="questionAndAnswers">List of questions to print</param>
+        /// <param name="currentQuiz">the List of Lists that has the quiz information</param>
         public static void PrintWholeQuiz(List<List<string>> currentQuiz)
         {
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
@@ -162,6 +161,10 @@ namespace Quiz_Maker
             }
         }
 
+        /// <summary>
+        /// asks the user if they would like to see the whold quiz
+        /// </summary>
+        /// <returns>returns true or false based on the user's answer</returns>
         public static bool PromptToSeeWholeQuiz()
         {
             Console.WriteLine("Would you like to see the whole quiz?");
