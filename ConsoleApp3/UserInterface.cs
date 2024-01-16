@@ -158,5 +158,22 @@ namespace Quiz_Maker
             bool takeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
             return takeQuiz;
         }
+
+        /// <summary>
+        /// prints the question with its answer choices
+        /// </summary>
+        /// <param name="questionAndAnswers">List of questions to print</param>
+        public static void PrintQuiz(List<QuizQuestion> currentQuiz)
+        {
+            for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
+            {
+                Console.WriteLine($"{currentQuiz[questionNumber].printQuestions}");
+                for (int allAnswersCount = 0; allAnswersCount <= currentQuiz[questionNumber].allAnswers.Count; allAnswersCount++)
+                {
+                    Console.WriteLine($"{Constants.answerChoices[allAnswersCount]}{currentQuiz[questionNumber].allAnswers[allAnswersCount]}");
+                    Console.WriteLine("\n\n\n");
+                }
+            }
+        }
     }
 }
