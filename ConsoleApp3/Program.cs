@@ -5,12 +5,13 @@
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
+            List<QuizCard> currentQuiz = new List<QuizCard>();
             bool anotherQuiz = true;
             UserInterface.PrintWelcomeMessage();
+
             while (anotherQuiz)
             {
                 QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
-                List<QuizCard> currentQuiz = new List<QuizCard>();
 
                 if (quizChoice == QuizChoice.QuizOptions.Make)
                 {
@@ -33,7 +34,7 @@
 
                 if (quizChoice == QuizChoice.QuizOptions.Save)
                 {
-                    Logic.SaveQuiz(madeQuiz);
+                    Logic.SaveQuiz(currentQuiz);
                 }
             }
 
