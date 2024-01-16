@@ -5,7 +5,7 @@
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
-            List<QuizCard> currentQuiz = new List<QuizCard>();
+            List<Question> currentQuiz = new List<Question>();
             bool anotherQuiz = true;
             UserInterface.PrintWelcomeMessage();
 
@@ -15,7 +15,7 @@
 
                 if (quizChoice == QuizChoice.QuizOptions.Make)
                 {
-                    QuizCard currentQuizCard = new QuizCard();
+                    Question currentQuizCard = new Question();
                     int questionNumber = -1;
                     bool moreQuestions = true;
                     while (moreQuestions)

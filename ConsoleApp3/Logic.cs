@@ -12,9 +12,9 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="questionAndAnswersFile">the list that will store the file</param>
         /// <returns>a list that can be used to run a quiz</returns>
-        public static void SaveQuiz(List<QuizCard> currentQuiz)
+        public static void SaveQuiz(List<Question> currentQuiz)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(QuizCard));
+            XmlSerializer serializer = new XmlSerializer(typeof(Question));
             var path = @"userQuiz.xml";
             path = Console.ReadLine();
             using (FileStream file = File.Create(path))
@@ -28,15 +28,15 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="questionAndAnswersFile">a list that will store the loaded file</param>
         /// <returns>a loaded file that can run a quiz</returns>
-        public static List<QuizCard> LoadQuiz()
+        public static List<Question> LoadQuiz()
         {
-            List<QuizCard> loadedQuiz = new List<QuizCard>();
-            XmlSerializer serializer = new XmlSerializer(typeof(QuizCard));
+            List<Question> loadedQuiz = new List<Question>();
+            XmlSerializer serializer = new XmlSerializer(typeof(Question));
             var path = @"userQuiz.xml";
             path = Console.ReadLine();
             using (FileStream file = File.OpenRead(path))
             {
-                loadedQuiz = serializer.Deserialize(file) as List<QuizCard>;
+                loadedQuiz = serializer.Deserialize(file) as List<Question>;
             }
             return loadedQuiz;
         }
@@ -73,7 +73,7 @@ namespace Quiz_Maker
         /// prints the question with its answer choices
         /// </summary>
         /// <param name="questionAndAnswers">List of questions to print</param>
-        public static void PrintQuiz(List<QuizCard> currentQuiz)
+        public static void PrintQuiz(List<Question> currentQuiz)
         {
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
             {
