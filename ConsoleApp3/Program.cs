@@ -36,13 +36,14 @@
                 {
                     Logic.SaveQuiz(currentQuiz);
                 }
+
+                bool takeQuiz = true;
+                while (takeQuiz)
+                {
+                    takeQuiz = UserInterface.PromptToTakeQuiz();
+                    Logic.PrintQuiz(currentQuiz);
+                }
             }
-
-
-
-            Logic.PrintQuiz(currentQuiz);
-
-
 
 
         }

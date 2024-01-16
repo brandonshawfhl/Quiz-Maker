@@ -2,6 +2,7 @@
 using System.Xml.Serialization;
 namespace Quiz_Maker
 {
+
     internal class Logic
     {
         public static Random rng = new Random();
@@ -72,23 +73,16 @@ namespace Quiz_Maker
         /// prints the question with its answer choices
         /// </summary>
         /// <param name="questionAndAnswers">List of questions to print</param>
-        public static void PrintQuiz(userQuiz currentQuiz)
+        public static void PrintQuiz(List<QuizCard> currentQuiz)
         {
-            for (int questionNumber = 0; questionNumber <= currentQuiz.printQuestions.Count; questionNumber++)
+            for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
             {
-                Console.WriteLine(currentQuiz.printQuestions[questionNumber]);
-                for (int allAnswersCount = 0; allAnswersCount <= currentQuiz.printQuestions.Count; allAnswersCount++)
+                Console.WriteLine($"{currentQuiz[questionNumber].printQuestions}");
+                for (int allAnswersCount = 0; allAnswersCount <= currentQuiz[questionNumber].allAnswers.Count; allAnswersCount++)
                 {
-                    List<string> allAnswersRandom = new List<string>();
-                    int randomAnswer = 0;
-                    while (allAnswersRandom.Contains(currentQuiz.allAnswers[questionNumber][randomAnswer]))
-                    {
-                        randomAnswer = rng.Next(-1, currentQuiz.allAnswers[questionNumber][allAnswersCount].Length + 1);
-                    }
-                    Console.WriteLine($"{Constants.answerChoices[allAnswersCount]}{currentQuiz.allAnswers[questionNumber][randomAnswer]}\n\n");
-                    allAnswersRandom.Add(currentQuiz.allAnswers[questionNumber][randomAnswer]);
+                    Console.WriteLine($"{Constants.answerChoices[allAnswersCount]}{currentQuiz[questionNumber].allAnswers[allAnswersCount]}");
+                    Console.WriteLine("\n\n\n");
                 }
-                Console.WriteLine("\n\n\n");
             }
         }
     }
