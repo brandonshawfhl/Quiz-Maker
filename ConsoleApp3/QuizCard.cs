@@ -1,10 +1,10 @@
 ﻿namespace Quiz_Maker
 {
-    internal class userQuiz
+    internal class QuizCard
     {
-        public List<string> printQuestions;
-        public List<string> correctAnswers;
-        public string[][] allAnswers;
+        public string printQuestions;
+        public string correctAnswer;
+        public List<string> allAnswers;
 
         
     }

@@ -24,6 +24,7 @@
                         currentQuizCard.correctAnswer = UserInterface.PromptForCorrectAnswer();
                         currentQuizCard.allAnswers = UserInterface.PromptForAnswers(currentQuizCard.correctAnswer);
                         moreQuestions = UserInterface.MoreQuestions();
+                        currentQuiz.Add(currentQuizCard);
                     }
                 }
 
