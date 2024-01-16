@@ -36,18 +36,6 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// Asks the user how many answer choices they would like to have for the current question.
-        /// </summary>
-        /// <returns>returns the number of choices the user what like to have for the current question</returns>
-        public static int PromptForChoiceNumber()
-        {
-
-            Console.WriteLine("How many choices would you like the user to have for this question?");
-            int choiceNumber = Convert.ToInt32(Console.ReadLine());
-            return choiceNumber;
-        }
-
-        /// <summary>
         /// prompts the user for the rest of the answers they would like listed as choices that are not correct and then
         /// places them along with the correct answer into an array specifically just for the current question
         /// </summary>
@@ -55,19 +43,17 @@ namespace Quiz_Maker
         /// <returns>a list of strings that the user types that will be used as the other choices for the question</returns>
         public static List<string> PromptForAnswers()
         {
-            List<string> allAnswers = new List<string>();
+            List<string> incorrectAnswers = new List<string>();
             bool moreWrongAnswers = true;
             while (moreWrongAnswers)
             {
                 int answerNumber = 0;
                 bool tooManyAnswers = answerNumber >= Constants.CHOICE_LIMIT;
-                allAnswers.Add(correctAnswer);
-
                 for (answerNumber = 1; answerNumber <= Constants.CHOICE_LIMIT; answerNumber++)
                 {
                     Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
                     Console.WriteLine($"You may have a maximum of {Constants.CHOICE_LIMIT} choices per question.");
-                    allAnswers.Add(Console.ReadLine());
+                    incorrectAnswers.Add(Console.ReadLine());
                     Console.WriteLine("\n");
 
                     if (tooManyAnswers == false)
@@ -84,7 +70,7 @@ namespace Quiz_Maker
                     }
                 }
             }
-            return allAnswers;
+            return incorrectAnswers;
         }
 
         /// <summary>
@@ -184,5 +170,7 @@ namespace Quiz_Maker
             bool seeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
             return seeQuiz;
         }
+
+
     }
 }
