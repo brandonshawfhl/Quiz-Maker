@@ -163,14 +163,14 @@ namespace Quiz_Maker
         /// prints the question with its answer choices
         /// </summary>
         /// <param name="questionAndAnswers">List of questions to print</param>
-        public static void PrintQuiz(List<QuizQuestion> currentQuiz)
+        public static void PrintWholeQuiz(List<List<string>> currentQuiz)
         {
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
             {
-                Console.WriteLine($"{currentQuiz[questionNumber].printQuestions}");
-                for (int allAnswersCount = 0; allAnswersCount <= currentQuiz[questionNumber].allAnswers.Count; allAnswersCount++)
+                Console.WriteLine($"{currentQuiz[questionNumber][0]}");
+                for (int answerChoice = 0; answerChoice <= currentQuiz[questionNumber].Count; answerChoice++)
                 {
-                    Console.WriteLine($"{Constants.answerChoices[allAnswersCount]}{currentQuiz[questionNumber].allAnswers[allAnswersCount]}");
+                    Console.WriteLine($"{Constants.answerChoices[answerChoice]}{currentQuiz[questionNumber][answerChoice]}");
                     Console.WriteLine("\n\n\n");
                 }
             }

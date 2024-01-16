@@ -46,7 +46,7 @@
                 while (takeQuiz)
                 {
                     takeQuiz = UserInterface.PromptToTakeQuiz();
-                    UserInterface.PrintQuiz(currentQuiz);
+                    UserInterface.PrintWholeQuiz(currentQuiz);
                 }
             }
 
