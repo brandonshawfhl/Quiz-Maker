@@ -91,23 +91,23 @@ namespace Quiz_Maker
         /// Asks user to provide a number that determines what they would like to do with their quiz.
         /// </summary>
         /// <returns>the choice they made in the fom of an enum</returns>
-        public static QuizChoice.QuizOptions PromptForQuizAction()
+        public static QuizAction.QuizOptions PromptForQuizAction()
         {
             Console.WriteLine("What would you like to do?(0 to make a quiz, 1 to save a quiz and 2 to load a quiz)\n");
             string quizChoiceConversion = Console.ReadLine();
-            QuizChoice.QuizOptions quizChoice = (QuizChoice.QuizOptions)Enum.Parse(typeof(QuizChoice.QuizOptions), quizChoiceConversion);
+            QuizAction.QuizOptions quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizOptions), quizChoiceConversion);
 
             switch (quizChoice)
             {
-                case QuizChoice.QuizOptions.Make:
+                case QuizAction.QuizOptions.Make:
                     Console.WriteLine("Beginning the quiz making process now!");
                     break;
 
-                case QuizChoice.QuizOptions.Load:
+                case QuizAction.QuizOptions.Load:
                     Console.WriteLine("Saving your quiz now!");
                     break;
 
-                case QuizChoice.QuizOptions.Save:
+                case QuizAction.QuizOptions.Save:
                     Console.WriteLine("Loading your quiz now!");
                     break;
 
@@ -174,6 +174,15 @@ namespace Quiz_Maker
                     Console.WriteLine("\n\n\n");
                 }
             }
+        }
+
+        public static bool PromptToSeeWholeQuiz()
+        {
+            Console.WriteLine("Would you like to see the whole quiz?");
+            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool seeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
+            return seeQuiz;
         }
     }
 }

@@ -11,9 +11,9 @@
 
             while (anotherQuiz)
             {
-                QuizChoice.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
+                QuizAction.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
 
-                if (quizChoice == QuizChoice.QuizOptions.Make)
+                if (quizChoice == QuizAction.QuizOptions.Make)
                 {
 
                     int questionNumber = -1;
@@ -32,21 +32,29 @@
                     }
                 }
 
-                if (quizChoice == QuizChoice.QuizOptions.Load)
+                if (quizChoice == QuizAction.QuizOptions.Load)
                 {
                     Logic.LoadQuiz();
                 }
 
-                if (quizChoice == QuizChoice.QuizOptions.Save)
+                if (quizChoice == QuizAction.QuizOptions.Save)
                 {
                     Logic.SaveQuiz(currentQuiz);
+                }
+
+
+                bool seeQuiz = true;
+                while(seeQuiz)
+                {
+                    seeQuiz = UserInterface.PromptToSeeWholeQuiz();
+                    UserInterface.PrintWholeQuiz(currentQuiz);
                 }
 
                 bool takeQuiz = true;
                 while (takeQuiz)
                 {
                     takeQuiz = UserInterface.PromptToTakeQuiz();
-                    UserInterface.PrintWholeQuiz(currentQuiz);
+                    
                 }
             }
 
