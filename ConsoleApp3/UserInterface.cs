@@ -122,7 +122,7 @@ namespace Quiz_Maker
         /// Asks the user if they would like to continue using the program
         /// </summary>
         /// <returns>returns true or false based on the users answer</returns>
-        public static bool AnotherQuizOption()
+        public static bool PromptForMoreQuizOptions()
         {
             Console.WriteLine("Would you like to keep going?");
             Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
@@ -137,7 +137,7 @@ namespace Quiz_Maker
         /// Asks the user if they would like to create more questions
         /// </summary>
         /// <returns>true or false depedning on the user's answer</returns>
-        public static bool MoreQuestions()
+        public static bool PromptForMoreQuestions()
         {
             Console.WriteLine("Would you like to add another question to this quiz?");
             Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.\n");

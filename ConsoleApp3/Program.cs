@@ -5,7 +5,7 @@
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
-            List<Question> currentQuiz = new List<Question>();
+            List<List<string>> currentQuiz = new List<List<string>>();
             bool anotherQuiz = true;
             UserInterface.PrintWelcomeMessage();
 
@@ -15,16 +15,20 @@
 
                 if (quizChoice == QuizChoice.QuizOptions.Make)
                 {
-                    Question currentQuizCard = new Question();
+
                     int questionNumber = -1;
                     bool moreQuestions = true;
                     while (moreQuestions)
                     {
-                        currentQuizCard.printQuestions = UserInterface.PromptForQuestion();
-                        currentQuizCard.correctAnswer = UserInterface.PromptForCorrectAnswer();
-                        currentQuizCard.allAnswers = UserInterface.PromptForAnswers(currentQuizCard.correctAnswer);
-                        moreQuestions = UserInterface.MoreQuestions();
+                        List<string> currentQuizCard = new List<string>();
+                        QuizQuestion currentQuestion = new QuizQuestion();
+                        currentQuestion.questionOutput = UserInterface.PromptForQuestion();
+                        CorrectAnswer currentCorrectAnswer = new CorrectAnswer();
+                        currentCorrectAnswer.correctAnswerOutput = UserInterface.PromptForCorrectAnswer();
+                        IncorrectAnswers currentIncorrectAnswers = new IncorrectAnswers();
+                        currentIncorrectAnswers.incorrectAnswersOuput = UserInterface.PromptForAnswers();
                         currentQuiz.Add(currentQuizCard);
+                        moreQuestions = UserInterface.PromptForMoreQuestions();
                     }
                 }
 
@@ -42,7 +46,7 @@
                 while (takeQuiz)
                 {
                     takeQuiz = UserInterface.PromptToTakeQuiz();
-                    Logic.PrintQuiz(currentQuiz);
+                    UserInterface.PrintQuiz(currentQuiz);
                 }
             }
 
