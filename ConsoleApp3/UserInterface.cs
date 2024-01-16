@@ -53,7 +53,7 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="answerList">the list that will be filled by this method</param>
         /// <returns>a list of strings that the user types that will be used as the other choices for the question</returns>
-        public static List<string> PromptForAnswers(string correctAnswer)
+        public static List<string> PromptForAnswers()
         {
             List<string> allAnswers = new List<string>();
             bool moreWrongAnswers = true;
