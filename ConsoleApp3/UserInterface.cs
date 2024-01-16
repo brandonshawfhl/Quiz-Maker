@@ -174,6 +174,14 @@ namespace Quiz_Maker
             return seeQuiz;
         }
 
+        public static bool PromptToAnswerQuizQuestion(string correctAnswer)
+        {
+            
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool rightAnswer = (userInput.Key == correctAnswer);
+            return rightAnswer;
+        }
+
 
     }
 }

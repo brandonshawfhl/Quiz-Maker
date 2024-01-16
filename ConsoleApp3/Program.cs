@@ -16,7 +16,6 @@
                 if (quizChoice == QuizAction.QuizOptions.Make)
                 {
 
-                    int questionNumber = -1;
                     bool moreQuestions = true;
                     while (moreQuestions)
                     {
