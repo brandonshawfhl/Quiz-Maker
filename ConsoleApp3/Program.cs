@@ -49,17 +49,21 @@
 
 
                 bool seeQuiz = true;
-                while(seeQuiz)
+                while (seeQuiz)
                 {
                     seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                     UserInterface.PrintWholeQuiz(currentQuiz);
                 }
 
                 bool takeQuiz = true;
+                takeQuiz = UserInterface.PromptToTakeQuiz();
                 while (takeQuiz)
                 {
-                    takeQuiz = UserInterface.PromptToTakeQuiz();
-                    
+                    List<bool> rightOrWrong = new List<bool>();
+                    for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
+                    {
+                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion();
+                    }
                 }
             }
 
