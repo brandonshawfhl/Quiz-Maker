@@ -55,7 +55,7 @@
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
                     {
                         ConsoleKey correctAnswer = currentQuiz[questionNumber].
-                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(questionNumber, correctAnswer, currentQuiz[questionNumber]);
+                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(questionNumber, currentQuiz[questionNumber]);
                     }
                 }
             }

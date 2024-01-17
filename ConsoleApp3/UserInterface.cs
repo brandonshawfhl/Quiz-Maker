@@ -189,16 +189,26 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="correctAnswer"></param>
         /// <returns>true or false based on whether or not the user answered correctly or not</returns>
-        public static bool PromptToAnswerQuizQuestion(int questionNumber, ConsoleKey correctAnswer, QuizCard currentQuizCard)
+        public static bool PromptToAnswerQuizQuestion(int questionNumber, QuizCard currentQuizCard)
         {
             Console.WriteLine(Constants.answerChoices[questionNumber], currentQuizCard.questionOutput);
-            Console.WriteLine(currentQuizCard.correctAnswer);
+            List<string> answerList = new List<string>()
+            {
+                currentQuizCard.correctAnswer
+            };
+
             foreach (string incorrectAnswer in currentQuizCard.incorrectAnswers)
             {
-                Console.WriteLine(incorrectAnswer);
+                answerList.Add(incorrectAnswer);
             }
+
+            foreach (string answer in answerList)
+            {
+                Console.WriteLine(answer);
+            }
+
             ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool rightAnswer = (userInput.Key == correctAnswer);
+            bool rightAnswer = (userInput.Key == );
             return rightAnswer;
         }
     }
