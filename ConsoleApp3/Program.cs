@@ -49,12 +49,13 @@
 
                 bool takeQuiz = true;
                 takeQuiz = UserInterface.PromptToTakeQuiz();
-                while (takeQuiz)
+                if (takeQuiz)
                 {
                     List<bool> rightOrWrong = new List<bool>();
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
                     {
-                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion();
+                        ConsoleKey correctAnswer = currentQuiz[questionNumber].
+                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(questionNumber, correctAnswer, currentQuiz[questionNumber]);
                     }
                 }
             }
