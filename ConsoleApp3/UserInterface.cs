@@ -153,13 +153,19 @@ namespace Quiz_Maker
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
             {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}");
-                List<string> answerList = new List<string>();
+                List<string> answerList = new List<string>()
                 {
-                    currentQuiz[questionNumber].correctAnswer;
+                    currentQuiz[questionNumber].correctAnswer,
+                };
+
+                for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].incorrectAnswers.Count; answerNumber++)
+                {
+                    answerList.Add(currentQuiz[questionNumber].incorrectAnswers[answerNumber]);
                 }
-                for (int answerChoice = 0; answerChoice <= currentQuiz[questionNumber].Count; answerChoice++)
+
+                for (int answerChoice = 0; answerChoice <= answerList.Count; answerChoice++)
                 {
-                    Console.WriteLine($"{Constants.answerChoices[answerChoice]}{currentQuiz[questionNumber][answerChoice]}");
+                    Console.WriteLine($"{Constants.answerChoices[answerChoice]}{answerList[answerChoice]}");
                     Console.WriteLine("\n\n\n");
                 }
             }
