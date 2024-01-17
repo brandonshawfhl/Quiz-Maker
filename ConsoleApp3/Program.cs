@@ -5,7 +5,7 @@
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
-            List<List<string>> currentQuiz = new List<List<string>>();
+            List<QuizCard> currentQuiz = new List<QuizCard>();
             bool anotherQuiz = true;
             UserInterface.PrintWelcomeMessage();
 
@@ -15,22 +15,16 @@
 
                 if (quizChoice == QuizAction.QuizOptions.Make)
                 {
-                    List<string> quizCardList = new List<string>();
-                  
+
 
                     bool moreQuestions = true;
                     while (moreQuestions)
                     {
                         QuizCard currentQuizCard = new QuizCard();
                         currentQuizCard.questionOutput = UserInterface.PromptForQuestion();
-                        quizCardList.Add(currentQuizCard.questionOutput);
                         currentQuizCard.correctAnswer = UserInterface.PromptForCorrectAnswer();
-                        correctAnswerList.Add(currentQuizCard.correctAnswer);
                         currentQuizCard.incorrectAnswers = UserInterface.PromptForAnswers();
-                        incorrectAnswersList.Add(currentQuizCard.incorrectAnswers);
-                        currentQuiz.Add(quizCardList);
-                        currentQuiz.Add(correctAnswerList);
-                        currentQuiz.Add(incorrectAnswersList);
+                        currentQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptForMoreQuestions();
                     }
                 }

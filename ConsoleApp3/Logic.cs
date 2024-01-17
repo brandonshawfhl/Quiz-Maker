@@ -12,9 +12,9 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="questionAndAnswersFile">the list that will store the file</param>
         /// <returns>a list that can be used to run a quiz</returns>
-        public static void SaveQuiz(List<List<string>> currentQuiz)
+        public static void SaveQuiz(List<QuizCard> currentQuiz)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<List<string>>));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
             var path = @"currentQuiz.xml";
             path = Console.ReadLine();
             using (FileStream file = File.Create(path))
@@ -28,15 +28,15 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="questionAndAnswersFile">a list that will store the loaded file</param>
         /// <returns>a loaded file that can run a quiz</returns>
-        public static List<List<string>> LoadQuiz()
+        public static List<QuizCard> LoadQuiz()
         {
-            List<List<string>> loadedQuiz = new List<List<string>>();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<List<string>>));
+            List<QuizCard> loadedQuiz = new List<QuizCard>();
+            XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
             var path = @"currentQuiz.xml";
             path = Console.ReadLine();
             using (FileStream file = File.OpenRead(path))
             {
-                loadedQuiz = serializer.Deserialize(file) as List<List<string>>;
+                loadedQuiz = serializer.Deserialize(file) as List<QuizCard>;
             }
             return loadedQuiz;
         }

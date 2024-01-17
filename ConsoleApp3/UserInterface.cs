@@ -148,11 +148,15 @@ namespace Quiz_Maker
         /// prints the entire quiz for the User to see on the screen
         /// </summary>
         /// <param name="currentQuiz">the List of Lists that has the quiz information</param>
-        public static void PrintWholeQuiz(List<List<string>> currentQuiz)
+        public static void PrintWholeQuiz(List<QuizCard> currentQuiz)
         {
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
             {
-                Console.WriteLine($"{currentQuiz[questionNumber][0]}");
+                Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}");
+                List<string> answerList = new List<string>();
+                {
+                    currentQuiz[questionNumber].correctAnswer;
+                }
                 for (int answerChoice = 0; answerChoice <= currentQuiz[questionNumber].Count; answerChoice++)
                 {
                     Console.WriteLine($"{Constants.answerChoices[answerChoice]}{currentQuiz[questionNumber][answerChoice]}");
