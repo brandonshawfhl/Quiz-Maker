@@ -1,6 +1,6 @@
 ﻿namespace Quiz_Maker
 {
-    internal class QuizChoice
+    internal class QuizAction
     {
         public enum QuizOptions
         {

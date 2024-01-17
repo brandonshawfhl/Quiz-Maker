@@ -12,10 +12,10 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="questionAndAnswersFile">the list that will store the file</param>
         /// <returns>a list that can be used to run a quiz</returns>
-        public static void SaveQuiz(List<Question> currentQuiz)
+        public static void SaveQuiz(List<List<string>> currentQuiz)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Question));
-            var path = @"userQuiz.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<List<string>>));
+            var path = @"currentQuiz.xml";
             path = Console.ReadLine();
             using (FileStream file = File.Create(path))
             {
@@ -28,62 +28,17 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="questionAndAnswersFile">a list that will store the loaded file</param>
         /// <returns>a loaded file that can run a quiz</returns>
-        public static List<Question> LoadQuiz()
+        public static List<List<string>> LoadQuiz()
         {
-            List<Question> loadedQuiz = new List<Question>();
-            XmlSerializer serializer = new XmlSerializer(typeof(Question));
-            var path = @"userQuiz.xml";
+            List<List<string>> loadedQuiz = new List<List<string>>();
+            XmlSerializer serializer = new XmlSerializer(typeof(List<List<string>>));
+            var path = @"currentQuiz.xml";
             path = Console.ReadLine();
             using (FileStream file = File.OpenRead(path))
             {
-                loadedQuiz = serializer.Deserialize(file) as List<Question>;
+                loadedQuiz = serializer.Deserialize(file) as List<List<string>>;
             }
             return loadedQuiz;
-        }
-
-        /// <summary>
-        /// populates an array that will be used to print the answer choices for a question in random order
-        /// </summary>
-        /// <param name="answerList">a list of answers that will be filled</param>
-        /// <returns>the filled list of answers</returns>
-        public static string[,] GetAnswerArray(List<string> answerList)
-        {
-            string[,] answerArray = new string[Constants.ANSWER_COLUMN, Constants.CHOICE_LIMIT];
-            answerArray[0, Constants.LETTER_A] = "A.\t";
-            answerArray[0, Constants.LETTER_B] = "B.\t";
-            answerArray[0, Constants.LETTER_C] = "C.\t";
-            answerArray[0, Constants.LETTER_D] = "D.\t";
-            answerArray[0, Constants.LETTER_E] = "E.\t";
-            answerArray[0, Constants.LETTER_F] = "F.\t";
-            answerArray[0, Constants.LETTER_G] = "G.\t";
-            answerArray[0, Constants.LETTER_H] = "H.\t";
-            answerArray[0, Constants.LETTER_I] = "I.\t";
-            answerArray[0, Constants.LETTER_J] = "J.\t";
-            int answerListCount = answerList.Count();
-            for (int answerNumber = 1; answerNumber <= answerListCount; answerNumber++)
-            {
-                int randomNumber = Program.rng.Next(-1, answerList.Count);
-                answerList[randomNumber] = answerArray[1, answerNumber];
-                answerList.Remove(answerList[randomNumber]);
-            }
-            return answerArray;
-        }
-
-        /// <summary>
-        /// prints the question with its answer choices
-        /// </summary>
-        /// <param name="questionAndAnswers">List of questions to print</param>
-        public static void PrintQuiz(List<Question> currentQuiz)
-        {
-            for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
-            {
-                Console.WriteLine($"{currentQuiz[questionNumber].printQuestions}");
-                for (int allAnswersCount = 0; allAnswersCount <= currentQuiz[questionNumber].allAnswers.Count; allAnswersCount++)
-                {
-                    Console.WriteLine($"{Constants.answerChoices[allAnswersCount]}{currentQuiz[questionNumber].allAnswers[allAnswersCount]}");
-                    Console.WriteLine("\n\n\n");
-                }
-            }
         }
     }
 }
