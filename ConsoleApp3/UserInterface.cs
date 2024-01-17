@@ -174,14 +174,17 @@ namespace Quiz_Maker
             return seeQuiz;
         }
 
-        public static bool PromptToAnswerQuizQuestion(string correctAnswer)
+        /// <summary>
+        /// outputs the next question in the quiz to the user and then prompts them to answer it
+        /// </summary>
+        /// <param name="correctAnswer"></param>
+        /// <returns>true or false based on whether or not the user answered correctly or not</returns>
+        public static bool PromptToAnswerQuizQuestion(ConsoleKey correctAnswer, string questionOutput)
         {
-            
+            Console.WriteLine(questionOutput);
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool rightAnswer = (userInput.Key == correctAnswer);
             return rightAnswer;
         }
-
-
     }
 }
