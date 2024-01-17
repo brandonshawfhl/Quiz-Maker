@@ -15,24 +15,22 @@
 
                 if (quizChoice == QuizAction.QuizOptions.Make)
                 {
-                    List<string> questionList = new List<string>();
-                    List<string> correctAnswerList = new List<string>();
-                    List<List<string>> incorrectAnswersList = new List<List<string>>();
+                    List<string> quizCardList = new List<string>();
+                  
 
                     bool moreQuestions = true;
                     while (moreQuestions)
                     {
                         QuizCard currentQuizCard = new QuizCard();
                         currentQuizCard.questionOutput = UserInterface.PromptForQuestion();
-                        questionList.Add(currentQuizCard.questionOutput);
+                        quizCardList.Add(currentQuizCard.questionOutput);
                         currentQuizCard.correctAnswer = UserInterface.PromptForCorrectAnswer();
                         correctAnswerList.Add(currentQuizCard.correctAnswer);
                         currentQuizCard.incorrectAnswers = UserInterface.PromptForAnswers();
-                        for (int answerNumber = 1; answerNumber <= currentIncorrectAnswers.incorrectAnswersOuput.Count; answerNumber++)
-                        {
-                            currentQuizCard.Add(currentIncorrectAnswers.incorrectAnswersOuput[answerNumber]);
-                        }
-                        currentQuiz.Add(currentQuizCard);
+                        incorrectAnswersList.Add(currentQuizCard.incorrectAnswers);
+                        currentQuiz.Add(quizCardList);
+                        currentQuiz.Add(correctAnswerList);
+                        currentQuiz.Add(incorrectAnswersList);
                         moreQuestions = UserInterface.PromptForMoreQuestions();
                     }
                 }
