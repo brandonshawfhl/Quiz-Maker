@@ -49,13 +49,13 @@ namespace Quiz_Maker
             List<string> incorrectAnswers = new List<string>();
             bool moreWrongAnswers = true;
 
-            for (int answerNumber = 0; answerNumber <= Constants.CHOICE_LIMIT; answerNumber++)
+            for (int answerNumber = 0; answerNumber < Constants.CHOICE_LIMIT; answerNumber++)
             {
                 int choicesLeft = Constants.CHOICE_LIMIT - answerNumber;
-                tooManyAnswers = answerNumber >= Constants.CHOICE_LIMIT;
                 Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
                 Console.WriteLine($"You have {choicesLeft} more choices.\n");
                 incorrectAnswers.Add(Console.ReadLine());
+                tooManyAnswers = incorrectAnswers.Count >= Constants.CHOICE_LIMIT;
                 Console.Write("\n");
 
                 if (tooManyAnswers)
@@ -64,12 +64,12 @@ namespace Quiz_Maker
                     break;
                 }
 
-                Console.WriteLine($"Would you like to create more wrong answers for this question?");
-                Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-                ConsoleKeyInfo userInput = Console.ReadKey(true);
-                Console.Write("\n");
-                moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
-
+                    Console.WriteLine($"Would you like to create more wrong answers for this question?");
+                    Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+                    ConsoleKeyInfo userInput = Console.ReadKey(true);
+                    Console.Write("\n");
+                    moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
+                
                 if (moreWrongAnswers == false)
                 {
                     break;
