@@ -3,7 +3,7 @@
     internal class Constants
     {
         public const ConsoleKey USER_YES_CHOICE = ConsoleKey.Y;
-        public const int CHOICE_LIMIT = 10;
+        public const int CHOICE_LIMIT = 2;
         public static readonly List<string> answerChoices = new()
             {
             "A.\t",

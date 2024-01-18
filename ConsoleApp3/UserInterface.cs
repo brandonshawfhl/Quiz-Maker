@@ -19,8 +19,9 @@ namespace Quiz_Maker
         /// <returns>a string typed by the user that will be used to print their question</returns>
         public static string PromptForQuestion()
         {
-            Console.WriteLine("Please type out the whole question as you would like it printed.");
+            Console.WriteLine("Please type out the whole question as you would like it printed.\n");
             string userQuestion = Console.ReadLine();
+            Console.Write("\n");
             return userQuestion;
         }
 
@@ -30,8 +31,9 @@ namespace Quiz_Maker
         /// <returns>a string that the user types themselves that will be used as the correct answer for their question</returns>
         public static string PromptForCorrectAnswer()
         {
-            Console.WriteLine("Please enter the correct answer for this question.");
+            Console.WriteLine("Please enter the correct answer for this question.\n");
             string correctAnswer = Console.ReadLine();
+            Console.Write("\n");
             return correctAnswer;
         }
 
@@ -43,18 +45,19 @@ namespace Quiz_Maker
         /// <returns>a list of strings that the user types that will be used as the other choices for the question</returns>
         public static List<string> PromptForAnswers()
         {
+            bool tooManyAnswers = false;
             List<string> incorrectAnswers = new List<string>();
             bool moreWrongAnswers = true;
-            while (moreWrongAnswers)
+            while (moreWrongAnswers || tooManyAnswers == false)
             {
-                int answerNumber = 0;
-                bool tooManyAnswers = answerNumber >= Constants.CHOICE_LIMIT;
-                for (answerNumber = 1; answerNumber <= Constants.CHOICE_LIMIT; answerNumber++)
+                for (int answerNumber = 0; answerNumber <= Constants.CHOICE_LIMIT; answerNumber++)
                 {
+                    int choicesLeft = Constants.CHOICE_LIMIT - answerNumber;
+                    tooManyAnswers = answerNumber >= Constants.CHOICE_LIMIT;
                     Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
-                    Console.WriteLine($"You may have a maximum of {Constants.CHOICE_LIMIT} choices per question.");
+                    Console.WriteLine($"You have {choicesLeft} more choices.\n");
                     incorrectAnswers.Add(Console.ReadLine());
-                    Console.WriteLine("\n");
+                    Console.Write("\n");
 
                     if (tooManyAnswers == false)
                     {
@@ -62,11 +65,17 @@ namespace Quiz_Maker
                         Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
                         ConsoleKeyInfo userInput = Console.ReadKey(true);
                         moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
+                        if (moreWrongAnswers == false)
+                        {
+                            break;
+                        }
+
                     }
 
                     if (tooManyAnswers)
                     {
                         Console.WriteLine("You have reached the answer choice limit for this question.");
+                        break;
                     }
                 }
             }
@@ -81,6 +90,7 @@ namespace Quiz_Maker
         {
             Console.WriteLine("What would you like to do?(0 to make a quiz, 1 to save a quiz and 2 to load a quiz)\n");
             string quizChoiceConversion = Console.ReadLine();
+            Console.Write("\n");
             QuizAction.QuizOptions quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizOptions), quizChoiceConversion);
 
             switch (quizChoice)
