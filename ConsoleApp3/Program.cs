@@ -25,7 +25,7 @@
                         currentQuizCard.incorrectAnswers = UserInterface.PromptForAnswers();
                         currentQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptForMoreQuestions();
-                        Console.Clear();
+                        UserInterface.ConsoleClear();
                     }
                 }
 
@@ -40,7 +40,7 @@
                 }
 
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
-                Console.Clear();
+                UserInterface.ConsoleClear();
                 if (seeQuiz)
                 {
                     UserInterface.PrintWholeQuiz(currentQuiz);
@@ -53,7 +53,7 @@
                     List<bool> rightOrWrong = new List<bool>();
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
                     {
-                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(questionNumber, currentQuiz[questionNumber]);
+                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz[questionNumber]);
                         rightOrWrong.Add(rightAnswer);
                     }
                 }

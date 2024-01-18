@@ -195,7 +195,7 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="correctAnswer"></param>
         /// <returns>true or false based on whether or not the user answered correctly or not</returns>
-        public static bool PromptToAnswerQuizQuestion(int questionNumber, QuizCard currentQuizCard)
+        public static bool PromptToAnswerQuizQuestion(QuizCard currentQuizCard)
         {
             Console.WriteLine(currentQuizCard.questionOutput);
             List<string> answerList = new List<string>()
@@ -219,6 +219,12 @@ namespace Quiz_Maker
             return rightAnswer;
         }
 
+        /// <summary>
+        /// outputs the entire quiz to the user with the individual score for each question and the overall score of
+        /// the whole quiz at the bottom
+        /// </summary>
+        /// <param name="currentQuiz"></param>
+        /// <param name="rightAndWrong"></param>
         public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightAndWrong)
         {
             int numberCorrect = 0;
@@ -254,6 +260,11 @@ namespace Quiz_Maker
                 }
             }
             Console.WriteLine($"You scored{numberCorrect} out of {currentQuiz.Count} correct!");
-        } 
+        }
+
+        public static void ConsoleClear()
+        {
+            Console.Clear();
+        }
     }
 }
