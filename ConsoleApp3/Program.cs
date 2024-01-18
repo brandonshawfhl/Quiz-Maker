@@ -24,8 +24,8 @@
                         currentQuizCard.correctAnswer = UserInterface.PromptForCorrectAnswer();
                         currentQuizCard.incorrectAnswers = UserInterface.PromptForAnswers();
                         currentQuiz.Add(currentQuizCard);
-                        Console.Clear();
                         moreQuestions = UserInterface.PromptForMoreQuestions();
+                        Console.Clear();
                     }
                 }
 
@@ -39,7 +39,6 @@
                     Logic.SaveQuiz(currentQuiz);
                 }
 
-               
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                 Console.Clear();
                 if (seeQuiz)
@@ -52,15 +51,13 @@
                 if (takeQuiz)
                 {
                     List<bool> rightOrWrong = new List<bool>();
-                    for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
+                    for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
                     {
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(questionNumber, currentQuiz[questionNumber]);
                         rightOrWrong[questionNumber] = rightAnswer;
                     }
                 }
             }
-
-
         }
     }
 

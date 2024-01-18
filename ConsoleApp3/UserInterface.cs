@@ -161,7 +161,7 @@ namespace Quiz_Maker
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
                 List<string> answerList = new List<string>()
                 {
-                    currentQuiz[questionNumber].correctAnswer,
+                    currentQuiz[questionNumber].correctAnswer
                 };
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].incorrectAnswers.Count; answerNumber++)
