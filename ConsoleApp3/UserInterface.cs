@@ -221,6 +221,7 @@ namespace Quiz_Maker
 
         public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightAndWrong)
         {
+            int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
@@ -239,17 +240,20 @@ namespace Quiz_Maker
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{answerList[answerChoice]}");
                     Console.WriteLine("\n");
                 }
-
+                ;
+                
                 if (rightAndWrong[questionNumber] == true)
                 {
                     Console.WriteLine("Correct!");
+                    numberCorrect++;
                 }
-
+               
                 if (rightAndWrong[questionNumber] == false)
                 {
                     Console.WriteLine($"Wrong! The correct answer is {currentQuiz[questionNumber].correctAnswer}");
                 }
             }
-        }
+            Console.WriteLine($"You scored{numberCorrect} out of {currentQuiz.Count} correct!");
+        } 
     }
 }
