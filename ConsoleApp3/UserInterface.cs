@@ -197,6 +197,7 @@ namespace Quiz_Maker
                 currentQuizCard.correctAnswer
             };
 
+            int correctAnswerIndex = answerList.IndexOf(currentQuizCard.correctAnswer);
             foreach (string incorrectAnswer in currentQuizCard.incorrectAnswers)
             {
                 answerList.Add(incorrectAnswer);
@@ -208,7 +209,7 @@ namespace Quiz_Maker
             }
 
             ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool rightAnswer = (userInput.Key == );
+            bool rightAnswer = (userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
             return rightAnswer;
         }
     }

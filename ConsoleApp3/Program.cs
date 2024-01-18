@@ -54,7 +54,6 @@
                     List<bool> rightOrWrong = new List<bool>();
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
                     {
-                        ConsoleKey correctAnswer = currentQuiz[questionNumber].
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(questionNumber, currentQuiz[questionNumber]);
                     }
                 }
