@@ -39,10 +39,11 @@
                     Logic.SaveQuiz(currentQuiz);
                 }
 
-                bool seeQuiz = true;
-                while (seeQuiz)
+               
+                bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
+                Console.Clear();
+                if (seeQuiz)
                 {
-                    seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                     UserInterface.PrintWholeQuiz(currentQuiz);
                 }
 
@@ -51,7 +52,7 @@
                 if (takeQuiz)
                 {
                     List<bool> rightOrWrong = new List<bool>();
-                    for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
+                    for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
                     {
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(questionNumber, currentQuiz[questionNumber]);
                         rightOrWrong[questionNumber] = rightAnswer;

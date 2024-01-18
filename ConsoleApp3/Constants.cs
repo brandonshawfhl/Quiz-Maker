@@ -4,7 +4,7 @@
     {
         public const ConsoleKey USER_YES_CHOICE = ConsoleKey.Y;
         public const int CHOICE_LIMIT = 2;
-        public static readonly List<string> answerChoices = new()
+        public static readonly List<string> ANSWER_CHOICES = new()
             {
             "A.\t",
             "B.\t",

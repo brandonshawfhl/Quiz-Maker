@@ -171,7 +171,7 @@ namespace Quiz_Maker
 
                 for (int answerChoice = 0; answerChoice < answerList.Count; answerChoice++)
                 {
-                    Console.WriteLine($"{Constants.answerChoices[answerChoice]}{answerList[answerChoice]}");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{answerList[answerChoice]}");
                     Console.WriteLine("\n");
                 }
             }
@@ -197,7 +197,7 @@ namespace Quiz_Maker
         /// <returns>true or false based on whether or not the user answered correctly or not</returns>
         public static bool PromptToAnswerQuizQuestion(int questionNumber, QuizCard currentQuizCard)
         {
-            Console.WriteLine(Constants.answerChoices[questionNumber], currentQuizCard.questionOutput);
+            Console.WriteLine(currentQuizCard.questionOutput);
             List<string> answerList = new List<string>()
             {
                 currentQuizCard.correctAnswer
@@ -211,7 +211,7 @@ namespace Quiz_Maker
 
             foreach (string answer in answerList)
             {
-                Console.WriteLine(answer);
+                Console.WriteLine($"{Constants.ANSWER_CHOICES[answerList.IndexOf(answer)]}{answer}");
             }
 
             ConsoleKeyInfo userInput = Console.ReadKey(true);
