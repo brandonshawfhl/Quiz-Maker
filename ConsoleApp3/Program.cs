@@ -16,7 +16,6 @@
                 if (quizChoice == QuizAction.QuizOptions.Make)
                 {
 
-
                     bool moreQuestions = true;
                     while (moreQuestions)
                     {
@@ -25,6 +24,7 @@
                         currentQuizCard.correctAnswer = UserInterface.PromptForCorrectAnswer();
                         currentQuizCard.incorrectAnswers = UserInterface.PromptForAnswers();
                         currentQuiz.Add(currentQuizCard);
+                        Console.Clear();
                         moreQuestions = UserInterface.PromptForMoreQuestions();
                     }
                 }
@@ -38,7 +38,6 @@
                 {
                     Logic.SaveQuiz(currentQuiz);
                 }
-
 
                 bool seeQuiz = true;
                 while (seeQuiz)
