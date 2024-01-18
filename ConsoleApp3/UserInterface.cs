@@ -64,12 +64,12 @@ namespace Quiz_Maker
                     break;
                 }
 
-                    Console.WriteLine($"Would you like to create more wrong answers for this question?");
-                    Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-                    ConsoleKeyInfo userInput = Console.ReadKey(true);
-                    Console.Write("\n");
-                    moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
-                
+                Console.WriteLine($"Would you like to create more wrong answers for this question?");
+                Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+                ConsoleKeyInfo userInput = Console.ReadKey(true);
+                Console.Write("\n");
+                moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
+
                 if (moreWrongAnswers == false)
                 {
                     break;
@@ -217,6 +217,39 @@ namespace Quiz_Maker
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool rightAnswer = (userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
             return rightAnswer;
+        }
+
+        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightAndWrong)
+        {
+            for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
+            {
+                Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
+                List<string> answerList = new List<string>()
+                {
+                    currentQuiz[questionNumber].correctAnswer
+                };
+
+                for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].incorrectAnswers.Count; answerNumber++)
+                {
+                    answerList.Add(currentQuiz[questionNumber].incorrectAnswers[answerNumber]);
+                }
+
+                for (int answerChoice = 0; answerChoice < answerList.Count; answerChoice++)
+                {
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{answerList[answerChoice]}");
+                    Console.WriteLine("\n");
+                }
+
+                if (rightAndWrong[questionNumber] == true)
+                {
+                    Console.WriteLine("Correct!");
+                }
+
+                if (rightAndWrong[questionNumber] == false)
+                {
+                    Console.WriteLine($"Wrong! The correct answer is {currentQuiz[questionNumber].correctAnswer}");
+                }
+            }
         }
     }
 }
