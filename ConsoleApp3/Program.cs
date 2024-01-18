@@ -55,6 +55,7 @@
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
                     {
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(questionNumber, currentQuiz[questionNumber]);
+                        rightOrWrong[questionNumber] = rightAnswer;
                     }
                 }
             }
