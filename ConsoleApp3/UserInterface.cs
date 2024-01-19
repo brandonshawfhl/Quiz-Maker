@@ -87,8 +87,8 @@ namespace Quiz_Maker
             Console.WriteLine("What would you like to do?(Enter 0 to make a quiz, 1 to save a quiz and 2 to load a quiz.)");
             Console.WriteLine("Once you have entered the corresponding number, press enter to continue.\n");
             string quizChoiceConversion = Console.ReadLine();
-            Console.Clear();
             QuizAction.QuizOptions quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizOptions), quizChoiceConversion);
+            Console.Clear();
 
             switch (quizChoice)
             {
@@ -196,20 +196,11 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="correctAnswer"></param>
         /// <returns>true or false based on whether or not the user answered correctly or not</returns>
-        public static bool PromptToAnswerQuizQuestion(QuizCard currentQuizCard)
+        public static bool PromptToAnswerQuizQuestion(QuizCard currentQuizCard, List<string> answerList)
         {
             Console.WriteLine($"{currentQuizCard.questionOutput}\n");
-            List<string> answerList = new List<string>()
-            {
-                currentQuizCard.correctAnswer
-            };
-
+            
             int correctAnswerIndex = answerList.IndexOf(currentQuizCard.correctAnswer);
-            foreach (string incorrectAnswer in currentQuizCard.incorrectAnswers)
-            {
-                answerList.Add(incorrectAnswer);
-            }
-
             foreach (string answer in answerList)
             {
                 Console.WriteLine($"{Constants.ANSWER_CHOICES[answerList.IndexOf(answer)]}{answer}\n");
