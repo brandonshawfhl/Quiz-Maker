@@ -47,16 +47,21 @@
                 }
 
                 bool takeQuiz = UserInterface.PromptToTakeQuiz();
-                if (takeQuiz)
+                UserInterface.ConsoleClear();
+                while (takeQuiz)
                 {
-                    List<bool> rightOrWrong = Logic.GetScoringList(currentQuiz);
-                    for (int questionNumber = 1; questionNumber <= currentQuiz.Count; questionNumber++)
+                    List<bool> rightOrWrong = new List<bool>();
+                    for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
                     {
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz[questionNumber]);
-                        rightOrWrong[questionNumber] = rightAnswer;
+                        rightOrWrong.Add(rightAnswer);
                     }
 
+                    UserInterface.ConsoleClear();
+                    UserInterface.PrintQuizScore(currentQuiz, rightOrWrong);
+                    takeQuiz = UserInterface.PromptToRetakeQuiz();
                 }
+                anotherQuiz = UserInterface.PromptToContinue();
             }
         }
     }

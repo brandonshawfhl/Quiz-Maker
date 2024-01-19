@@ -40,20 +40,5 @@ namespace Quiz_Maker
             }
             return loadedQuiz;
         }
-
-        /// <summary>
-        /// populates list used to score the User during the quiz
-        /// </summary>
-        /// <param name="currentQuiz">list containing the currently loaded quiz questions</param>
-        /// <returns>list used to score User</returns>
-        public static List<bool> GetScoringList(List<QuizCard> currentQuiz)
-        {
-            List<bool> rightOrWrong = new List<bool>();
-            foreach (QuizCard question in currentQuiz)
-            {
-                rightOrWrong.Add(false);
-            }
-            return rightOrWrong;
-        }
     }
 }

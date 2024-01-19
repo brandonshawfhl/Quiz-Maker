@@ -225,8 +225,8 @@ namespace Quiz_Maker
         /// the whole quiz at the bottom
         /// </summary>
         /// <param name="currentQuiz">list containing currently loaded quiz questions</param>
-        /// <param name="rightAndWrong"> list used to score User during quiz</param>
-        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightAndWrong)
+        /// <param name="rightOrWrong"> list used to score User during quiz</param>
+        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightOrWrong)
         {
             int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
@@ -247,25 +247,47 @@ namespace Quiz_Maker
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{answerList[answerChoice]}");
                     Console.WriteLine("\n");
                 }
-                ;
-                
-                if (rightAndWrong[questionNumber] == true)
+
+                if (rightOrWrong[questionNumber] == true)
                 {
-                    Console.WriteLine("Correct!");
+                    Console.WriteLine($"{currentQuiz[questionNumber].correctAnswer} is correct!\n\n");
                     numberCorrect++;
                 }
                
-                if (rightAndWrong[questionNumber] == false)
+                if (rightOrWrong[questionNumber] == false)
                 {
-                    Console.WriteLine($"Wrong! The correct answer is {currentQuiz[questionNumber].correctAnswer}");
+                    Console.WriteLine($"Wrong! The correct answer is {currentQuiz[questionNumber].correctAnswer}\n\n");
                 }
             }
-            Console.WriteLine($"You scored{numberCorrect} out of {currentQuiz.Count} correct!");
+            Console.WriteLine($"You scored {numberCorrect} out of {currentQuiz.Count} correct!\n\n\n");
         }
 
+        /// <summary>
+        /// clears the screen for User
+        /// </summary>
         public static void ConsoleClear()
         {
             Console.Clear();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static bool PromptToRetakeQuiz()
+        {
+            Console.WriteLine("Would you like to take your quiz again?");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool retakeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
+            return retakeQuiz;
+        }
+
+        public static bool PromptToContinue()
+        {
+            Console.WriteLine("Would you like to continue?");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool continuePlaying = (userInput.Key == Constants.USER_YES_CHOICE);
+            return continuePlaying;
         }
     }
 }
