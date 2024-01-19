@@ -59,7 +59,8 @@ namespace Quiz_Maker
 
             for (int answerNumber = 0;  answerNumber <= answerList.Count; answerNumber++)
             {
-                string randomAnswer = answerList[rng.Next(-1, answerList.Count)];
+                int randomNumber = answerList.Count;
+                string randomAnswer = answerList[rng.Next(0, randomNumber)];
                 randomAnswers.Add(randomAnswer);
                 answerList.Remove(randomAnswer);
             }
