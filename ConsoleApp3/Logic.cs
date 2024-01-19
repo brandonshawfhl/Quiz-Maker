@@ -1,5 +1,7 @@
 ﻿using static Quiz_Maker.UserInterface;
 using System.Xml.Serialization;
+using System.Dynamic;
+
 namespace Quiz_Maker
 {
 
@@ -39,6 +41,29 @@ namespace Quiz_Maker
                 loadedQuiz = serializer.Deserialize(file) as List<QuizCard>;
             }
             return loadedQuiz;
+        }
+
+        public static List<string> GetRandomAnswers(QuizCard currentQuizCard)
+        {
+            List<string> randomAnswers = new List<string>();
+            
+            List<string> answerList = new List<string>()
+            {
+                currentQuizCard.correctAnswer
+            };
+
+            foreach (string incorrectAnswer in currentQuizCard.incorrectAnswers)
+            {
+                answerList.Add(incorrectAnswer);
+            }
+
+            for (int answerNumber = 0;  answerNumber <= answerList.Count; answerNumber++)
+            {
+                string randomAnswer = answerList[rng.Next(-1, answerList.Count)];
+                randomAnswers.Add(randomAnswer);
+                answerList.Remove(randomAnswer);
+            }
+            return randomAnswers;
         }
     }
 }

@@ -54,7 +54,8 @@
                     List<bool> rightOrWrong = new List<bool>();
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
                     {
-                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz[questionNumber]);
+                        List<string> answerList = Logic.GetRandomAnswers(currentQuiz[questionNumber]);
+                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz[questionNumber], answerList);
                         rightOrWrong.Add(rightAnswer);
                     }
 

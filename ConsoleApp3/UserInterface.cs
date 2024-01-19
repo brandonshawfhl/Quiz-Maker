@@ -10,7 +10,7 @@ namespace Quiz_Maker
         /// </summary>
         public static void PrintWelcomeMessage()
         {
-            Console.WriteLine("Welcome to Quiz Maker where you can make your own quiz!");
+            Console.WriteLine("Welcome to Quiz Maker where you can make your own quiz!\n");
         }
 
         /// <summary>
@@ -84,9 +84,10 @@ namespace Quiz_Maker
         /// <returns>the choice they made in the fom of an enum</returns>
         public static QuizAction.QuizOptions PromptForQuizAction()
         {
-            Console.WriteLine("What would you like to do?(0 to make a quiz, 1 to save a quiz and 2 to load a quiz)\n");
+            Console.WriteLine("What would you like to do?(Enter 0 to make a quiz, 1 to save a quiz and 2 to load a quiz.)");
+            Console.WriteLine("Once you have entered the corresponding number, press enter to continue.\n");
             string quizChoiceConversion = Console.ReadLine();
-            Console.Write("\n");
+            Console.Clear();
             QuizAction.QuizOptions quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizOptions), quizChoiceConversion);
 
             switch (quizChoice)
@@ -277,6 +278,7 @@ namespace Quiz_Maker
         public static bool PromptToRetakeQuiz()
         {
             Console.WriteLine("Would you like to take your quiz again?");
+            Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool retakeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
             return retakeQuiz;
@@ -289,6 +291,7 @@ namespace Quiz_Maker
         public static bool PromptToContinue()
         {
             Console.WriteLine("Would you like to continue?");
+            Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool continuePlaying = (userInput.Key == Constants.USER_YES_CHOICE);
             return continuePlaying;
