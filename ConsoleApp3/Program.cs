@@ -7,10 +7,11 @@
         {
             List<QuizCard> currentQuiz = new List<QuizCard>();
             bool anotherQuiz = true;
-            UserInterface.PrintWelcomeMessage();
 
             while (anotherQuiz)
             {
+                UserInterface.ConsoleClear();
+                UserInterface.PrintWelcomeMessage();
                 QuizAction.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
 
                 if (quizChoice == QuizAction.QuizOptions.Make)
@@ -60,8 +61,10 @@
                     UserInterface.ConsoleClear();
                     UserInterface.PrintQuizScore(currentQuiz, rightOrWrong);
                     takeQuiz = UserInterface.PromptToRetakeQuiz();
+                    UserInterface.ConsoleClear();
                 }
                 anotherQuiz = UserInterface.PromptToContinue();
+                UserInterface.ConsoleClear();
             }
         }
     }

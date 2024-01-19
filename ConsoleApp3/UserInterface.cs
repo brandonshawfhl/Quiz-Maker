@@ -271,9 +271,9 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// 
+        /// prompts the User to decide whether or not they would like to retake the quiz they just took
         /// </summary>
-        /// <returns></returns>
+        /// <returns>true or false based on the User's answer</returns>
         public static bool PromptToRetakeQuiz()
         {
             Console.WriteLine("Would you like to take your quiz again?");
@@ -282,6 +282,10 @@ namespace Quiz_Maker
             return retakeQuiz;
         }
 
+        /// <summary>
+        /// prompts the User to decide whether or not they would like to choose another quiz action
+        /// </summary>
+        /// <returns>true or false based on the User's choice</returns>
         public static bool PromptToContinue()
         {
             Console.WriteLine("Would you like to continue?");
