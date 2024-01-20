@@ -46,7 +46,7 @@ namespace Quiz_Maker
         public static List<string> GetRandomAnswers(QuizCard currentQuizCard)
         {
             List<string> randomAnswers = new List<string>();
-            
+
             List<string> answerList = new List<string>()
             {
                 currentQuizCard.correctAnswer
@@ -57,10 +57,9 @@ namespace Quiz_Maker
                 answerList.Add(incorrectAnswer);
             }
 
-            for (int answerNumber = 0;  answerNumber <= answerList.Count; answerNumber++)
+            for (int answerNumber = answerList.Count; answerNumber > 0; answerNumber--)
             {
-                int randomNumber = answerList.Count;
-                string randomAnswer = answerList[rng.Next(0, randomNumber)];
+                string randomAnswer = answerList[rng.Next(0, answerList.Count)];
                 randomAnswers.Add(randomAnswer);
                 answerList.Remove(randomAnswer);
             }

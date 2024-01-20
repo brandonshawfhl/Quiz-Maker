@@ -51,18 +51,21 @@
                 UserInterface.ConsoleClear();
                 while (takeQuiz)
                 {
+                    List<List<string>> allAnswerLists = new List<List<string>>();
+                    List<string> answerList = new List<string>();
                     List<bool> rightOrWrong = new List<bool>();
+                    UserInterface.ConsoleClear();
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
                     {
-                        List<string> answerList = Logic.GetRandomAnswers(currentQuiz[questionNumber]);
+                        answerList = Logic.GetRandomAnswers(currentQuiz[questionNumber]);
+                        allAnswerLists.Add(answerList);
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz[questionNumber], answerList);
                         rightOrWrong.Add(rightAnswer);
                     }
 
                     UserInterface.ConsoleClear();
-                    UserInterface.PrintQuizScore(currentQuiz, rightOrWrong);
+                    UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, allAnswerLists);
                     takeQuiz = UserInterface.PromptToRetakeQuiz();
-                    UserInterface.ConsoleClear();
                 }
                 anotherQuiz = UserInterface.PromptToContinue();
                 UserInterface.ConsoleClear();

@@ -218,25 +218,16 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="currentQuiz">list containing currently loaded quiz questions</param>
         /// <param name="rightOrWrong"> list used to score User during quiz</param>
-        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightOrWrong)
+        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightOrWrong, List<List<string>> allAnswerList)
         {
             int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
-                List<string> answerList = new List<string>()
+              
+                for (int answerChoice = 0; answerChoice < allAnswerList[questionNumber].Count; answerChoice++)
                 {
-                    currentQuiz[questionNumber].correctAnswer
-                };
-
-                for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].incorrectAnswers.Count; answerNumber++)
-                {
-                    answerList.Add(currentQuiz[questionNumber].incorrectAnswers[answerNumber]);
-                }
-
-                for (int answerChoice = 0; answerChoice < answerList.Count; answerChoice++)
-                {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{answerList[answerChoice]}");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{allAnswerList[questionNumber][answerChoice]}");
                     Console.WriteLine("\n");
                 }
 
