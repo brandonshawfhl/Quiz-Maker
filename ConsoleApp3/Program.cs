@@ -51,14 +51,15 @@
                 UserInterface.ConsoleClear();
                 while (takeQuiz)
                 {
+                    List<string> questionList = new List<string>();
                     List<List<string>> allAnswerLists = new List<List<string>>();
-                    List<string> answerList = new List<string>();
                     List<bool> rightOrWrong = new List<bool>();
                     UserInterface.ConsoleClear();
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
                     {
-                        answerList = Logic.GetRandomAnswers(currentQuiz[questionNumber]);
+                        List<string> answerList = Logic.GetRandomAnswers(currentQuiz[questionNumber]);
                         allAnswerLists.Add(answerList);
+                        questionList = 
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz[questionNumber], answerList);
                         rightOrWrong.Add(rightAnswer);
                     }
