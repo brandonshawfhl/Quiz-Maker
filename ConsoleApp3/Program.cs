@@ -20,7 +20,6 @@ namespace Quiz_Maker
 
                 if (quizChoice == QuizAction.QuizOptions.Make)
                 {
-
                     bool moreQuestions = true;
                     while (moreQuestions)
                     {
