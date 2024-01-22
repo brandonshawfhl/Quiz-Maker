@@ -34,11 +34,7 @@ namespace Quiz_Maker
                     }
 
                     currentQuiz = Logic.GetRandomQuizCard(madeQuiz);
-                    for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
-                    {
-                        List<string> randomAnswers = Logic.GetRandomAnswers(currentQuiz);
-                        answerList.Add(randomAnswers);
-                    }
+                    answerList = Logic.GetRandomAnswers(currentQuiz);
                 }
 
                 if (quizChoice == QuizAction.QuizOptions.Load)

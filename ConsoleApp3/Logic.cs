@@ -43,27 +43,27 @@ namespace Quiz_Maker
             return loadedQuiz;
         }
 
-        public static List<string> GetRandomAnswers(List<QuizCard> currentQuiz)
+        public static List<List<string>> GetRandomAnswers(List<QuizCard> currentQuiz)
         {
-            List<string> randomAnswers = new List<string>();
-            List<string> answerList = new List<string>();
+            List<List<string>> answerList = new List<string>();
+            List<string> initialList = new List<string>();
 
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
-                answerList.Add(currentQuiz[questionNumber].correctAnswer);
+                initialList.Add(currentQuiz[questionNumber].correctAnswer);
                 foreach (string incorrectAnswer in currentQuiz[questionNumber].incorrectAnswers)
                 {
-                    answerList.Add(incorrectAnswer);
+                    initialList.Add(incorrectAnswer);
                 }
 
-                for (int answerNumber = answerList.Count; answerNumber > 0; answerNumber--)
+                for (int answerNumber = initialList.Count; answerNumber > 0; answerNumber--)
                 {
-                    string randomAnswer = answerList[rng.Next(0, answerList.Count)];
-                    randomAnswers.Add(randomAnswer);
-                    answerList.Remove(randomAnswer);
+                    string randomAnswer = initialList[rng.Next(0, initialList.Count)];
+                    answerList.Add(randomAnswer);
+                    initialList.Remove(randomAnswer);
                 }
             }
-            return randomAnswers;
+            return answerList;
         }
 
         public static List<QuizCard> GetRandomQuizCard(List<QuizCard> currentQuiz)
