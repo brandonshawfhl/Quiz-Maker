@@ -45,11 +45,12 @@ namespace Quiz_Maker
 
         public static List<List<string>> GetRandomAnswers(List<QuizCard> currentQuiz)
         {
-            List<List<string>> answerList = new List<string>();
+            List<List<string>> answerList = new List<List<string>>();
             List<string> initialList = new List<string>();
 
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
+                List<string> randomAnswers = new List<string>();
                 initialList.Add(currentQuiz[questionNumber].correctAnswer);
                 foreach (string incorrectAnswer in currentQuiz[questionNumber].incorrectAnswers)
                 {
@@ -59,9 +60,10 @@ namespace Quiz_Maker
                 for (int answerNumber = initialList.Count; answerNumber > 0; answerNumber--)
                 {
                     string randomAnswer = initialList[rng.Next(0, initialList.Count)];
-                    answerList.Add(randomAnswer);
+                    randomAnswers.Add(randomAnswer);
                     initialList.Remove(randomAnswer);
                 }
+                answerList.Add(randomAnswers);
             }
             return answerList;
         }
