@@ -43,29 +43,38 @@ namespace Quiz_Maker
             return loadedQuiz;
         }
 
-        public static List<string> GetRandomAnswers(QuizCard currentQuizCard)
+        public static List<string> GetRandomAnswers(List<QuizCard> currentQuiz)
         {
             List<string> randomAnswers = new List<string>();
+            List<string> answerList = new List<string>();
 
-            List<string> answerList = new List<string>()
+            for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
             {
-                currentQuizCard.correctAnswer
-            };
+                answerList.Add(currentQuiz[questionNumber].correctAnswer);
+                foreach (string incorrectAnswer in currentQuiz[questionNumber].incorrectAnswers)
+                {
+                    answerList.Add(incorrectAnswer);
+                }
 
-            foreach (string incorrectAnswer in currentQuizCard.incorrectAnswers)
-            {
-                answerList.Add(incorrectAnswer);
+                for (int answerNumber = answerList.Count; answerNumber > 0; answerNumber--)
+                {
+                    string randomAnswer = answerList[rng.Next(0, answerList.Count)];
+                    randomAnswers.Add(randomAnswer);
+                    answerList.Remove(randomAnswer);
+                }
             }
 
-            for (int answerNumber = answerList.Count; answerNumber > 0; answerNumber--)
-            {
-                string randomAnswer = answerList[rng.Next(0, answerList.Count)];
-                randomAnswers.Add(randomAnswer);
-                answerList.Remove(randomAnswer);
-            }
             return randomAnswers;
         }
 
-        public static List<string> 
+        public static List<string> GetRandomQuestion(List<QuizCard> currentQuiz)
+        {
+            List<string> randomQuestions = new List<string>();
+            for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
+            {
+                 randomQuestions.Add(currentQuiz[rng.Next(0, currentQuiz.Count)].questionOutput);
+            }
+            return randomQuestions;
+        }
     }
 }

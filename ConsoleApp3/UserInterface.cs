@@ -196,9 +196,9 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="correctAnswer"></param>
         /// <returns>true or false based on whether or not the user answered correctly or not</returns>
-        public static bool PromptToAnswerQuizQuestion(QuizCard currentQuizCard, List<string> answerList)
+        public static bool PromptToAnswerQuizQuestion(List<string> quizQuestions, List<string> answerList, int questionNumber)
         {
-            Console.WriteLine($"{currentQuizCard.questionOutput}\n");
+            Console.WriteLine($"{quizQuestions[questionNumber]}\n");
             
             int correctAnswerIndex = answerList.IndexOf(currentQuizCard.correctAnswer);
             foreach (string answer in answerList)

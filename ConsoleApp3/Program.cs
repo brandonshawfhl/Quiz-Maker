@@ -28,8 +28,12 @@
                         moreQuestions = UserInterface.PromptForMoreQuestions();
                         UserInterface.ConsoleClear();
                     }
+               
+                List<string> answerList = Logic.GetRandomAnswers(currentQuiz);
+                List <string> quizQuestions;
+                quizQuestions = Logic.GetRandomQuestion(currentQuiz);
+              
                 }
-
                 if (quizChoice == QuizAction.QuizOptions.Load)
                 {
                     Logic.LoadQuiz();
@@ -51,27 +55,22 @@
                 UserInterface.ConsoleClear();
                 while (takeQuiz)
                 {
-                    List<string> questionList = new List<string>();
-                    List<List<string>> allAnswerLists = new List<List<string>>();
                     List<bool> rightOrWrong = new List<bool>();
                     UserInterface.ConsoleClear();
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
                     {
-                        List<string> answerList = Logic.GetRandomAnswers(currentQuiz[questionNumber]);
-                        allAnswerLists.Add(answerList);
-                        questionList = 
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz[questionNumber], answerList);
                         rightOrWrong.Add(rightAnswer);
-                    }
 
+
+                        UserInterface.ConsoleClear();
+                        UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, allAnswerLists);
+                        takeQuiz = UserInterface.PromptToRetakeQuiz();
+                    }
+                    anotherQuiz = UserInterface.PromptToContinue();
                     UserInterface.ConsoleClear();
-                    UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, allAnswerLists);
-                    takeQuiz = UserInterface.PromptToRetakeQuiz();
                 }
-                anotherQuiz = UserInterface.PromptToContinue();
-                UserInterface.ConsoleClear();
             }
         }
     }
-
 }
