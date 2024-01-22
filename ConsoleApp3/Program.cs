@@ -65,15 +65,14 @@ namespace Quiz_Maker
                     {
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz, answerList, questionNumber);
                         rightOrWrong.Add(rightAnswer);
-
-
-                        UserInterface.ConsoleClear();
-                        UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, answerList);
-                        takeQuiz = UserInterface.PromptToRetakeQuiz();
                     }
-                    anotherQuiz = UserInterface.PromptToContinue();
+
+                    UserInterface.ConsoleClear();
+                    UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, answerList);
+                    takeQuiz = UserInterface.PromptToRetakeQuiz();
                     UserInterface.ConsoleClear();
                 }
+                anotherQuiz = UserInterface.PromptToContinue();
             }
         }
     }
