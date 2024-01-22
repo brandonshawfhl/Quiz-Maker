@@ -8,6 +8,7 @@ namespace Quiz_Maker
         static void Main(string[] args)
         {
             List<QuizCard> currentQuiz = new List<QuizCard>();
+            List<List<string>> answerList = new List<List<string>>();
             bool anotherQuiz = true;
 
             while (anotherQuiz)
@@ -33,7 +34,6 @@ namespace Quiz_Maker
                     }
 
                     currentQuiz = Logic.GetRandomQuizCard(madeQuiz);
-                    List<List<string>> answerList = new List<List<string>>();
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
                     {
                         List<string> randomAnswers = Logic.GetRandomAnswers(currentQuiz);
@@ -67,7 +67,7 @@ namespace Quiz_Maker
                     UserInterface.ConsoleClear();
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
                     {
-                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz[questionNumber], answerList);
+                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz, answerList, questionNumber);
                         rightOrWrong.Add(rightAnswer);
 
 
