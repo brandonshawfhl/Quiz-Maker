@@ -55,7 +55,7 @@ namespace Quiz_Maker
                 UserInterface.ConsoleClear();
                 if (seeQuiz)
                 {
-                    UserInterface.PrintWholeQuiz(currentQuiz);
+                    UserInterface.PrintWholeQuiz(currentQuiz, answerList);
 
                 }
 

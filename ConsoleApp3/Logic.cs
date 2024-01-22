@@ -48,7 +48,7 @@ namespace Quiz_Maker
             List<string> randomAnswers = new List<string>();
             List<string> answerList = new List<string>();
 
-            for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
+            for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
                 answerList.Add(currentQuiz[questionNumber].correctAnswer);
                 foreach (string incorrectAnswer in currentQuiz[questionNumber].incorrectAnswers)
