@@ -75,7 +75,7 @@ namespace Quiz_Maker
                 quizCardList.Add(card);
             }
 
-            for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
+            for (int questionNumber = currentQuiz.Count; questionNumber > 0; questionNumber--)
             {
                 QuizCard randomQuizCard = quizCardList[rng.Next(0, quizCardList.Count)];
                 randomQuiz.Add(randomQuizCard);
