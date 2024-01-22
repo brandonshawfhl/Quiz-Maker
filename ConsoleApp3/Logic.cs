@@ -63,18 +63,27 @@ namespace Quiz_Maker
                     answerList.Remove(randomAnswer);
                 }
             }
-
             return randomAnswers;
         }
 
-        public static List<string> GetRandomQuestion(List<QuizCard> currentQuiz)
+        public static List<QuizCard> GetRandomQuizCard(List<QuizCard> currentQuiz)
         {
-            List<string> randomQuestions = new List<string>();
+            List<QuizCard> quizCardList = new List<QuizCard>();
+            List<QuizCard> randomQuiz = new List<QuizCard>();
+            foreach (QuizCard card in currentQuiz)
+            {
+                quizCardList.Add(card);
+            }
+
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
             {
-                 randomQuestions.Add(currentQuiz[rng.Next(0, currentQuiz.Count)].questionOutput);
+                QuizCard randomQuizCard = quizCardList[rng.Next(0, quizCardList.Count)];
+                randomQuiz.Add(randomQuizCard);
+                quizCardList.Remove(randomQuizCard);
             }
-            return randomQuestions;
+            return randomQuiz;
         }
+
     }
+}
 }

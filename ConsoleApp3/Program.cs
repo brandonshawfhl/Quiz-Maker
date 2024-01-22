@@ -1,4 +1,6 @@
-﻿namespace Quiz_Maker
+﻿using System.Collections.Generic;
+
+namespace Quiz_Maker
 {
     internal class Program
     {
@@ -13,6 +15,7 @@
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
                 QuizAction.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
+                List<QuizCard> madeQuiz = new List<QuizCard>();
 
                 if (quizChoice == QuizAction.QuizOptions.Make)
                 {
@@ -24,16 +27,20 @@
                         currentQuizCard.questionOutput = UserInterface.PromptForQuestion();
                         currentQuizCard.correctAnswer = UserInterface.PromptForCorrectAnswer();
                         currentQuizCard.incorrectAnswers = UserInterface.PromptForAnswers();
-                        currentQuiz.Add(currentQuizCard);
+                        madeQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptForMoreQuestions();
                         UserInterface.ConsoleClear();
                     }
-               
-                List<string> answerList = Logic.GetRandomAnswers(currentQuiz);
-                List <string> quizQuestions;
-                quizQuestions = Logic.GetRandomQuestion(currentQuiz);
-              
+
+                    currentQuiz = Logic.GetRandomQuizCard(madeQuiz);
+                    List<List<string>> answerList = new List<List<string>>();
+                    for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
+                    {
+                        List<string> randomAnswers = Logic.GetRandomAnswers(currentQuiz);
+                        answerList.Add(randomAnswers);
+                    }
                 }
+
                 if (quizChoice == QuizAction.QuizOptions.Load)
                 {
                     Logic.LoadQuiz();
@@ -49,6 +56,7 @@
                 if (seeQuiz)
                 {
                     UserInterface.PrintWholeQuiz(currentQuiz);
+
                 }
 
                 bool takeQuiz = UserInterface.PromptToTakeQuiz();
@@ -64,7 +72,7 @@
 
 
                         UserInterface.ConsoleClear();
-                        UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, allAnswerLists);
+                        UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, answerList);
                         takeQuiz = UserInterface.PromptToRetakeQuiz();
                     }
                     anotherQuiz = UserInterface.PromptToContinue();
