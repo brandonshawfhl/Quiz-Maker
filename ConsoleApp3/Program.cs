@@ -48,7 +48,6 @@ namespace Quiz_Maker
                 if (seeQuiz)
                 {
                     UserInterface.PrintWholeQuiz(currentQuiz, answerList);
-
                 }
 
                 bool takeQuiz = UserInterface.PromptToTakeQuiz();

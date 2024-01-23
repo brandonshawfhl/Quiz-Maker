@@ -7,17 +7,13 @@ namespace Quiz_Maker
 
     internal class Logic
     {
-
         public static Random rng = new Random();
-
 
         /// <summary>
         /// saves a quiz that the user made
         /// </summary>
         /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
         /// <returns>the list of quiz questions and all of their associated information that has already been saved</returns>
-
-        
         public static void SaveQuiz(List<QuizCard> currentQuiz)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
@@ -35,6 +31,7 @@ namespace Quiz_Maker
         {
             List<QuizCard> loadedQuiz = new List<QuizCard>();
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
+
             using (FileStream file = File.OpenRead(Constants.PATH))
             {
                 loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
@@ -56,6 +53,7 @@ namespace Quiz_Maker
             {
                 List<string> randomAnswers = new List<string>();
                 initialList.Add(currentQuiz[questionNumber].correctAnswer);
+
                 foreach (string incorrectAnswer in currentQuiz[questionNumber].incorrectAnswers)
                 {
                     initialList.Add(incorrectAnswer);
@@ -81,6 +79,7 @@ namespace Quiz_Maker
         {
             List<QuizCard> quizCardList = new List<QuizCard>();
             List<QuizCard> randomQuiz = new List<QuizCard>();
+
             foreach (QuizCard card in currentQuiz)
             {
                 quizCardList.Add(card);

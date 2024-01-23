@@ -34,7 +34,6 @@ namespace Quiz_Maker
            ConsoleKey.J
        };
 
-        
         public const string PATH = @"currentQuiz.xml";
     }
 }

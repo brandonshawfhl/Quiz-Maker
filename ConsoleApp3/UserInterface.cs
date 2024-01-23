@@ -193,17 +193,20 @@ namespace Quiz_Maker
         /// <returns>true or false based on whether or not the user answered correctly</returns>
         public static bool PromptToAnswerQuizQuestion(List<QuizCard> currentQuiz, List<List<string>> answerList, int questionNumber)
         {
-            Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
-            
-            int correctAnswerIndex = answerList[questionNumber].IndexOf(currentQuiz[questionNumber].correctAnswer);
-            foreach (string answer in answerList[questionNumber])
-            {
-                Console.WriteLine($"{Constants.ANSWER_CHOICES[answerList[questionNumber].IndexOf(answer)]}{answer}\n");
-            }
+            //for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
+            //{
+                Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
 
-            Console.Write("\n");
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool rightAnswer = (userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
+                int correctAnswerIndex = answerList[questionNumber].IndexOf(currentQuiz[questionNumber].correctAnswer);
+                foreach (string answer in answerList[questionNumber])
+                {
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerList[questionNumber].IndexOf(answer)]}{answer}\n");
+                }
+
+                Console.Write("\n");
+                ConsoleKeyInfo userInput = Console.ReadKey(true);
+                bool rightAnswer = (userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
+            //}
             return rightAnswer;
         }
 
