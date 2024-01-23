@@ -52,7 +52,7 @@ namespace Quiz_Maker
                     UserInterface.PrintWholeQuiz(currentQuiz, answerList);
                 }
 
-                bool takeQuiz = UserInterface.PromptToTakeQuiz();
+                bool takeQuiz = UserInterface.IsPlayQuiz();
                 UserInterface.ConsoleClear();
 
                 while (takeQuiz)
@@ -68,7 +68,7 @@ namespace Quiz_Maker
 
                     UserInterface.ConsoleClear();
                     UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, answerList);
-                    takeQuiz = UserInterface.PromptToRetakeQuiz();
+                    takeQuiz = UserInterface.IsPlayQuizAgain();
                     UserInterface.ConsoleClear();
                 }
                 anotherAction = UserInterface.PromptToContinue();

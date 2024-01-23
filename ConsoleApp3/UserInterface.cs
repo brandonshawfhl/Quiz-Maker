@@ -139,7 +139,7 @@
         /// Prompts the user to answer whether or not they would like to take the quiz currently loaded into the program
         /// </summary>
         /// <returns>true or false that is determined by the user's answer</returns>
-        public static bool PromptToTakeQuiz()
+        public static bool IsPlayQuiz()
         {
             Console.WriteLine("Would you like to take your current quiz?");
             Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.\n");
@@ -253,7 +253,7 @@
         /// prompts the User to decide whether or not they would like to retake the quiz they just took
         /// </summary>
         /// <returns>true or false based on the User's answer</returns>
-        public static bool PromptToRetakeQuiz()
+        public static bool IsPlayQuizAgain()
         {
             Console.WriteLine("Would you like to take your quiz again?");
             Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
