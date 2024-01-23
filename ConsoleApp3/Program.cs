@@ -7,11 +7,9 @@ namespace Quiz_Maker
         public static readonly Random rng = new Random();
         static void Main(string[] args)
         {
-            List<QuizCard> currentQuiz = new List<QuizCard>();
-            List<List<string>> answerList = new List<List<string>>();
-            bool anotherQuiz = true;
+            bool anotherAction = true;
 
-            while (anotherQuiz)
+            while (anotherAction)
             {
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
@@ -31,14 +29,13 @@ namespace Quiz_Maker
                         moreQuestions = UserInterface.PromptForMoreQuestions();
                         UserInterface.ConsoleClear();
                     }
-
-                    currentQuiz = Logic.GetRandomQuizCard(madeQuiz);
-                    answerList = Logic.GetRandomAnswers(currentQuiz);
                 }
+                List<QuizCard> currentQuiz = Logic.GetRandomQuizCard(madeQuiz);
+                List<List<string>> answerList = Logic.GetRandomAnswers(currentQuiz);
 
                 if (quizChoice == QuizAction.QuizOptions.Load)
                 {
-                    Logic.LoadQuiz();
+                    currentQuiz = Logic.LoadQuiz();
                 }
 
                 if (quizChoice == QuizAction.QuizOptions.Save)
@@ -71,7 +68,7 @@ namespace Quiz_Maker
                     takeQuiz = UserInterface.PromptToRetakeQuiz();
                     UserInterface.ConsoleClear();
                 }
-                anotherQuiz = UserInterface.PromptToContinue();
+                anotherAction = UserInterface.PromptToContinue();
             }
         }
     }

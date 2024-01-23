@@ -7,19 +7,21 @@ namespace Quiz_Maker
 
     internal class Logic
     {
+
         public static Random rng = new Random();
+
 
         /// <summary>
         /// saves a quiz that the user made
         /// </summary>
         /// <param name="questionAndAnswersFile">the list that will store the file</param>
         /// <returns>a list that can be used to run a quiz</returns>
+
+
         public static void SaveQuiz(List<QuizCard> currentQuiz)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
-            var path = @"currentQuiz.xml";
-            path = Console.ReadLine();
-            using (FileStream file = File.Create(path))
+            using (FileStream file = File.Create(Constants.PATH))
             {
                 serializer.Serialize(file, currentQuiz);
             }
@@ -32,13 +34,11 @@ namespace Quiz_Maker
         /// <returns>a loaded file that can run a quiz</returns>
         public static List<QuizCard> LoadQuiz()
         {
-            List<QuizCard> loadedQuiz = new List<QuizCard>();
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
-            var path = @"currentQuiz.xml";
-            path = Console.ReadLine();
-            using (FileStream file = File.OpenRead(path))
+            List<QuizCard> loadedQuiz = new List<QuizCard>();
+            using (FileStream file = File.OpenRead(Constants.PATH))
             {
-                loadedQuiz = serializer.Deserialize(file) as List<QuizCard>;
+                loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
             }
             return loadedQuiz;
         }

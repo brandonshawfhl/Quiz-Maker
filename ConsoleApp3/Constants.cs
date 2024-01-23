@@ -1,4 +1,6 @@
-﻿namespace Quiz_Maker
+﻿using System.Xml.Serialization;
+
+namespace Quiz_Maker
 {
     internal class Constants
     {
@@ -29,6 +31,10 @@
            ConsoleKey.G,
            ConsoleKey.H,
            ConsoleKey.I,
+           ConsoleKey.J
        };
+
+        
+        public const string PATH = @"currentQuiz.xml";
     }
 }
