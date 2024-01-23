@@ -31,18 +31,19 @@ namespace Quiz_Maker
                         UserInterface.ConsoleClear();
                     }
                 }
-                List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
-                List<List<string>> answerList = Logic.ShuffleAnswers(currentQuiz);
 
                 if (quizChoice == QuizAction.QuizOptions.Load)
                 {
-                    currentQuiz = Logic.LoadQuiz();
+                    madeQuiz = Logic.LoadQuiz();
                 }
 
                 if (quizChoice == QuizAction.QuizOptions.Save)
                 {
-                    Logic.SaveQuiz(currentQuiz);
+                    Logic.SaveQuiz(madeQuiz);
                 }
+
+                List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
+                List<List<string>> answerList = Logic.ShuffleAnswers(currentQuiz);
 
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                 UserInterface.ConsoleClear();
