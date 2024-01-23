@@ -45,7 +45,6 @@ namespace Quiz_Maker
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
                 List<List<string>> answerList = Logic.ShuffleAnswers(currentQuiz);
-
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                 UserInterface.ConsoleClear();
 
@@ -61,14 +60,9 @@ namespace Quiz_Maker
                 {
                     if (currentQuiz.Count > 0)
                     {
-                        List<bool> rightOrWrong = new List<bool>();
                         UserInterface.ConsoleClear();
 
-                        for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
-                        {
-                            bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz, answerList, questionNumber);
-                            rightOrWrong.Add(rightAnswer);
-                        }
+                        List<bool> rightOrWrong = UserInterface.PromptToAnswerQuizQuestion(currentQuiz, answerList);
 
                         UserInterface.ConsoleClear();
                         UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, answerList);

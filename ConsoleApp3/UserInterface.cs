@@ -158,7 +158,7 @@
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
-                
+
                 for (int answerChoice = 0; answerChoice < answerList[questionNumber].Count; answerChoice++)
                 {
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{answerList[questionNumber][answerChoice]}");
@@ -188,10 +188,11 @@
         /// <param name="answerList">list of lists of answer choices that has been randomized</param>
         /// <param name="questionNumber">number of the current quiz question the User is answering</param>
         /// <returns>true or false based on whether or not the user answered correctly</returns>
-        public static bool PromptToAnswerQuizQuestion(List<QuizCard> currentQuiz, List<List<string>> answerList, int questionNumber)
+        public static List<bool> PromptToAnswerQuizQuestion(List<QuizCard> currentQuiz, List<List<string>> answerList)
         {
-            //for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
-            //{
+            List<bool> rightOrWrong = new List<bool>();
+            for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
+            {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
                 int correctAnswerIndex = answerList[questionNumber].IndexOf(currentQuiz[questionNumber].correctAnswer);
 
@@ -202,9 +203,9 @@
 
                 Console.Write("\n");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
-                bool rightAnswer = (userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
-            //}
-            return rightAnswer;
+                rightOrWrong.Add(userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
+            }
+            return rightOrWrong;
         }
 
         /// <summary>
@@ -220,7 +221,7 @@
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
-              
+
                 for (int answerChoice = 0; answerChoice < answerList[questionNumber].Count; answerChoice++)
                 {
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{answerList[questionNumber][answerChoice]}");
@@ -232,7 +233,7 @@
                     Console.WriteLine($"{currentQuiz[questionNumber].correctAnswer} is correct!\n\n");
                     numberCorrect++;
                 }
-               
+
                 if (rightOrWrong[questionNumber] == false)
                 {
                     Console.WriteLine($"Wrong! The correct answer is {currentQuiz[questionNumber].correctAnswer}\n\n");
