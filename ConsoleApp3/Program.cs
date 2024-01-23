@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Numerics;
 
 namespace Quiz_Maker
 {
@@ -58,19 +59,29 @@ namespace Quiz_Maker
 
                 while (takeQuiz)
                 {
-                    List<bool> rightOrWrong = new List<bool>();
-                    UserInterface.ConsoleClear();
-
-                    for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
+                    if (currentQuiz.Count > 0)
                     {
-                        bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz, answerList, questionNumber);
-                        rightOrWrong.Add(rightAnswer);
+                        List<bool> rightOrWrong = new List<bool>();
+                        UserInterface.ConsoleClear();
+
+                        for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
+                        {
+                            bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz, answerList, questionNumber);
+                            rightOrWrong.Add(rightAnswer);
+                        }
+
+                        UserInterface.ConsoleClear();
+                        UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, answerList);
+                        takeQuiz = UserInterface.IsPlayQuizAgain();
+                        UserInterface.ConsoleClear();
                     }
 
-                    UserInterface.ConsoleClear();
-                    UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, answerList);
-                    takeQuiz = UserInterface.IsPlayQuizAgain();
-                    UserInterface.ConsoleClear();
+                    else
+                    {
+                        Console.WriteLine("Sorry you do not have any quiz data stored.");
+                        Console.WriteLine("Please create or load a quiz to continue.");
+                        break;
+                    }
                 }
                 anotherAction = UserInterface.PromptToContinue();
             }
