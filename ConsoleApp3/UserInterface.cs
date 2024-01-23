@@ -28,7 +28,7 @@ namespace Quiz_Maker
         /// <summary>
         /// prompts the user for the corret answer to the question
         /// </summary>
-        /// <returns>a string that the user types themselves that will be used as the correct answer for their question</returns>
+        /// <returns>a string that the User types themselves that will be used as the correct answer for their question</returns>
         public static string PromptForCorrectAnswer()
         {
             Console.WriteLine("Please enter the correct answer for this question.\n");
@@ -38,7 +38,7 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// prompts the user for the rest of the answers they would like listed as choices that are not correct and then
+        /// prompts the User for the rest of the answers they would like listed as choices that are not correct and then
         /// places them along with the correct answer into an array specifically just for the current question
         /// </summary>
         /// <param name="answerList">the list that will be filled by this method</param>
@@ -79,9 +79,9 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// Asks user to provide a number that determines what they would like to do with their quiz.
+        /// asks user to provide a number that determines what they would like to do int this program
         /// </summary>
-        /// <returns>the choice they made in the fom of an enum</returns>
+        /// <returns>the choice they made in the form of an enum</returns>
         public static QuizAction.QuizOptions PromptForQuizAction()
         {
             Console.WriteLine("What would you like to do?(Enter 0 to make a quiz, 1 to save a quiz and 2 to load a quiz.)");
@@ -112,7 +112,7 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// Asks the user if they would like to continue using the program
+        /// asks the user if they would like to continue using the program
         /// </summary>
         /// <returns>returns true or false based on the users answer</returns>
         public static bool PromptForMoreQuizOptions()
@@ -154,7 +154,8 @@ namespace Quiz_Maker
         /// <summary>
         /// prints the entire quiz for the User to see on the screen
         /// </summary>
-        /// <param name="currentQuiz">the List of Lists that has the quiz information</param>
+        /// <param name="currentQuiz">the list of quiz questions and all of their associated information</param>
+        /// <param name="answerList">a list of lists of answers whose order has been randomized by the User</param>
         public static void PrintWholeQuiz(List<QuizCard> currentQuiz, List<List<string>> answerList)
         {
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
@@ -170,7 +171,7 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// asks the user if they would like to see the whold quiz
+        /// asks the user if they would like to see the whole quiz
         /// </summary>
         /// <returns>returns true or false based on the user's answer</returns>
         public static bool PromptToSeeWholeQuiz()
@@ -183,10 +184,13 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// outputs the next question in the quiz to the user and then prompts them to answer it
+        /// outputs the next question in the quiz to the, prompts them to answer it and then checks whether the answer they
+        /// entered is right or wrong
         /// </summary>
-        /// <param name="correctAnswer"></param>
-        /// <returns>true or false based on whether or not the user answered correctly or not</returns>
+        /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
+        /// <param name="answerList">list of lists of answers that has been randomized</param>
+        /// <param name="questionNumber">number of the current quiz question the User is answering</param>
+        /// <returns>true or false based on whether or not the user answered correctly</returns>
         public static bool PromptToAnswerQuizQuestion(List<QuizCard> currentQuiz, List<List<string>> answerList, int questionNumber)
         {
             Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
@@ -207,18 +211,19 @@ namespace Quiz_Maker
         /// outputs the entire quiz to the user with the individual score for each question and the overall score of
         /// the whole quiz at the bottom
         /// </summary>
-        /// <param name="currentQuiz">list containing currently loaded quiz questions</param>
+        /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
         /// <param name="rightOrWrong"> list used to score User during quiz</param>
-        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightOrWrong, List<List<string>> allAnswerList)
+        /// <param name="answerList"
+        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightOrWrong, List<List<string>> answerList)
         {
             int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
               
-                for (int answerChoice = 0; answerChoice < allAnswerList[questionNumber].Count; answerChoice++)
+                for (int answerChoice = 0; answerChoice < answerList[questionNumber].Count; answerChoice++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{allAnswerList[questionNumber][answerChoice]}");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{answerList[questionNumber][answerChoice]}");
                     Console.WriteLine("\n");
                 }
 
