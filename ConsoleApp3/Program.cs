@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Numerics;
-
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
     internal class Program
     {
