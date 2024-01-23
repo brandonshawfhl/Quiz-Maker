@@ -42,7 +42,7 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="currentQuiz">a list of quiz questions and all of their associated information</param>
         /// <returns>a list of lists of answers in random order for each quiz question</returns>
-        public static List<List<string>> GetRandomAnswers(List<QuizCard> currentQuiz)
+        public static List<List<string>> ShuffleAnswers(List<QuizCard> currentQuiz)
         {
             List<List<string>> answerList = new List<List<string>>();
             List<string> initialList = new List<string>();
@@ -73,7 +73,7 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="currentQuiz">a list of quiz questions and all of their associated information</param>
         /// <returns>a list of quiz questions and all of their associated information in random order</returns>
-        public static List<QuizCard> GetRandomQuizCard(List<QuizCard> currentQuiz)
+        public static List<QuizCard> ShuffleQuizCards(List<QuizCard> currentQuiz)
         {
             List<QuizCard> quizCardList = new List<QuizCard>();
             List<QuizCard> randomQuiz = new List<QuizCard>();

@@ -31,8 +31,8 @@ namespace Quiz_Maker
                         UserInterface.ConsoleClear();
                     }
                 }
-                List<QuizCard> currentQuiz = Logic.GetRandomQuizCard(madeQuiz);
-                List<List<string>> answerList = Logic.GetRandomAnswers(currentQuiz);
+                List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
+                List<List<string>> answerList = Logic.ShuffleAnswers(currentQuiz);
 
                 if (quizChoice == QuizAction.QuizOptions.Load)
                 {
