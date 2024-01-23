@@ -19,6 +19,7 @@ namespace Quiz_Maker
                 if (quizChoice == QuizAction.QuizOptions.Make)
                 {
                     bool moreQuestions = true;
+
                     while (moreQuestions)
                     {
                         QuizCard currentQuizCard = new QuizCard();
@@ -45,6 +46,7 @@ namespace Quiz_Maker
 
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                 UserInterface.ConsoleClear();
+
                 if (seeQuiz)
                 {
                     UserInterface.PrintWholeQuiz(currentQuiz, answerList);
@@ -52,10 +54,12 @@ namespace Quiz_Maker
 
                 bool takeQuiz = UserInterface.PromptToTakeQuiz();
                 UserInterface.ConsoleClear();
+
                 while (takeQuiz)
                 {
                     List<bool> rightOrWrong = new List<bool>();
                     UserInterface.ConsoleClear();
+
                     for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
                     {
                         bool rightAnswer = UserInterface.PromptToAnswerQuizQuestion(currentQuiz, answerList, questionNumber);

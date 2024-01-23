@@ -1,6 +1,4 @@
-﻿using static Quiz_Maker.UserInterface;
-using System.Xml.Serialization;
-using System.Dynamic;
+﻿using System.Xml.Serialization;
 
 namespace Quiz_Maker
 {

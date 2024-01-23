@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Xml.Serialization;
-
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
     internal class UserInterface
     {
@@ -196,8 +193,8 @@ namespace Quiz_Maker
             //for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             //{
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
-
                 int correctAnswerIndex = answerList[questionNumber].IndexOf(currentQuiz[questionNumber].correctAnswer);
+
                 foreach (string answer in answerList[questionNumber])
                 {
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerList[questionNumber].IndexOf(answer)]}{answer}\n");

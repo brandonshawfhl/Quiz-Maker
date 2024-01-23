@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
     internal class Constants
     {
