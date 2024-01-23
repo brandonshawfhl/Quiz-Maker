@@ -61,9 +61,7 @@ namespace Quiz_Maker
                     if (currentQuiz.Count > 0)
                     {
                         UserInterface.ConsoleClear();
-
-                        List<bool> rightOrWrong = UserInterface.PromptToAnswerQuizQuestion(currentQuiz, answerList);
-
+                        List<bool> rightOrWrong = UserInterface.PlayQuiz(currentQuiz, answerList);
                         UserInterface.ConsoleClear();
                         UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, answerList);
                         takeQuiz = UserInterface.IsPlayQuizAgain();

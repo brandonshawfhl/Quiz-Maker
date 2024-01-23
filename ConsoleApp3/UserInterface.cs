@@ -188,7 +188,7 @@
         /// <param name="answerList">list of lists of answer choices that has been randomized</param>
         /// <param name="questionNumber">number of the current quiz question the User is answering</param>
         /// <returns>true or false based on whether or not the user answered correctly</returns>
-        public static List<bool> PromptToAnswerQuizQuestion(List<QuizCard> currentQuiz, List<List<string>> answerList)
+        public static List<bool> PlayQuiz(List<QuizCard> currentQuiz, List<List<string>> answerList)
         {
             List<bool> rightOrWrong = new List<bool>();
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
@@ -203,7 +203,7 @@
 
                 Console.Write("\n");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
-                rightOrWrong.Add(userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
+                rightOrWrong.Add (userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
             }
             return rightOrWrong;
         }
