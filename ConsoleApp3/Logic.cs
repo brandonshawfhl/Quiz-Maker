@@ -14,10 +14,10 @@ namespace Quiz_Maker
         /// <summary>
         /// saves a quiz that the user made
         /// </summary>
-        /// <param name="questionAndAnswersFile">the list that will store the file</param>
-        /// <returns>a list that can be used to run a quiz</returns>
+        /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
+        /// <returns>the list of quiz questions and all of their associated information that has already been saved</returns>
 
-
+        
         public static void SaveQuiz(List<QuizCard> currentQuiz)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
@@ -30,12 +30,11 @@ namespace Quiz_Maker
         /// <summary>
         /// loads a quiz from a file
         /// </summary>
-        /// <param name="questionAndAnswersFile">a list that will store the loaded file</param>
-        /// <returns>a loaded file that can run a quiz</returns>
+        /// <returns>a list of quiz qustions and their associated information</returns>
         public static List<QuizCard> LoadQuiz()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
             List<QuizCard> loadedQuiz = new List<QuizCard>();
+            XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
             using (FileStream file = File.OpenRead(Constants.PATH))
             {
                 loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
@@ -43,6 +42,11 @@ namespace Quiz_Maker
             return loadedQuiz;
         }
 
+        /// <summary>
+        /// randomizes the order of the answer choices for each quiz question
+        /// </summary>
+        /// <param name="currentQuiz">a list of quiz questions and all of their associated information</param>
+        /// <returns>a list of lists of answers in random order for each quiz question</returns>
         public static List<List<string>> GetRandomAnswers(List<QuizCard> currentQuiz)
         {
             List<List<string>> answerList = new List<List<string>>();
@@ -68,6 +72,11 @@ namespace Quiz_Maker
             return answerList;
         }
 
+        /// <summary>
+        /// randomizes the order of the quiz questions
+        /// </summary>
+        /// <param name="currentQuiz">a list of quiz questions and all of their associated information</param>
+        /// <returns>a list of quiz questions and all of their associated information in random order</returns>
         public static List<QuizCard> GetRandomQuizCard(List<QuizCard> currentQuiz)
         {
             List<QuizCard> quizCardList = new List<QuizCard>();

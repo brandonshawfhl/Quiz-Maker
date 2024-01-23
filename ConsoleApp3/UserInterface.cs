@@ -155,7 +155,7 @@ namespace Quiz_Maker
         /// prints the entire quiz for the User to see on the screen
         /// </summary>
         /// <param name="currentQuiz">the list of quiz questions and all of their associated information</param>
-        /// <param name="answerList">a list of lists of answers whose order has been randomized by the User</param>
+        /// <param name="answerList">a list of lists of answer choices that have been randomized by the User</param>
         public static void PrintWholeQuiz(List<QuizCard> currentQuiz, List<List<string>> answerList)
         {
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
@@ -188,7 +188,7 @@ namespace Quiz_Maker
         /// entered is right or wrong
         /// </summary>
         /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
-        /// <param name="answerList">list of lists of answers that has been randomized</param>
+        /// <param name="answerList">list of lists of answer choices that has been randomized</param>
         /// <param name="questionNumber">number of the current quiz question the User is answering</param>
         /// <returns>true or false based on whether or not the user answered correctly</returns>
         public static bool PromptToAnswerQuizQuestion(List<QuizCard> currentQuiz, List<List<string>> answerList, int questionNumber)
@@ -213,7 +213,7 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
         /// <param name="rightOrWrong"> list used to score User during quiz</param>
-        /// <param name="answerList"
+        /// <param name="answerList">list of lists of answer choices that have been randomized</param>
         public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightOrWrong, List<List<string>> answerList)
         {
             int numberCorrect = 0;
