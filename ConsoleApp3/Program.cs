@@ -7,6 +7,7 @@
         {
             bool anotherAction = true;
 
+            //User chooses what they would like to do in the program
             while (anotherAction)
             {
                 UserInterface.ConsoleClear();
@@ -14,6 +15,7 @@
                 QuizAction.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
                 List<QuizCard> madeQuiz = new List<QuizCard>();
 
+                // User will make their own quiz from scratch
                 if (quizChoice == QuizAction.QuizOptions.Make)
                 {
                     bool moreQuestions = true;
@@ -40,6 +42,7 @@
                     Logic.SaveQuiz(madeQuiz);
                 }
 
+                //User's quiz data will be shuffled and they can see a full version of their quiz if they would like
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
                 List<List<string>> answerList = Logic.ShuffleAnswers(currentQuiz);
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
@@ -53,6 +56,7 @@
                 bool takeQuiz = UserInterface.IsPlayQuiz();
                 UserInterface.ConsoleClear();
 
+                //User takes the quiz
                 while (takeQuiz)
                 {
                     if (currentQuiz.Count > 0)
@@ -64,7 +68,8 @@
                         takeQuiz = UserInterface.IsPlayQuizAgain();
                         UserInterface.ConsoleClear();
                     }
-
+                    
+                    //if no quiz data is stored, User is sent back to the beginning to choose another option
                     else
                     {
                         Console.WriteLine("Sorry you do not have any quiz data stored.");
