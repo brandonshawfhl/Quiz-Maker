@@ -147,15 +147,15 @@
         /// </summary>
         /// <param name="currentQuiz">the list of quiz questions and all of their associated information</param>
         /// <param name="answerList">a list of lists of answer choices that have been randomized by the User</param>
-        public static void PrintWholeQuiz(List<QuizCard> currentQuiz, List<List<string>> answerList)
+        public static void PrintWholeQuiz(List<QuizCard> currentQuiz)
         {
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
 
-                for (int answerChoice = 0; answerChoice < answerList[questionNumber].Count; answerChoice++)
+                for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerChoice]}{answerList[questionNumber][answerChoice]}");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber]}");
                     Console.WriteLine("\n");
                 }
             }

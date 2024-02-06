@@ -42,27 +42,20 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="currentQuiz">a list of quiz questions and all of their associated information</param>
         /// <returns>a list of lists of answers in random order for each quiz question</returns>
-        public static List<List<string>> ShuffleAnswers(List<QuizCard> currentQuiz)
+        public static List<AnswerPair> ShuffleAnswers(List<QuizCard> currentQuiz)
         {
             List<AnswerPair> randomAnswers = new List<AnswerPair>();
             
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
-                foreach (AnswerPair answer in currentQuiz[questionNumber].answerChoices)
-                {
-                    randomAnswers.Add(answer);
-                    currentQuiz[questionNumber].answerChoices.Remove(answer);
-                }
-
                 int answerCount = randomAnswers.Count;
 
                 for (int answerNumber = answerCount; answerNumber > 0; answerNumber--)
                 {
                     AnswerPair randomAnswer = randomAnswers[rng.Next(0, answerCount)];
-                    currentQuiz[questionNumber].answerChoices.Add(randomAnswer);
-                    randomAnswers.Remove(randomAnswer);
+                    randomAnswers.Add(randomAnswer);
+                    currentQuiz[questionNumber].answerChoices.Remove(randomAnswer);
                 }
-                
             }
             return randomAnswers;
         }
