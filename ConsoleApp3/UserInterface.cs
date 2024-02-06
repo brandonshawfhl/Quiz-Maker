@@ -175,29 +175,32 @@
         }
 
         /// <summary>
-        /// outputs the next question in the quiz to the, prompts them to answer it and then checks whether the answer they
-        /// entered is right or wrong
+        /// outputs all the questions in the entire quiz 1 at a time, allows the User to answer and then checks whether 
+        /// the User's answer is correct or incorrect
         /// </summary>
         /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
-        /// <param name="answerList">list of lists of answer choices that has been randomized</param>
-        /// <param name="questionNumber">number of the current quiz question the User is answering</param>
-        /// <returns>true or false based on whether or not the user answered correctly</returns>
-        public static List<bool> PlayQuiz(List<QuizCard> currentQuiz, List<List<string>> answerList)
+        /// <returns>a list of true or false based on whether or not the user answered the list of questions correctly</returns>
+        public static List<bool> PlayQuiz(List<QuizCard> currentQuiz)
         {
             List<bool> rightOrWrong = new List<bool>();
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {
+                List<int> correctAnswerIndex = new List<int>();
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
-                int correctAnswerIndex = answerList[questionNumber].IndexOf(currentQuiz[questionNumber].correctAnswer);
 
-                foreach (string answer in answerList[questionNumber])
+                for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerList[questionNumber].IndexOf(answer)]}{answer}\n");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber]}\n");
+
+                    if (currentQuiz[questionNumber].answerChoices[answerNumber].isCorrect == true)
+                    {
+                        correctAnswerIndex.Add(answerNumber);
+                    }
                 }
 
                 Console.Write("\n");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
-                rightOrWrong.Add (userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
+                rightOrWrong.Add(userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
             }
             return rightOrWrong;
         }

@@ -47,7 +47,7 @@
 
                 if (seeQuiz)
                 {
-                    UserInterface.PrintWholeQuiz(currentQuiz, answerList);
+                    UserInterface.PrintWholeQuiz(currentQuiz);
                 }
 
                 bool takeQuiz = UserInterface.IsPlayQuiz();
