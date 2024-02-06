@@ -1,9 +1,8 @@
 ﻿namespace Quiz_Maker
 {
-    internal class QuizCard
+    public class QuizCard
     {
         public string questionOutput;
-        public string correctAnswer;
-        public List<string> incorrectAnswers;
+        public List<string> answerChoices;
     }
 }

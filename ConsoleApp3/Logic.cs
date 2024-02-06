@@ -52,7 +52,7 @@ namespace Quiz_Maker
                 List<string> randomAnswers = new List<string>();
                 initialList.Add(currentQuiz[questionNumber].correctAnswer);
 
-                foreach (string incorrectAnswer in currentQuiz[questionNumber].incorrectAnswers)
+                foreach (string incorrectAnswer in currentQuiz[questionNumber].answerChoices)
                 {
                     initialList.Add(incorrectAnswer);
                 }
