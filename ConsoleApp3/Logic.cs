@@ -44,28 +44,27 @@ namespace Quiz_Maker
         /// <returns>a list of lists of answers in random order for each quiz question</returns>
         public static List<List<string>> ShuffleAnswers(List<QuizCard> currentQuiz)
         {
-            List<List<string>> answerList = new List<List<string>>();
-            List<string> initialList = new List<string>();
-
+            List<AnswerPair> randomAnswers = new List<AnswerPair>();
+            
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
-                List<string> randomAnswers = new List<string>();
-                initialList.Add(currentQuiz[questionNumber].correctAnswer);
-
-                foreach (string incorrectAnswer in currentQuiz[questionNumber].answerChoices)
+                foreach (AnswerPair answer in currentQuiz[questionNumber].answerChoices)
                 {
-                    initialList.Add(incorrectAnswer);
+                    randomAnswers.Add(answer);
+                    currentQuiz[questionNumber].answerChoices.Remove(answer);
                 }
 
-                for (int answerNumber = initialList.Count; answerNumber > 0; answerNumber--)
+                int answerCount = randomAnswers.Count;
+
+                for (int answerNumber = answerCount; answerNumber > 0; answerNumber--)
                 {
-                    string randomAnswer = initialList[rng.Next(0, initialList.Count)];
-                    randomAnswers.Add(randomAnswer);
-                    initialList.Remove(randomAnswer);
+                    AnswerPair randomAnswer = randomAnswers[rng.Next(0, answerCount)];
+                    currentQuiz[questionNumber].answerChoices.Add(randomAnswer);
+                    randomAnswers.Remove(randomAnswer);
                 }
-                answerList.Add(randomAnswers);
+                
             }
-            return answerList;
+            return randomAnswers;
         }
 
         /// <summary>

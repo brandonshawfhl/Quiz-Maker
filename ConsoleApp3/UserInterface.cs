@@ -23,11 +23,10 @@
         }
 
         /// <summary>
-        /// prompts the User for the rest of the answers they would like listed as choices that are not correct and then
-        /// places them along with the correct answer into an array specifically just for the current question
+        /// prompts the User for an answer to be used as a choice for the question they are creating and then asks if the
+        /// answer is correct
         /// </summary>
-        /// <param name="answerList">the list that will be filled by this method</param>
-        /// <returns>a list of strings that the user types that will be used as the other choices for the question</returns>
+        /// <returns>a list of AnswerPairs that will be used as choices for the question</returns>
         public static List<AnswerPair> PromptForAnswers()
         {
             bool tooManyAnswers;

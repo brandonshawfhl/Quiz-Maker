@@ -30,7 +30,6 @@
                     }
                 }
 
-
                 if (quizChoice == QuizAction.QuizOptions.Load)
                 {
                     madeQuiz = Logic.LoadQuiz();
@@ -42,7 +41,7 @@
                 }
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
-                List<List<string>> answerList = Logic.ShuffleAnswers(currentQuiz);
+                List<AnswerPair> currentAnswerChoices = Logic.ShuffleAnswers(currentQuiz);
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                 UserInterface.ConsoleClear();
 
