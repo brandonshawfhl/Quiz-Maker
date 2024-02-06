@@ -23,36 +23,31 @@
         }
 
         /// <summary>
-        /// prompts the user for the corret answer to the question
-        /// </summary>
-        /// <returns>a string that the User types themselves that will be used as the correct answer for their question</returns>
-        public static string PromptForCorrectAnswer()
-        {
-            Console.WriteLine("Please enter the correct answer for this question.\n");
-            string correctAnswer = Console.ReadLine();
-            Console.Write("\n");
-            return correctAnswer;
-        }
-
-        /// <summary>
         /// prompts the User for the rest of the answers they would like listed as choices that are not correct and then
         /// places them along with the correct answer into an array specifically just for the current question
         /// </summary>
         /// <param name="answerList">the list that will be filled by this method</param>
         /// <returns>a list of strings that the user types that will be used as the other choices for the question</returns>
-        public static List<string> PromptForAnswers()
+        public static List<AnswerPair> PromptForAnswers()
         {
-            bool tooManyAnswers = false;
-            List<string> incorrectAnswers = new List<string>();
-            bool moreWrongAnswers = true;
+            bool tooManyAnswers;
+            List<AnswerPair> potentialAnswers = new List<AnswerPair>();
+            bool moreWrongAnswers;
 
             for (int answerNumber = 0; answerNumber < Constants.CHOICE_LIMIT; answerNumber++)
             {
+                AnswerPair potentialAnswer = new AnswerPair();
                 int choicesLeft = Constants.CHOICE_LIMIT - answerNumber;
-                Console.WriteLine("Please enter an incorrect answer that will be listed as one of the choices for this question.");
+                Console.WriteLine("Please enter an answer that will be listed as one of the choices for this question.");
                 Console.WriteLine($"You have {choicesLeft} more choices.\n");
-                incorrectAnswers.Add(Console.ReadLine());
-                tooManyAnswers = incorrectAnswers.Count >= Constants.CHOICE_LIMIT;
+                potentialAnswer.answerOutput = Console.ReadLine();
+                Console.WriteLine("Is this answer correct?");
+                Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+                Console.Write("\n");
+                ConsoleKeyInfo isCorrectInput = Console.ReadKey(false);
+                potentialAnswer.isCorrect = (isCorrectInput.Key == Constants.USER_YES_CHOICE);
+                potentialAnswers.Add(potentialAnswer);
+                tooManyAnswers = potentialAnswers.Count >= Constants.CHOICE_LIMIT;
                 Console.Write("\n");
 
                 if (tooManyAnswers)
@@ -63,8 +58,8 @@
 
                 Console.WriteLine($"Would you like to create more wrong answers for this question?");
                 Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
-                ConsoleKeyInfo userInput = Console.ReadKey(true);
                 Console.Write("\n");
+                ConsoleKeyInfo userInput = Console.ReadKey(false);
                 moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
 
                 if (moreWrongAnswers == false)
@@ -72,7 +67,7 @@
                     break;
                 }
             }
-            return incorrectAnswers;
+            return potentialAnswers;
         }
 
         /// <summary>

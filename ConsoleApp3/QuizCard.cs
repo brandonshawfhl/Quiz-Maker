@@ -3,6 +3,6 @@
     public class QuizCard
     {
         public string questionOutput;
-        public List<string> answerChoices;
+        public List<AnswerPair> answerChoices;
     }
 }

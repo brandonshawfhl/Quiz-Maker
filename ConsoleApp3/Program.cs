@@ -23,7 +23,6 @@
                     {
                         QuizCard currentQuizCard = new QuizCard();
                         currentQuizCard.questionOutput = UserInterface.PromptForQuestion();
-                        currentQuizCard.correctAnswer = UserInterface.PromptForCorrectAnswer();
                         currentQuizCard.answerChoices = UserInterface.PromptForAnswers();
                         madeQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptForMoreQuestions();
