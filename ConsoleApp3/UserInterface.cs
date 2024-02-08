@@ -185,7 +185,7 @@
             List<bool> rightOrWrong = new List<bool>();
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {
-                List<int> correctAnswerIndex = new List<int>();
+                List<ConsoleKey> correctAnswerIndex = new List<ConsoleKey>();
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
 
                 for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
@@ -194,13 +194,13 @@
 
                     if (currentQuiz[questionNumber].answerChoices[answerNumber].isCorrect == true)
                     {
-                        correctAnswerIndex.Add(answerNumber);
+                        correctAnswerIndex.Add(Constants.ANSWER_KEYS[answerNumber]);
                     }
                 }
 
                 Console.Write("\n");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
-                rightOrWrong.Add(userInput.Key == Constants.ANSWER_KEYS[correctAnswerIndex]);
+                rightOrWrong.Add(correctAnswerIndex.Contains(userInput.Key));
             }
             return rightOrWrong;
         }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
-    internal class AnswerPair
+    public class AnswerPair
     {
+        public string answerOutput;
+        public bool isCorrect;
     }
 }
