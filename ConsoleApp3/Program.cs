@@ -58,9 +58,9 @@
                     if (currentQuiz.Count > 0)
                     {
                         UserInterface.ConsoleClear();
-                        List<bool> rightOrWrong = UserInterface.PlayQuiz(currentQuiz, answerList);
+                        List<AnswerPair> rightOrWrong = UserInterface.PlayQuiz(currentQuiz);
                         UserInterface.ConsoleClear();
-                        UserInterface.PrintQuizScore(currentQuiz, rightOrWrong, answerList);
+                        UserInterface.PrintQuizScore(currentQuiz, rightOrWrong);
                         takeQuiz = UserInterface.IsPlayQuizAgain();
                         UserInterface.ConsoleClear();
                     }
