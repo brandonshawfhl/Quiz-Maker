@@ -42,6 +42,7 @@
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
                 List<AnswerPair> currentAnswerChoices = Logic.ShuffleAnswers(currentQuiz);
+                List<int> correcAnswerIndex = Logic.GetCorrectAnswerIndex(currentQuiz);
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                 UserInterface.ConsoleClear();
 
@@ -58,7 +59,8 @@
                     if (currentQuiz.Count > 0)
                     {
                         UserInterface.ConsoleClear();
-                        List<AnswerPair> rightOrWrong = UserInterface.PlayQuiz(currentQuiz);
+                        List<int> correctAnswerIndex = new List<int>();
+                        List<bool> correctAnswers = UserInterface.PlayQuiz(currentQuiz);
                         UserInterface.ConsoleClear();
                         UserInterface.PrintQuizScore(currentQuiz, rightOrWrong);
                         takeQuiz = UserInterface.IsPlayQuizAgain();

@@ -45,7 +45,7 @@ namespace Quiz_Maker
         public static List<AnswerPair> ShuffleAnswers(List<QuizCard> currentQuiz)
         {
             List<AnswerPair> randomAnswers = new List<AnswerPair>();
-            
+
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
                 int answerCount = randomAnswers.Count;
@@ -84,6 +84,27 @@ namespace Quiz_Maker
             return randomQuiz;
         }
 
+        /// <summary>
+        /// creates a list of numbers that corresponds with the correct answers for each question
+        /// </summary>
+        /// <param name="currentQuiz">a list of questions and all their associated information</param>
+        /// <returns></returns>
+        public static List<int> GetCorrectAnswerIndex(List<QuizCard> currentQuiz)
+        {
+            List<int> correctAnswerIndex = new List<int>();
+
+            for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
+            {
+                for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
+                {
+                    if (currentQuiz[questionNumber].answerChoices[answerNumber].isCorrect == true)
+                    {
+                        correctAnswerIndex.Add(answerNumber);
+                    }
+                }
+            }
+            return correctAnswerIndex;
+        }
     }
 }
 

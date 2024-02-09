@@ -180,13 +180,13 @@
         /// </summary>
         /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
         /// <returns>a list of true or false based on whether or not the user answered the list of questions correctly</returns>
-        public static List<AnswerPair> PlayQuiz(List<QuizCard> currentQuiz)
+        public static List<bool> PlayQuiz(List<QuizCard> currentQuiz)
         {
-            List<AnswerPair> correctAnswers = new List<AnswerPair>();
+            List<bool> correctAnswers = new List<bool>();
 
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {
-                List<ConsoleKey> correctAnswerIndex = new List<ConsoleKey>();
+                List<int> correctAnswerIndex = new List<int>();
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
 
                 for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
@@ -195,13 +195,13 @@
 
                     if (currentQuiz[questionNumber].answerChoices[answerNumber].isCorrect == true)
                     {
-                        correctAnswerIndex.Add(Constants.ANSWER_KEYS[answerNumber]);
+                        correctAnswerIndex.Add(answerNumber);
                     }
                 }
 
                 Console.Write("\n");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
-                correctAnswers.Add(correctAnswerIndex.Contains(userInput.Key));
+                correctAnswers.Add(correctAnswerIndex.Contains(Constants.ANSWER_KEYS.IndexOf(userInput.Key)));
             }
             return correctAnswers;
         }
@@ -211,8 +211,8 @@
         /// the whole quiz at the bottom
         /// </summary>
         /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
-        /// <param name="rightOrWrong"> list used to score User during quiz</param>
-        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> rightOrWrong)
+        /// <param name="correctAnswers"> list used to score User during quiz</param>
+        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> correctAnswers)
         {
             int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
@@ -233,7 +233,7 @@
                 }
 
 
-                if (rightOrWrong[questionNumber] == true)
+                if (correctAnswers[questionNumber] == true)
                 {
                     for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                     {
@@ -243,7 +243,7 @@
                     numberCorrect++;
                 }
 
-                if (rightOrWrong[questionNumber] == false)
+                if (correctAnswers[questionNumber] == false)
                 {
                     Console.WriteLine($"Wrong! The correct answer is {currentQuiz[questionNumber].answerChoices[answerNumber]}\n\n");
                 }
