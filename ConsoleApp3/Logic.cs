@@ -5,7 +5,7 @@ namespace Quiz_Maker
 
     internal class Logic
     {
-        public static Random rng = new Random();
+        public static Random rng = new();
 
         /// <summary>
         /// saves a quiz that the user made
@@ -14,7 +14,7 @@ namespace Quiz_Maker
         /// <returns>the list of quiz questions and all of their associated information that has already been saved</returns>
         public static void SaveQuiz(List<QuizCard> currentQuiz)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
+            XmlSerializer serializer = new(typeof(List<QuizCard>));
             using (FileStream file = File.Create(Constants.PATH))
             {
                 serializer.Serialize(file, currentQuiz);
@@ -27,8 +27,8 @@ namespace Quiz_Maker
         /// <returns>a list of quiz qustions and their associated information</returns>
         public static List<QuizCard> LoadQuiz()
         {
-            List<QuizCard> loadedQuiz = new List<QuizCard>();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
+            List<QuizCard> loadedQuiz = new();
+            XmlSerializer serializer = new(typeof(List<QuizCard>));
 
             using (FileStream file = File.OpenRead(Constants.PATH))
             {
@@ -44,7 +44,7 @@ namespace Quiz_Maker
         /// <returns>a list of lists of answers in random order for each quiz question</returns>
         public static List<AnswerPair> ShuffleAnswers(List<QuizCard> currentQuiz)
         {
-            List<AnswerPair> randomAnswers = new List<AnswerPair>();
+            List<AnswerPair> randomAnswers = new();
 
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
@@ -67,11 +67,22 @@ namespace Quiz_Maker
         /// <returns>a list of quiz questions and all of their associated information in random order</returns>
         public static List<QuizCard> ShuffleQuizCards(List<QuizCard> currentQuiz)
         {
-            List<QuizCard> quizCardList = new List<QuizCard>();
-            List<QuizCard> randomQuiz = new List<QuizCard>();
+            List<QuizCard> quizCardList = new();
+            List<QuizCard> randomQuiz = new();
 
             foreach (QuizCard card in currentQuiz)
             {
+                List<AnswerPair> randomAnswers = new();
+                int answerCount = randomAnswers.Count;
+
+                for (int answerNumber = answerCount; answerNumber > 0; answerNumber--)
+                {
+                    AnswerPair randomAnswer = randomAnswers[rng.Next(0, answerCount)];
+                    randomAnswers.Add(randomAnswer);
+                    card.answerChoices.Remove(randomAnswer);
+                }
+
+                card.answerChoices = randomAnswers;
                 quizCardList.Add(card);
             }
 
@@ -91,7 +102,7 @@ namespace Quiz_Maker
         /// <returns></returns>
         public static List<int> GetCorrectAnswerIndex(List<QuizCard> currentQuiz)
         {
-            List<int> correctAnswerIndex = new List<int>();
+            List<int> correctAnswerIndex = new();
 
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {

@@ -18,7 +18,7 @@
             "J.  "
             };
 
-        public static readonly List<ConsoleKey> ANSWER_KEYS = new List<ConsoleKey>()
+        public static readonly List<ConsoleKey> ANSWER_KEYS = new()
        {
            ConsoleKey.A,
            ConsoleKey.B,

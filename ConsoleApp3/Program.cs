@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        public static readonly Random rng = new Random();
+        public static readonly Random rng = new();
         static void Main(string[] args)
         {
             bool anotherAction = true;
@@ -12,7 +12,7 @@
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
                 QuizAction.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
-                List<QuizCard> madeQuiz = new List<QuizCard>();
+                List<QuizCard> madeQuiz = new();
 
                 //user creates a quiz from scratch
                 if (quizChoice == QuizAction.QuizOptions.Make)
@@ -21,7 +21,7 @@
 
                     while (moreQuestions)
                     {
-                        QuizCard currentQuizCard = new QuizCard();
+                        QuizCard currentQuizCard = new();
                         currentQuizCard.questionOutput = UserInterface.PromptForQuestion();
                         currentQuizCard.answerChoices = UserInterface.PromptForAnswers();
                         madeQuiz.Add(currentQuizCard);
@@ -41,8 +41,7 @@
                 }
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
-                List<AnswerPair> currentAnswerChoices = Logic.ShuffleAnswers(currentQuiz);
-                List<int> correcAnswerIndex = Logic.GetCorrectAnswerIndex(currentQuiz);
+                List<int> correctAnswerIndex = Logic.GetCorrectAnswerIndex(currentQuiz);
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                 UserInterface.ConsoleClear();
 
@@ -59,10 +58,9 @@
                     if (currentQuiz.Count > 0)
                     {
                         UserInterface.ConsoleClear();
-                        List<int> correctAnswerIndex = new List<int>();
-                        List<bool> correctAnswers = UserInterface.PlayQuiz(currentQuiz);
+                        List<int> userAnswers = UserInterface.PlayQuiz(currentQuiz);
                         UserInterface.ConsoleClear();
-                        UserInterface.PrintQuizScore(currentQuiz, rightOrWrong);
+                        UserInterface.PrintQuizScore(currentQuiz, userAnswers, correctAnswerIndex);
                         takeQuiz = UserInterface.IsPlayQuizAgain();
                         UserInterface.ConsoleClear();
                     }

@@ -30,12 +30,12 @@
         public static List<AnswerPair> PromptForAnswers()
         {
             bool tooManyAnswers;
-            List<AnswerPair> potentialAnswers = new List<AnswerPair>();
+            List<AnswerPair> potentialAnswers = new();
             bool moreWrongAnswers;
 
             for (int answerNumber = 0; answerNumber < Constants.CHOICE_LIMIT; answerNumber++)
             {
-                AnswerPair potentialAnswer = new AnswerPair();
+                AnswerPair potentialAnswer = new();
                 int choicesLeft = Constants.CHOICE_LIMIT - answerNumber;
                 Console.WriteLine("Please enter an answer that will be listed as one of the choices for this question.");
                 Console.WriteLine($"You have {choicesLeft} more choices.\n");
@@ -146,7 +146,6 @@
         /// prints the entire quiz for the User to see on the screen
         /// </summary>
         /// <param name="currentQuiz">the list of quiz questions and all of their associated information</param>
-        /// <param name="answerList">a list of lists of answer choices that have been randomized by the User</param>
         public static void PrintWholeQuiz(List<QuizCard> currentQuiz)
         {
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
@@ -175,35 +174,29 @@
         }
 
         /// <summary>
-        /// outputs all the questions in the entire quiz 1 at a time, allows the User to answer and then checks whether 
-        /// the User's answer is correct or incorrect
+        /// outputs all the questions in the entire quiz 1 at a time, allows the User to answer and then stores the number
+        /// of the answer the User has selected
         /// </summary>
         /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
-        /// <returns>a list of true or false based on whether or not the user answered the list of questions correctly</returns>
-        public static List<bool> PlayQuiz(List<QuizCard> currentQuiz)
+        /// <returns>a list of numbers that correspond to the User's answer choice correctly</returns>
+        public static List<int> PlayQuiz(List<QuizCard> currentQuiz)
         {
-            List<bool> correctAnswers = new List<bool>();
+            List<int> userAnswers = new();
 
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {
-                List<int> correctAnswerIndex = new List<int>();
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
 
                 for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber]}\n");
-
-                    if (currentQuiz[questionNumber].answerChoices[answerNumber].isCorrect == true)
-                    {
-                        correctAnswerIndex.Add(answerNumber);
-                    }
                 }
 
                 Console.Write("\n");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
-                correctAnswers.Add(correctAnswerIndex.Contains(Constants.ANSWER_KEYS.IndexOf(userInput.Key)));
+                userAnswers.Add(Constants.ANSWER_KEYS.IndexOf(userInput.Key));
             }
-            return correctAnswers;
+            return userAnswers;
         }
 
         /// <summary>
@@ -211,8 +204,9 @@
         /// the whole quiz at the bottom
         /// </summary>
         /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
-        /// <param name="correctAnswers"> list used to score User during quiz</param>
-        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<bool> correctAnswers)
+        /// <param name="correctAnswerIndex">a list of numbers corresponding to the correct answers for each question</param>
+        /// <param name="userAnswers">a list of numbers corresponding to the answers the User has selected for each question</param>
+        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<int> userAnswers, List<int> correctAnswerIndex)
         {
             int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
@@ -221,32 +215,21 @@
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    List<string> correctAnswerIndex = new List<string>();
-
-                    if (currentQuiz[questionNumber].answerChoices[answerNumber].isCorrect == true)
-                    {
-                        correctAnswerIndex.Add(currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput);
-                    }
-
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber]}");
                     Console.WriteLine("\n");
                 }
 
-
-                if (correctAnswers[questionNumber] == true)
+                if (correctAnswerIndex[questionNumber] == userAnswers[questionNumber])
                 {
-                    for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
-                    {
-                        Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[answerNumber]} is correct!\n\n");
-
-                    }
+                    Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]]} is correct!\n\n");
                     numberCorrect++;
                 }
 
-                if (correctAnswers[questionNumber] == false)
+                else
                 {
-                    Console.WriteLine($"Wrong! The correct answer is {currentQuiz[questionNumber].answerChoices[answerNumber]}\n\n");
+                    Console.WriteLine($"Wrong! The correct answer is {currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]]}\n\n");
                 }
+
             }
             Console.WriteLine($"You scored {numberCorrect} out of {currentQuiz.Count} correct!\n\n\n");
         }
