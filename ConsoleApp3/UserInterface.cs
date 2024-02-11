@@ -40,10 +40,11 @@
                 Console.WriteLine("Please enter an answer that will be listed as one of the choices for this question.");
                 Console.WriteLine($"You have {choicesLeft} more choices.\n");
                 potentialAnswer.answerOutput = Console.ReadLine();
+                Console.WriteLine("\n");
                 Console.WriteLine("Is this answer correct?");
                 Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
                 Console.Write("\n");
-                ConsoleKeyInfo isCorrectInput = Console.ReadKey(false);
+                ConsoleKeyInfo isCorrectInput = Console.ReadKey(true);
                 potentialAnswer.isCorrect = (isCorrectInput.Key == Constants.USER_YES_CHOICE);
                 potentialAnswers.Add(potentialAnswer);
                 tooManyAnswers = potentialAnswers.Count >= Constants.CHOICE_LIMIT;
@@ -55,10 +56,10 @@
                     break;
                 }
 
-                Console.WriteLine($"Would you like to create more wrong answers for this question?");
+                Console.WriteLine($"Would you like to create more answers for this question?");
                 Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
                 Console.Write("\n");
-                ConsoleKeyInfo userInput = Console.ReadKey(false);
+                ConsoleKeyInfo userInput = Console.ReadKey(true);
                 moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
 
                 if (moreWrongAnswers == false)

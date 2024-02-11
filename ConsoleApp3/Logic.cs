@@ -106,7 +106,7 @@ namespace Quiz_Maker
 
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {
-                for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
+                for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count - 1; answerNumber++)
                 {
                     if (currentQuiz[questionNumber].answerChoices[answerNumber].isCorrect == true)
                     {
