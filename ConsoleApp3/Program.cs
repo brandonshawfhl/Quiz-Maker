@@ -21,9 +21,11 @@
 
                     while (moreQuestions)
                     {
-                        QuizCard currentQuizCard = new();
-                        currentQuizCard.questionOutput = UserInterface.PromptForQuestion();
-                        currentQuizCard.answerChoices = UserInterface.PromptForAnswers();
+                        QuizCard currentQuizCard = new()
+                        {
+                            questionOutput = UserInterface.PromptForQuestion(),
+                            answerChoices = UserInterface.PromptForAnswers()
+                        };
                         madeQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptForMoreQuestions();
                         UserInterface.ConsoleClear();

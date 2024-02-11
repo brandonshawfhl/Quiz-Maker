@@ -42,7 +42,7 @@
                 potentialAnswer.answerOutput = Console.ReadLine();
                 Console.WriteLine("\n");
                 Console.WriteLine("Is this answer correct?");
-                Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+                Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
                 Console.Write("\n");
                 ConsoleKeyInfo isCorrectInput = Console.ReadKey(true);
                 potentialAnswer.isCorrect = (isCorrectInput.Key == Constants.USER_YES_CHOICE);
@@ -57,7 +57,7 @@
                 }
 
                 Console.WriteLine($"Would you like to create more answers for this question?");
-                Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+                Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
                 Console.Write("\n");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
                 moreWrongAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
@@ -110,7 +110,7 @@
         public static bool PromptForMoreQuizOptions()
         {
             Console.WriteLine("Would you like to keep going?");
-            Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool moreQuizOptions = (userInput.Key == Constants.USER_YES_CHOICE);
 
@@ -124,7 +124,7 @@
         public static bool PromptForMoreQuestions()
         {
             Console.WriteLine("Would you like to add another question to this quiz?");
-            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.\n");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool moreQuestions = (userInput.Key == Constants.USER_YES_CHOICE);
             return moreQuestions;
@@ -137,7 +137,7 @@
         public static bool IsPlayQuiz()
         {
             Console.WriteLine("Would you like to take your current quiz?");
-            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.\n");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool takeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
             return takeQuiz;
@@ -168,7 +168,7 @@
         public static bool PromptToSeeWholeQuiz()
         {
             Console.WriteLine("Would you like to see the whole quiz?");
-            Console.WriteLine($"{Constants.USER_YES_CHOICE} or press any other key to continue.\n");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool seeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
             return seeQuiz;
@@ -184,11 +184,11 @@
         {
             List<int> userAnswers = new();
 
-            for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
+            for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
             {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
 
-                for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
+                for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count - 1; answerNumber++)
                 {
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber]}\n");
                 }
@@ -250,7 +250,7 @@
         public static bool IsPlayQuizAgain()
         {
             Console.WriteLine("Would you like to take your quiz again?");
-            Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool retakeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
             return retakeQuiz;
@@ -263,7 +263,7 @@
         public static bool PromptToContinue()
         {
             Console.WriteLine("Would you like to continue?");
-            Console.WriteLine($"({Constants.USER_YES_CHOICE} or press any other key to continue.)\n");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool continuePlaying = (userInput.Key == Constants.USER_YES_CHOICE);
             return continuePlaying;
