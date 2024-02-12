@@ -155,7 +155,7 @@
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber]}");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}");
                     Console.WriteLine("\n");
                 }
             }
@@ -184,13 +184,13 @@
         {
             List<int> userAnswers = new();
 
-            for (int questionNumber = 0; questionNumber <= currentQuiz.Count; questionNumber++)
+            for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {
                 Console.WriteLine($"{currentQuiz[questionNumber].questionOutput}\n");
 
                 for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count - 1; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber]}\n");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}\n");
                 }
 
                 Console.Write("\n");
@@ -216,19 +216,19 @@
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber]}");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}");
                     Console.WriteLine("\n");
                 }
 
                 if (correctAnswerIndex[questionNumber] == userAnswers[questionNumber])
                 {
-                    Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]]} is correct!\n\n");
+                    Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].answerOutput} is correct!\n\n");
                     numberCorrect++;
                 }
 
                 else
                 {
-                    Console.WriteLine($"Wrong! The correct answer is {currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]]}\n\n");
+                    Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].answerOutput} is incorrect!\n\n");
                 }
 
             }
