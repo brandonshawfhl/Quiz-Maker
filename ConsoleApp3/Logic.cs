@@ -12,13 +12,12 @@ namespace Quiz_Maker
         /// </summary>
         /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
         /// <returns>the list of quiz questions and all of their associated information that has already been saved</returns>
-        public static void SaveQuiz(List<QuizCard> currentQuiz)
+        public static void SaveQuiz(List<QuizCard> madeQuiz)
         {
             XmlSerializer serializer = new(typeof(List<QuizCard>));
-            using (FileStream file = File.Create(Constants.PATH))
-            {
-                serializer.Serialize(file, currentQuiz);
-            }
+            using FileStream file = File.Create(Constants.PATH);
+            serializer.Serialize(file, madeQuiz);
+            Console.WriteLine("Your quiz has been successfully save!");
         }
 
         /// <summary>
@@ -33,6 +32,7 @@ namespace Quiz_Maker
             using (FileStream file = File.OpenRead(Constants.PATH))
             {
                 loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
+                Console.WriteLine("Your quiz has been successfully loaded!");
             }
             return loadedQuiz;
         }

@@ -32,6 +32,6 @@
            ConsoleKey.J
        };
 
-        public const string PATH = @"currentQuiz.xml";
+        public const string PATH = @"..\currentQuiz.xml";
     }
 }
