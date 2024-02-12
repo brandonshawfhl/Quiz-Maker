@@ -38,29 +38,6 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// randomizes the order of the answer choices for each quiz question
-        /// </summary>
-        /// <param name="currentQuiz">a list of quiz questions and all of their associated information</param>
-        /// <returns>a list of lists of answers in random order for each quiz question</returns>
-        public static List<AnswerPair> ShuffleAnswers(List<QuizCard> currentQuiz)
-        {
-            List<AnswerPair> randomAnswers = new();
-
-            for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
-            {
-                int answerCount = randomAnswers.Count;
-
-                for (int answerNumber = answerCount; answerNumber > 0; answerNumber--)
-                {
-                    AnswerPair randomAnswer = randomAnswers[rng.Next(0, answerCount)];
-                    randomAnswers.Add(randomAnswer);
-                    currentQuiz[questionNumber].answerChoices.Remove(randomAnswer);
-                }
-            }
-            return randomAnswers;
-        }
-
-        /// <summary>
         /// randomizes the order of the quiz questions
         /// </summary>
         /// <param name="currentQuiz">a list of quiz questions and all of their associated information</param>
@@ -73,7 +50,7 @@ namespace Quiz_Maker
             foreach (QuizCard card in currentQuiz)
             {
                 List<AnswerPair> randomAnswers = new();
-                
+
                 for (int answerNumber = card.answerChoices.Count; answerNumber > 0; answerNumber--)
                 {
                     AnswerPair randomAnswer = card.answerChoices[rng.Next(0, card.answerChoices.Count)];
@@ -93,28 +70,7 @@ namespace Quiz_Maker
             }
             return randomQuiz;
         }
-
-        /// <summary>
-        /// creates a list of numbers that corresponds with the correct answers for each question
-        /// </summary>
-        /// <param name="currentQuiz">a list of questions and all their associated information</param>
-        /// <returns></returns>
-        public static List<int> GetCorrectAnswerIndex(List<QuizCard> currentQuiz)
-        {
-            List<int> correctAnswerIndex = new();
-
-            for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
-            {
-                for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count - 1; answerNumber++)
-                {
-                    if (currentQuiz[questionNumber].answerChoices[answerNumber].isCorrect == true)
-                    {
-                        correctAnswerIndex.Add(answerNumber);
-                    }
-                }
-            }
-            return correctAnswerIndex;
-        }
     }
 }
+
 

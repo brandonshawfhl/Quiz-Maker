@@ -207,7 +207,7 @@
         /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
         /// <param name="correctAnswerIndex">a list of numbers corresponding to the correct answers for each question</param>
         /// <param name="userAnswers">a list of numbers corresponding to the answers the User has selected for each question</param>
-        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<int> userAnswers, List<int> correctAnswerIndex)
+        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<int> userAnswers)
         {
             int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
@@ -220,7 +220,7 @@
                     Console.WriteLine("\n");
                 }
 
-                if (correctAnswerIndex[questionNumber] == userAnswers[questionNumber])
+                if (currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].isCorrect == true)
                 {
                     Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].answerOutput} is correct!\n\n");
                     numberCorrect++;

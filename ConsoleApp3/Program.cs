@@ -43,7 +43,6 @@
                 }
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
-                List<int> correctAnswerIndex = Logic.GetCorrectAnswerIndex(currentQuiz);
                 bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
                 UserInterface.ConsoleClear();
 
@@ -62,7 +61,7 @@
                         UserInterface.ConsoleClear();
                         List<int> userAnswers = UserInterface.PlayQuiz(currentQuiz);
                         UserInterface.ConsoleClear();
-                        UserInterface.PrintQuizScore(currentQuiz, userAnswers, correctAnswerIndex);
+                        UserInterface.PrintQuizScore(currentQuiz, userAnswers);
                         takeQuiz = UserInterface.IsPlayQuizAgain();
                         UserInterface.ConsoleClear();
                     }
