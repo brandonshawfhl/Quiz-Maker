@@ -23,10 +23,10 @@
         }
 
         /// <summary>
-        /// prompts the User for an answer to be used as a choice for the question they are creating and then asks if the
-        /// answer is correct
+        /// prompts the User for an answer to be used as a choice for the question they are creating and then asks 
+        /// if the answer is correct or not
         /// </summary>
-        /// <returns>a list of AnswerPairs that will be used as choices for the question</returns>
+        /// <returns>a list of AnswerPairs that will be used as choices for the current question</returns>
         public static List<AnswerPair> PromptForAnswers()
         {
             bool tooManyAnswers;
@@ -71,7 +71,7 @@
         }
 
         /// <summary>
-        /// asks user to provide a number that determines what they would like to do int this program
+        /// asks user to provide a number that determines what they would like to do in this program
         /// </summary>
         /// <returns>the choice they made in the form of an enum</returns>
         public static QuizAction.QuizOptions PromptForQuizAction()
@@ -133,7 +133,7 @@
         /// <summary>
         /// Prompts the user to answer whether or not they would like to take the quiz currently loaded into the program
         /// </summary>
-        /// <returns>true or false that is determined by the user's answer</returns>
+        /// <returns>true or false that is determined by the User's answer</returns>
         public static bool IsPlayQuiz()
         {
             Console.WriteLine("Would you like to take your current quiz?");
@@ -155,7 +155,8 @@
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}");
+                    Console.Write($"{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}");
                     Console.WriteLine("\n");
                 }
             }
@@ -179,7 +180,7 @@
         /// of the answer the User has selected
         /// </summary>
         /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
-        /// <returns>a list of numbers that correspond to the User's answer choice correctly</returns>
+        /// <returns>a list of numbers that correspond to the User's answer choices</returns>
         public static List<int> PlayQuiz(List<QuizCard> currentQuiz)
         {
             List<int> userAnswers = new();
@@ -205,7 +206,6 @@
         /// the whole quiz at the bottom
         /// </summary>
         /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
-        /// <param name="correctAnswerIndex">a list of numbers corresponding to the correct answers for each question</param>
         /// <param name="userAnswers">a list of numbers corresponding to the answers the User has selected for each question</param>
         public static void PrintQuizScore(List<QuizCard> currentQuiz, List<int> userAnswers)
         {

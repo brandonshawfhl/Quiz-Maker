@@ -10,8 +10,7 @@ namespace Quiz_Maker
         /// <summary>
         /// saves a quiz that the user made
         /// </summary>
-        /// <param name="currentQuiz">list of quiz questions and all of their associated information</param>
-        /// <returns>the list of quiz questions and all of their associated information that has already been saved</returns>
+        /// <param name="madeQuiz">list of quiz questions and all of their associated information</param>
         public static void SaveQuiz(List<QuizCard> madeQuiz)
         {
             XmlSerializer serializer = new(typeof(List<QuizCard>));
@@ -38,7 +37,7 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// randomizes the order of the quiz questions
+        /// randomizes the order of the quiz questions themselves and the answers for each question
         /// </summary>
         /// <param name="currentQuiz">a list of quiz questions and all of their associated information</param>
         /// <returns>a list of quiz questions and all of their associated information in random order</returns>

@@ -6,13 +6,13 @@
         static void Main(string[] args)
         {
             bool anotherAction = true;
+            List<QuizCard> madeQuiz = new();
 
             while (anotherAction)
             {
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
                 QuizAction.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
-                List<QuizCard> madeQuiz = new();
 
                 //user creates a quiz from scratch
                 if (quizChoice == QuizAction.QuizOptions.Make)
