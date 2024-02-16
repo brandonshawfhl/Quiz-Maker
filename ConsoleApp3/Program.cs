@@ -13,6 +13,7 @@
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
                 QuizAction.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
+                bool saveQuiz;
 
                 //user creates a quiz from scratch
                 if (quizChoice == QuizAction.QuizOptions.Make)
@@ -29,11 +30,11 @@
                         madeQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptForMoreQuestions();
                         UserInterface.ConsoleClear();
-                        bool saveQuiz = UserInterface.PromptToSave();
+                        saveQuiz = UserInterface.PromptToSave();
 
                         if (saveQuiz)
                         {
-
+                            Logic.SaveQuiz(madeQuiz);
                         }
                     }
                 }
@@ -41,11 +42,6 @@
                 if (quizChoice == QuizAction.QuizOptions.Load)
                 {
                     madeQuiz = Logic.LoadQuiz();
-                }
-
-                if (quizChoice == QuizAction.QuizOptions.Save)
-                {
-                    Logic.SaveQuiz(madeQuiz);
                 }
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
