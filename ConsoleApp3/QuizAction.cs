@@ -5,8 +5,7 @@
         public enum QuizOptions
         {
             Make,
-            Load,
-            Save
+            Load
         }
     }
 }

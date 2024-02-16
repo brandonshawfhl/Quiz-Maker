@@ -74,6 +74,13 @@
                             editAnswers = UserInterface.PromptToEditAnswers();
                         }
 
+                        saveQuiz = UserInterface.PromptToSave();
+
+                        if (saveQuiz)
+                        {
+                            Logic.SaveQuiz(madeQuiz);
+                        }
+
                         makeChanges = UserInterface.PromptToMakeMoreChanges();
                     }
                 }
