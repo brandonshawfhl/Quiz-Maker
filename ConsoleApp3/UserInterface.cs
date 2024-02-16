@@ -289,5 +289,22 @@
             int questionNumber = Convert.ToInt32(Console.ReadLine());
             return questionNumber;
         }
+
+        public static bool PromptToEditQuestion()
+        {
+            Console.WriteLine("Would you like to edit the question itself?");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool editQuestion = (userInput.Key == Constants.USER_YES_CHOICE);
+            return editQuestion;
+        }
+
+        public static string EditQuestion(List<QuizCard> currentQuiz, int questionNumber)
+        {
+            Console.WriteLine("Please type the question the way you would like instead.");
+            Console.WriteLine($"{currentQuiz[questionNumber].question}");
+            string questionEdit = Console.ReadLine();
+            return questionEdit;
+        }
     }
 }

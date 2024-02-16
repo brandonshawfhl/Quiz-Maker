@@ -56,6 +56,19 @@
                 if (makeChanges)
                 {
                     int questionNumber = UserInterface.GetQuestionNumber();
+                    bool editQuestion = UserInterface.PromptToEditQuestion();
+
+                    if (editQuestion)
+                    {
+                        currentQuiz[questionNumber].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
+                    }
+
+                    bool editAnswers = 
+
+                    if (editAnswers)
+                    {
+
+                    }
                 }
 
 
