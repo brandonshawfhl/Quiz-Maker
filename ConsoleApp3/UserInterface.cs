@@ -326,7 +326,7 @@ namespace Quiz_Maker
             return answerNumber;
         }
 
-        public static Answer EditAnswer(List<QuizCard> currentQuiz,int questionNumber, int answerNumber)
+        public static Answer EditAnswer(List<QuizCard> currentQuiz, int questionNumber, int answerNumber)
         {
             Console.WriteLine("Please type the answer the way you would like it.");
             Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[answerNumber]}");
@@ -347,7 +347,14 @@ namespace Quiz_Maker
             bool editAnswer = (userInput.Key == Constants.USER_YES_CHOICE);
             return editAnswer;
         }
-        
-        public static 
+
+        public static bool PromptToMakeMoreChanges()
+        {
+            Console.WriteLine("Would you like to make any more changes");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool makeChanges = (userInput.Key == Constants.USER_YES_CHOICE);
+            return makeChanges;
+        }
     }
 }

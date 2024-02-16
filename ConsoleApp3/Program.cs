@@ -72,6 +72,8 @@
                             UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
                         editAnswers = UserInterface.PromptToEditAnswers();
                     }
+
+                    makeChanges = UserInterface.PromptToMakeMoreChanges();
                 }
 
 
