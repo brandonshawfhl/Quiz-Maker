@@ -2,7 +2,7 @@
 {
     public class QuizCard
     {
-        public string questionOutput;
+        public string question;
         public List<Answer> answerChoices;
     }
 }

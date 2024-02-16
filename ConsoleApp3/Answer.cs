@@ -1,8 +1,8 @@
 ﻿namespace Quiz_Maker
 {
-    public class AnswerPair
+    public class Answer
     {
-        public string answerOutput;
+        public string answer;
         public bool isCorrect;
     }
 }
