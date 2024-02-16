@@ -55,7 +55,7 @@
 
                 if (makeChanges)
                 {
-
+                    UserInterface.GetQuestionNumber();
                 }
 
 

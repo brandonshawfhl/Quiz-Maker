@@ -281,5 +281,13 @@
             bool makeChanges = (userInput.Key == Constants.USER_YES_CHOICE);
             return makeChanges;
         }
+
+        public static int GetQuestionNumber()
+        {
+            Console.WriteLine("Which question would you like to change?");
+            Console.WriteLine("Please enter the number of the question you like to change.");
+            int questionNumber = Convert.ToInt32(Console.ReadLine());
+            return questionNumber;
+        }
     }
 }
