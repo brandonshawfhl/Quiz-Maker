@@ -65,9 +65,12 @@
 
                     bool editAnswers = UserInterface.PromptToEditAnswers();
 
-                    if (editAnswers)
+                    while (editAnswers)
                     {
                         int answerNumber = UserInterface.GetAnswerNumber();
+                        currentQuiz[questionNumber].answerChoices[answerNumber] = 
+                            UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
+
                     }
                 }
 

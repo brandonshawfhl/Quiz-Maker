@@ -1,4 +1,6 @@
-﻿namespace Quiz_Maker
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Quiz_Maker
 {
     internal class UserInterface
     {
@@ -301,7 +303,7 @@
 
         public static string EditQuestion(List<QuizCard> currentQuiz, int questionNumber)
         {
-            Console.WriteLine("Please type the question the way you would like instead.");
+            Console.WriteLine("Please type the question the way you would like it.");
             Console.WriteLine($"{currentQuiz[questionNumber].question}");
             string questionEdit = Console.ReadLine();
             return questionEdit;
@@ -319,9 +321,22 @@
         public static int GetAnswerNumber()
         {
             Console.WriteLine("Which question would you like to change?");
-            Console.WriteLine("Please enter the number of the question you like to change.");
+            Console.WriteLine("Please enter the number of the answer you like to change.");
             int answerNumber = Convert.ToInt32(Console.ReadLine());
             return answerNumber;
+        }
+
+        public static Answer EditAnswer(List<QuizCard> currentQuiz,int questionNumber, int answerNumber)
+        {
+            Console.WriteLine("Please type the answer the way you would like it.");
+            Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[answerNumber]}");
+            Answer answerEdit = new();
+            answerEdit.answer = Console.ReadLine();
+            Console.WriteLine("Is this answer correct?");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            answerEdit.isCorrect = (userInput.Key == Constants.USER_YES_CHOICE);
+            return answerEdit;
         }
     }
 }
