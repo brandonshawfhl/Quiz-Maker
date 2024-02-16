@@ -356,5 +356,14 @@ namespace Quiz_Maker
             bool makeChanges = (userInput.Key == Constants.USER_YES_CHOICE);
             return makeChanges;
         }
+
+        public static bool PromptToSave()
+        {
+            Console.WriteLine("Would you like to save your quiz?");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool saveQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
+            return saveQuiz;
+        }
     }
 }

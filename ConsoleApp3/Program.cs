@@ -29,6 +29,12 @@
                         madeQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptForMoreQuestions();
                         UserInterface.ConsoleClear();
+                        bool saveQuiz = UserInterface.PromptToSave();
+
+                        if (saveQuiz)
+                        {
+
+                        }
                     }
                 }
 
