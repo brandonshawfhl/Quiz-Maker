@@ -272,5 +272,14 @@
             bool continuePlaying = (userInput.Key == Constants.USER_YES_CHOICE);
             return continuePlaying;
         }
+
+        public static bool PromptToMakeChanges()
+        {
+            Console.WriteLine("Would you like to make any changes");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool makeChanges = (userInput.Key == Constants.USER_YES_CHOICE);
+            return makeChanges;
+        }
     }
 }
