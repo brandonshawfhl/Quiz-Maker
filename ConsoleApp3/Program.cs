@@ -67,7 +67,7 @@
 
                     if (editAnswers)
                     {
-
+                        int answerNumber = UserInterface.GetAnswerNumber();
                     }
                 }
 
