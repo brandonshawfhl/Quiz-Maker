@@ -49,33 +49,32 @@
                 if (seeQuiz)
                 {
                     UserInterface.PrintWholeQuiz(currentQuiz);
-                }
 
-                bool makeChanges = UserInterface.PromptToMakeChanges();
+                    bool makeChanges = UserInterface.PromptToMakeChanges();
 
-                while (makeChanges)
-                {
-                    int questionNumber = UserInterface.GetQuestionNumber();
-                    bool editQuestion = UserInterface.PromptToEditQuestion();
-
-                    if (editQuestion)
+                    while (makeChanges)
                     {
-                        currentQuiz[questionNumber].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
+                        int questionNumber = UserInterface.GetQuestionNumber();
+                        bool editQuestion = UserInterface.PromptToEditQuestion();
+
+                        if (editQuestion)
+                        {
+                            currentQuiz[questionNumber].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
+                        }
+
+                        bool editAnswers = UserInterface.PromptToEditAnswers();
+
+                        while (editAnswers)
+                        {
+                            int answerNumber = UserInterface.GetAnswerNumber();
+                            currentQuiz[questionNumber].answerChoices[answerNumber] =
+                                UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
+                            editAnswers = UserInterface.PromptToEditAnswers();
+                        }
+
+                        makeChanges = UserInterface.PromptToMakeMoreChanges();
                     }
-
-                    bool editAnswers = UserInterface.PromptToEditAnswers();
-
-                    while (editAnswers)
-                    {
-                        int answerNumber = UserInterface.GetAnswerNumber();
-                        currentQuiz[questionNumber].answerChoices[answerNumber] = 
-                            UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
-                        editAnswers = UserInterface.PromptToEditAnswers();
-                    }
-
-                    makeChanges = UserInterface.PromptToMakeMoreChanges();
                 }
-
 
                 bool takeQuiz = UserInterface.IsPlayQuiz();
                 UserInterface.ConsoleClear();
