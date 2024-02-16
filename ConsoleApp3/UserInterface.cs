@@ -78,7 +78,7 @@ namespace Quiz_Maker
         /// <returns>the choice they made in the form of an enum</returns>
         public static QuizAction.QuizOptions PromptForQuizAction()
         {
-            Console.WriteLine("What would you like to do?(Enter 0 to make a quiz, 1 to load a quiz and 2 to save a quiz.)");
+            Console.WriteLine("What would you like to do?(Enter 0 to make a quiz and 1 to load a quiz.)");
             Console.WriteLine("Once you have entered the corresponding number, press enter to continue.\n");
             string quizChoiceConversion = Console.ReadLine();
             QuizAction.QuizOptions quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizOptions), quizChoiceConversion);
@@ -92,10 +92,6 @@ namespace Quiz_Maker
 
                 case QuizAction.QuizOptions.Load:
                     Console.WriteLine("Loading your quiz now!");
-                    break;
-
-                case QuizAction.QuizOptions.Save:
-                    Console.WriteLine("Saving your quiz now!");
                     break;
 
                 default:
