@@ -63,7 +63,7 @@
                         currentQuiz[questionNumber].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
                     }
 
-                    bool editAnswers = 
+                    bool editAnswers = UserInterface.PromptToEditAnswers();
 
                     if (editAnswers)
                     {

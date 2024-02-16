@@ -306,5 +306,15 @@
             string questionEdit = Console.ReadLine();
             return questionEdit;
         }
+
+        public static bool PromptToEditAnswers()
+        {
+            Console.WriteLine("Would you like to edit any answers for this question?");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool editAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
+            return editAnswers;
+        }
+        
     }
 }
