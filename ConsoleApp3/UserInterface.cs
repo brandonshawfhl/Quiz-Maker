@@ -27,15 +27,15 @@
         /// if the answer is correct or not
         /// </summary>
         /// <returns>a list of AnswerPairs that will be used as choices for the current question</returns>
-        public static List<AnswerPair> PromptForAnswers()
+        public static List<Answer> PromptForAnswers()
         {
             bool tooManyAnswers;
-            List<AnswerPair> potentialAnswers = new();
+            List<Answer> potentialAnswers = new();
             bool moreWrongAnswers;
 
             for (int answerNumber = 0; answerNumber < Constants.CHOICE_LIMIT; answerNumber++)
             {
-                AnswerPair potentialAnswer = new();
+                Answer potentialAnswer = new();
                 int choicesLeft = Constants.CHOICE_LIMIT - answerNumber;
                 Console.WriteLine("Please enter an answer that will be listed as one of the choices for this question.");
                 Console.WriteLine($"You have {choicesLeft} more choices.\n");
@@ -155,8 +155,8 @@
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}");
-                    Console.Write($"{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}" +
+                        $"{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}");
                     Console.WriteLine("\n");
                 }
             }
@@ -191,7 +191,8 @@
 
                 for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count - 1; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}\n");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}" +
+                        $"{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}\n");
                 }
 
                 Console.Write("\n");
@@ -216,19 +217,22 @@
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}");
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}" +
+                        $"{currentQuiz[questionNumber].answerChoices[answerNumber].answerOutput}");
                     Console.WriteLine("\n");
                 }
 
                 if (currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].isCorrect == true)
                 {
-                    Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].answerOutput} is correct!\n\n");
+                    Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].answerOutput} " +
+                        $"is correct!\n\n");
                     numberCorrect++;
                 }
 
                 else
                 {
-                    Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].answerOutput} is incorrect!\n\n");
+                    Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].answerOutput} " +
+                        $"is incorrect!\n\n");
                 }
 
             }

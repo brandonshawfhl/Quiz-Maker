@@ -48,11 +48,11 @@ namespace Quiz_Maker
 
             foreach (QuizCard card in currentQuiz)
             {
-                List<AnswerPair> randomAnswers = new();
+                List<Answer> randomAnswers = new();
 
                 for (int answerNumber = card.answerChoices.Count; answerNumber > 0; answerNumber--)
                 {
-                    AnswerPair randomAnswer = card.answerChoices[rng.Next(0, card.answerChoices.Count)];
+                    Answer randomAnswer = card.answerChoices[rng.Next(0, card.answerChoices.Count)];
                     randomAnswers.Add(randomAnswer);
                     card.answerChoices.Remove(randomAnswer);
                 }
