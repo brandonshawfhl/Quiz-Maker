@@ -338,5 +338,15 @@ namespace Quiz_Maker
             answerEdit.isCorrect = (userInput.Key == Constants.USER_YES_CHOICE);
             return answerEdit;
         }
+
+        public static bool PromptToEditAnotherAnswer()
+        {
+            Console.WriteLine("Would you like to edit another answer?");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool editAnswer = (userInput.Key == Constants.USER_YES_CHOICE);
+            return editAnswer;
+        }
+        
     }
 }

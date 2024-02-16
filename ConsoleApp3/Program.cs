@@ -70,7 +70,7 @@
                         int answerNumber = UserInterface.GetAnswerNumber();
                         currentQuiz[questionNumber].answerChoices[answerNumber] = 
                             UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
-
+                        editAnswers = UserInterface.PromptToEditAnswers();
                     }
                 }
 
