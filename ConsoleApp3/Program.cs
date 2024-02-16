@@ -53,7 +53,7 @@
 
                 bool makeChanges = UserInterface.PromptToMakeChanges();
 
-                if (makeChanges)
+                while (makeChanges)
                 {
                     int questionNumber = UserInterface.GetQuestionNumber();
                     bool editQuestion = UserInterface.PromptToEditQuestion();
