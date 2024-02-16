@@ -316,7 +316,7 @@
             return editAnswers;
         }
 
-        public static number GetAnswerNumber()
+        public static int GetAnswerNumber()
         {
             Console.WriteLine("Which question would you like to change?");
             Console.WriteLine("Please enter the number of the question you like to change.");
