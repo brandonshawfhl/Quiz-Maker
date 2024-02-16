@@ -49,8 +49,10 @@
                 if (seeQuiz)
                 {
                     UserInterface.PrintWholeQuiz(currentQuiz);
-                    UserInterface.PromptToMakeChanges();
                 }
+
+                bool makeChanges = UserInterface.PromptToMakeChanges();
+
 
                 bool takeQuiz = UserInterface.IsPlayQuiz();
                 UserInterface.ConsoleClear();
