@@ -49,6 +49,7 @@
                 if (quizChoice == QuizAction.QuizOptions.Load)
                 {
                     madeQuiz = Logic.LoadQuiz();
+                    UserInterface.PrintSuccessfulLoadMessage();
                 }
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);

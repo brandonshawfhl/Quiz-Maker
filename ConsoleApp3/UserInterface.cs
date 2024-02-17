@@ -362,7 +362,7 @@ namespace Quiz_Maker
             return saveQuiz;
         }
 
-        public static void SuccessfulLoadMessage()
+        public static void PrintSuccessfulLoadMessage()
         {
             Console.WriteLine("Your quiz has been successfully loaded!");
         }
