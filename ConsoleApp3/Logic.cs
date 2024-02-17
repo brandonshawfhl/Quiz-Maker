@@ -16,7 +16,6 @@ namespace Quiz_Maker
             XmlSerializer serializer = new(typeof(List<QuizCard>));
             using FileStream file = File.Create(Constants.PATH);
             serializer.Serialize(file, madeQuiz);
-            Console.WriteLine("Your quiz has been successfully save!");
         }
 
         /// <summary>

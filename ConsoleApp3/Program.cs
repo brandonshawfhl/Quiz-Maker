@@ -87,6 +87,7 @@
                         if (saveQuiz)
                         {
                             Logic.SaveQuiz(madeQuiz);
+                            UserInterface.PrintSuccessfulSaveMessage();
                         }
 
                         makeChanges = UserInterface.PromptToMakeMoreChanges();

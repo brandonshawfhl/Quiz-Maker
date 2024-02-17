@@ -366,5 +366,10 @@ namespace Quiz_Maker
         {
             Console.WriteLine("Your quiz has been successfully loaded!");
         }
+        
+        public static void PrintSuccessfulSaveMessage()
+        {
+            Console.WriteLine("Your quiz has been successfully saved!");
+        }
     }
 }
