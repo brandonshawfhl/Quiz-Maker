@@ -12,7 +12,14 @@
             {
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
-                QuizAction.QuizOptions quizChoice = UserInterface.PromptForQuizAction();
+                QuizAction.QuizOptions quizChoice;
+
+                do
+                {
+                    quizChoice = UserInterface.PromptForQuizAction();
+                }
+                while (quizChoice == default);
+
                 bool saveQuiz;
 
                 //user creates a quiz from scratch
