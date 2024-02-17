@@ -13,13 +13,7 @@
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
                 QuizAction.QuizOptions quizChoice;
-
-                do
-                {
-                    quizChoice = UserInterface.PromptForQuizAction();
-                }
-                while (quizChoice != QuizAction.QuizOptions.Make || quizChoice != QuizAction.QuizOptions.Load);
-
+                quizChoice = UserInterface.PromptForQuizAction();
                 bool saveQuiz;
 
                 //user creates a quiz from scratch
