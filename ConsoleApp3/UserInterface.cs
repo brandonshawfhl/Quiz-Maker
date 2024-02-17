@@ -86,16 +86,15 @@ namespace Quiz_Maker
 
             switch (quizChoice)
             {
-                default:
-                    Console.WriteLine("Invalid entry. Please try again.");
-
-                    break;
                 case QuizAction.QuizOptions.Make:
                     break;
 
                 case QuizAction.QuizOptions.Load:
                     break;
 
+                default:
+                    Console.WriteLine("Invalid entry. Please try again.");
+                    break;
             }
             return quizChoice;
         }

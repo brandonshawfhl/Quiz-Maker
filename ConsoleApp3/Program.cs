@@ -18,7 +18,7 @@
                 {
                     quizChoice = UserInterface.PromptForQuizAction();
                 }
-                while (quizChoice == default);
+                while (quizChoice != QuizAction.QuizOptions.Make || quizChoice != QuizAction.QuizOptions.Load);
 
                 bool saveQuiz;
 
