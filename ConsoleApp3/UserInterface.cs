@@ -87,11 +87,9 @@ namespace Quiz_Maker
             switch (quizChoice)
             {
                 case QuizAction.QuizOptions.Make:
-                    Console.WriteLine("Beginning the quiz making process now!");
                     break;
 
                 case QuizAction.QuizOptions.Load:
-                    Console.WriteLine("Loading your quiz now!");
                     break;
 
                 default:
