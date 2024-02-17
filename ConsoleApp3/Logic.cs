@@ -31,7 +31,6 @@ namespace Quiz_Maker
             using (FileStream file = File.OpenRead(Constants.PATH))
             {
                 loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
-                Console.WriteLine("Your quiz has been successfully loaded!");
             }
             return loadedQuiz;
         }

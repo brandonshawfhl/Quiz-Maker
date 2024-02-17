@@ -361,5 +361,10 @@ namespace Quiz_Maker
             bool saveQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
             return saveQuiz;
         }
+
+        public static void SuccessfulLoadMessage()
+        {
+            Console.WriteLine("Your quiz has been successfully loaded!");
+        }
     }
 }
