@@ -17,7 +17,7 @@
                 bool saveQuiz;
 
                 //user creates a quiz from scratch
-                if (quizChoice == QuizAction.QuizOptions.Make)
+                if (QuizAction.QuizOptions.Make == quizChoice)
                 {
                     bool moreQuestions = true;
 
@@ -41,7 +41,7 @@
                     }
                 }
 
-                if (quizChoice == QuizAction.QuizOptions.Load)
+                if (QuizAction.QuizOptions.Load == quizChoice)
                 {
                     List<QuizCard> loadedQuiz = Logic.LoadQuiz();
 
