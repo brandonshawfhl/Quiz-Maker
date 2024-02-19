@@ -78,23 +78,27 @@ namespace Quiz_Maker
         /// <returns>the choice they made in the form of an enum</returns>
         public static QuizAction.QuizOptions PromptForQuizAction()
         {
-            Console.WriteLine("What would you like to do?(Enter 0 to make a quiz and 1 to load a quiz.)");
-            Console.WriteLine("Once you have entered the corresponding number, press enter to continue.\n");
-            string quizChoiceConversion = Console.ReadLine();
-            QuizAction.QuizOptions quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizOptions), quizChoiceConversion);
-            Console.Clear();
-
-            switch (quizChoice)
+            QuizAction.QuizOptions quizChoice;
+            while (true)
             {
-                case QuizAction.QuizOptions.Make:
-                    break;
+                Console.WriteLine("What would you like to do?(Enter 0 to make a quiz and 1 to load a quiz.)");
+                Console.WriteLine("Once you have entered the corresponding number, press enter to continue.\n");
+                string quizChoiceConversion = Console.ReadLine();
+                quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizOptions), quizChoiceConversion);
+                Console.Clear();
+                switch (quizChoice)
+                {
+                    case QuizAction.QuizOptions.Make:
+                        break;
 
-                case QuizAction.QuizOptions.Load:
-                    break;
+                    case QuizAction.QuizOptions.Load:
+                        break;
 
-                default:
-                    Console.WriteLine("Invalid entry. Please try again.");
-                    break;
+                    default:
+                        Console.WriteLine("Invalid entry. Please try again.\n");
+                        continue;
+                }
+                break;
             }
             return quizChoice;
         }
@@ -364,7 +368,7 @@ namespace Quiz_Maker
         {
             Console.WriteLine("Your quiz has been successfully loaded!");
         }
-        
+
         public static void PrintSuccessfulSaveMessage()
         {
             Console.WriteLine("Your quiz has been successfully saved!");

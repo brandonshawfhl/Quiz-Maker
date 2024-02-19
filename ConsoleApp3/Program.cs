@@ -14,6 +14,7 @@
                 UserInterface.PrintWelcomeMessage();
                 QuizAction.QuizOptions quizChoice;
                 quizChoice = UserInterface.PromptForQuizAction();
+
                 bool saveQuiz;
 
                 //user creates a quiz from scratch
