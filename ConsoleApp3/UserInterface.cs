@@ -151,7 +151,7 @@ namespace Quiz_Maker
         {
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
-                Console.WriteLine($"{currentQuiz[questionNumber].question}\n");
+                Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber].question}\n");
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
@@ -187,7 +187,7 @@ namespace Quiz_Maker
 
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {
-                Console.WriteLine($"{currentQuiz[questionNumber].question}\n");
+                Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber].question}\n");
 
                 for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count - 1; answerNumber++)
                 {
@@ -213,7 +213,7 @@ namespace Quiz_Maker
             int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
-                Console.WriteLine($"{currentQuiz[questionNumber].question}\n");
+                Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber].question}\n");
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
@@ -302,7 +302,7 @@ namespace Quiz_Maker
         public static string EditQuestion(List<QuizCard> currentQuiz, int questionNumber)
         {
             Console.WriteLine("Please type the question the way you would like it.");
-            Console.WriteLine($"{currentQuiz[questionNumber].question}");
+            Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber].question}");
             string questionEdit = Console.ReadLine();
             return questionEdit;
         }
