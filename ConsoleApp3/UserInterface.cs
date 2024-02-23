@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
     internal class UserInterface
     {
@@ -151,7 +149,7 @@ namespace Quiz_Maker
         {
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
-                Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber].question}\n");
+                Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}\n");
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
