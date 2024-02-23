@@ -286,7 +286,7 @@ namespace Quiz_Maker
         {
             Console.WriteLine("Which question would you like to change?");
             Console.WriteLine("Please enter the number of the question you like to change.");
-            int questionNumber = Convert.ToInt32(Console.ReadLine());
+            int questionNumber = Convert.ToInt32(Console.ReadLine() + 1);
             return questionNumber;
         }
 
@@ -320,7 +320,7 @@ namespace Quiz_Maker
         {
             Console.WriteLine("Which question would you like to change?");
             Console.WriteLine("Please enter the number of the answer you like to change.");
-            int answerNumber = Convert.ToInt32(Console.ReadLine());
+            int answerNumber = Convert.ToInt32(Console.ReadLine() + 1);
             return answerNumber;
         }
 
