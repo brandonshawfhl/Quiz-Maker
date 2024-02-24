@@ -75,7 +75,7 @@
 
                         if (editQuestion)
                         {
-                            currentQuiz[questionNumber].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
+                            currentQuiz[questionNumber - 1].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
                         }
 
                         bool editAnswers = UserInterface.PromptToEditAnswers();

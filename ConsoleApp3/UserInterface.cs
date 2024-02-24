@@ -299,9 +299,10 @@
 
         public static string EditQuestion(List<QuizCard> currentQuiz, int questionNumber)
         {
-            Console.WriteLine($"Editing question number {questionNumber}).");
+            int realQuestionNumber = questionNumber - 1;
+            Console.WriteLine($"Editing question number {questionNumber}.");
             Console.WriteLine("Please type the question the way you would like it.");
-            Console.WriteLine($"{questionNumber}. {currentQuiz[(questionNumber - 1)].question}");
+            Console.WriteLine($"{currentQuiz[questionNumber - 1].question}");
             string questionEdit = Console.ReadLine();
             return questionEdit;
         }
