@@ -185,7 +185,7 @@
 
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {
-                Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber].question}\n");
+                Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}\n");
 
                 for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count - 1; answerNumber++)
                 {
@@ -211,7 +211,7 @@
             int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
-                Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber].question}\n");
+                Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}\n");
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
@@ -299,8 +299,9 @@
 
         public static string EditQuestion(List<QuizCard> currentQuiz, int questionNumber)
         {
+            Console.WriteLine($"Editing question number {questionNumber + 1}).");
             Console.WriteLine("Please type the question the way you would like it.");
-            Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber].question}");
+            Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}");
             string questionEdit = Console.ReadLine();
             return questionEdit;
         }
@@ -324,6 +325,7 @@
 
         public static Answer EditAnswer(List<QuizCard> currentQuiz, int questionNumber, int answerNumber)
         {
+            Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber]} in question number {questionNumber + 1}.");
             Console.WriteLine("Please type the answer the way you would like it.");
             Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[answerNumber]}");
             Answer answerEdit = new();
