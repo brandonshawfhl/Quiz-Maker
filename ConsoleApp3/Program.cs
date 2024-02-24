@@ -83,7 +83,7 @@
                         while (editAnswers)
                         {
                             int answerNumber = UserInterface.GetAnswerNumber();
-                            currentQuiz[questionNumber].answerChoices[answerNumber] =
+                            currentQuiz[questionNumber - 1].answerChoices[answerNumber] =
                                 UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
                             editAnswers = UserInterface.PromptToEditAnswers();
                         }
