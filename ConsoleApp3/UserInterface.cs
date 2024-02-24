@@ -299,9 +299,9 @@
 
         public static string EditQuestion(List<QuizCard> currentQuiz, int questionNumber)
         {
-            Console.WriteLine($"Editing question number {questionNumber + 1}).");
+            Console.WriteLine($"Editing question number {questionNumber}).");
             Console.WriteLine("Please type the question the way you would like it.");
-            Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}");
+            Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber - 1].question}");
             string questionEdit = Console.ReadLine();
             return questionEdit;
         }
@@ -325,9 +325,9 @@
 
         public static Answer EditAnswer(List<QuizCard> currentQuiz, int questionNumber, int answerNumber)
         {
-            Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber]} in question number {questionNumber + 1}.");
+            Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber]} in question number {questionNumber}.");
             Console.WriteLine("Please type the answer the way you would like it.");
-            Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[answerNumber]}");
+            Console.WriteLine($"{currentQuiz[questionNumber - 1].answerChoices[answerNumber]}");
             Answer answerEdit = new();
             answerEdit.answer = Console.ReadLine();
             Console.WriteLine("Is this answer correct?");
