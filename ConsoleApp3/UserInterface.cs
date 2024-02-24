@@ -326,11 +326,21 @@
             return editAnswers;
         }
 
-        public static int GetAnswerNumber()
+        public static int GetAnswerNumber(List<QuizCard> currentQuiz)
         {
-            Console.WriteLine("Which question would you like to change?");
-            Console.WriteLine("Please enter the number of the answer you like to change.");
-            int answerNumber = Convert.ToInt32(Console.ReadLine());
+            int answerNumber = 0;
+            bool answerDoesntExist = answerNumber > currentQuiz.Count || answerNumber < 0;
+            while (answerDoesntExist)
+            {
+                Console.WriteLine("Which answer would you like to change?");
+                Console.WriteLine("Please enter the number of the answer you like to change.");
+                answerNumber = Convert.ToInt32(Console.ReadLine());
+
+                if (answerDoesntExist)
+                {
+                    Console.WriteLine("This answer does not exist. Please try again.");
+                }
+            }
             return answerNumber;
         }
 
