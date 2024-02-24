@@ -328,8 +328,10 @@
             Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber]} in question number {questionNumber}.");
             Console.WriteLine("Please type the answer the way you would like it.");
             Console.WriteLine($"{currentQuiz[questionNumber - 1].answerChoices[answerNumber]}");
-            Answer answerEdit = new();
-            answerEdit.answer = Console.ReadLine();
+            Answer answerEdit = new()
+            {
+                answer = Console.ReadLine()
+            };
             Console.WriteLine("Is this answer correct?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
