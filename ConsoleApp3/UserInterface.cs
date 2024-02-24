@@ -301,7 +301,7 @@
         {
             Console.WriteLine($"Editing question number {questionNumber}).");
             Console.WriteLine("Please type the question the way you would like it.");
-            Console.WriteLine($"{questionNumber}. {currentQuiz[questionNumber - 1].question}");
+            Console.WriteLine($"{questionNumber}. {currentQuiz[(questionNumber - 1)].question}");
             string questionEdit = Console.ReadLine();
             return questionEdit;
         }
@@ -332,6 +332,7 @@
             {
                 answer = Console.ReadLine()
             };
+
             Console.WriteLine("Is this answer correct?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
