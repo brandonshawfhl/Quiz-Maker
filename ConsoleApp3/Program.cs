@@ -70,7 +70,7 @@
 
                     while (makeChanges)
                     {
-                        int questionNumber = UserInterface.GetQuestionNumber();
+                        int questionNumber = UserInterface.GetQuestionNumber(currentQuiz);
                         bool editQuestion = UserInterface.PromptToEditQuestion();
 
                         if (editQuestion)

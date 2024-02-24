@@ -280,11 +280,22 @@
             return makeChanges;
         }
 
-        public static int GetQuestionNumber()
+        public static int GetQuestionNumber(List<QuizCard> currentQuiz)
         {
-            Console.WriteLine("Which question would you like to change?");
-            Console.WriteLine("Please enter the number of the question you like to change.");
-            int questionNumber = Convert.ToInt32(Console.ReadLine());
+            int questionNumber = 0;
+            bool questionDoesntExist = questionNumber > currentQuiz.Count || questionNumber < 0;
+            while (questionDoesntExist)
+            {
+                Console.WriteLine("Which question would you like to change?");
+                Console.WriteLine("Please enter the number of the question you like to change.");
+                questionNumber = Convert.ToInt32(Console.ReadLine());
+
+                if (questionDoesntExist)
+                {
+                    Console.WriteLine("This question does not exist. Please try again.");
+                }
+            }
+
             return questionNumber;
         }
 
@@ -299,7 +310,6 @@
 
         public static string EditQuestion(List<QuizCard> currentQuiz, int questionNumber)
         {
-            int realQuestionNumber = questionNumber - 1;
             Console.WriteLine($"Editing question number {questionNumber}.");
             Console.WriteLine("Please type the question the way you would like it.");
             Console.WriteLine($"{currentQuiz[questionNumber - 1].question}");
