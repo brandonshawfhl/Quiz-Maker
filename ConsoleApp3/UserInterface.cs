@@ -280,15 +280,11 @@
             return makeChanges;
         }
 
-        public static int GetQuestionNumber(List<QuizCard> currentQuiz)
+        public static int GetQuestionNumber()
         {
-            int questionNumber;
-            for (questionNumber = 0; Math.Abs(questionNumber) > currentQuiz.Count;)
-            {
-                Console.WriteLine("Which question would you like to change?");
-                Console.WriteLine("Please enter the number of the question you like to change.");
-                questionNumber = Convert.ToInt32(Console.ReadLine());
-            }
+            Console.WriteLine("Which question would you like to change?");
+            Console.WriteLine("Please enter the number of the question you like to change.");
+            int questionNumber = Convert.ToInt32(Console.ReadLine());
             return questionNumber;
         }
 
