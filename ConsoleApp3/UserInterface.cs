@@ -393,5 +393,10 @@
         {
             Console.WriteLine("Sorry! Your quiz has failed to load!");
         }
+
+        public static void PrintQuestionDoesntExistMessage()
+        {
+            Console.WriteLine("This question does not exist. Please try again.");
+        }
     }
 }

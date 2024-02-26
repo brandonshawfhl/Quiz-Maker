@@ -75,6 +75,11 @@
                         while (questionDoesntExist)
                         {
                             questionNumber = UserInterface.GetQuestionNumber(currentQuiz);
+
+                            if (questionDoesntExist )
+                            {
+                                UserInterface.PrintQuestionDoesntExistMessage();
+                            }
                         }
 
                         bool editQuestion = UserInterface.PromptToEditQuestion();
