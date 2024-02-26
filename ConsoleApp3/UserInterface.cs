@@ -283,7 +283,7 @@
         public static int GetQuestionNumber(List<QuizCard> currentQuiz)
         {
             int questionNumber = 0;
-            bool questionDoesntExist = questionNumber > currentQuiz.Count || questionNumber < 0;
+            bool questionDoesntExist = questionNumber > currentQuiz.Count;
             while (questionDoesntExist)
             {
                 Console.WriteLine("Which question would you like to change?");
@@ -295,7 +295,6 @@
                     Console.WriteLine("This question does not exist. Please try again.");
                 }
             }
-
             return questionNumber;
         }
 
