@@ -70,8 +70,14 @@
 
                     while (makeChanges)
                     {
-                        int questionNumber = UserInterface.GetQuestionNumber();
-                        UserInterface.PrintQuestionDoesntExistMessage();
+                        bool questionDoesntExist = true;
+
+                        while (questionDoesntExist)
+                        {
+                            int questionNumber = UserInterface.GetQuestionNumber(currentQuiz);
+                            UserInterface.PrintQuestionDoesntExistMessage();
+                        }
+
                         bool editQuestion = UserInterface.PromptToEditQuestion();
 
                         if (editQuestion)
