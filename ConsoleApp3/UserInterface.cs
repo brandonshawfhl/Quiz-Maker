@@ -285,15 +285,17 @@
             Console.WriteLine("Which question would you like to change?");
             Console.WriteLine("Please enter the number of the question you like to change.");
             int questionNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\n");
             return questionNumber;
         }
 
-        public static bool PromptToEditQuestion()
+        public static bool PromptEditQuestion()
         {
             Console.WriteLine("Would you like to edit the question itself?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool editQuestion = (userInput.Key == Constants.USER_YES_CHOICE);
+            Console.WriteLine("\n");
             return editQuestion;
         }
 
@@ -303,6 +305,7 @@
             Console.WriteLine("Please type the question the way you would like it.");
             Console.WriteLine($"{currentQuiz[questionNumber - 1].question}");
             string questionEdit = Console.ReadLine();
+            Console.WriteLine("\n");
             return questionEdit;
         }
 
@@ -312,6 +315,7 @@
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool editAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
+            Console.WriteLine("\n");
             return editAnswers;
         }
 
