@@ -283,21 +283,19 @@
         public static int GetQuestionNumber(List<QuizCard> currentQuiz)
         {
             int questionNumber = 0;
-            bool questionDoesntExist = questionNumber > currentQuiz.Count || questionNumber < 0;
-
-            do
+            
+            while (questionNumber > currentQuiz.Count || questionNumber < 0)
             {
                 Console.WriteLine("Which question would you like to change?");
                 Console.WriteLine("Please enter the number of the question you like to change.");
                 questionNumber = Convert.ToInt32(Console.ReadLine());
 
-                if (questionDoesntExist)
+                if (true)
                 {
                     Console.WriteLine("This question does not exist. Please try again.");
                 }
             }
-            while (questionDoesntExist);
-
+           
             return questionNumber;
         }
 
