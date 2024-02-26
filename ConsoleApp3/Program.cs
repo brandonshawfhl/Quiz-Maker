@@ -84,21 +84,21 @@
                             }
                         }
 
-                        bool editQuestion = UserInterface.PromptToEditQuestion();
+                        bool editQuestion = UserInterface.PromptEditQuestion();
 
                         if (editQuestion)
                         {
                             currentQuiz[questionNumber - 1].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
                         }
 
-                        bool editAnswers = UserInterface.PromptToEditAnswers();
+                        bool editAnswers = UserInterface.PromptEditAnswers();
 
                         while (editAnswers)
                         {
                             int answerNumber = UserInterface.GetAnswerNumber(currentQuiz);
                             currentQuiz[questionNumber - 1].answerChoices[answerNumber] =
                                 UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
-                            editAnswers = UserInterface.PromptToEditAnswers();
+                            editAnswers = UserInterface.PromptEditAnswers();
                         }
 
                         saveQuiz = UserInterface.PromptToSave();

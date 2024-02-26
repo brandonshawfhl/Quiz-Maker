@@ -309,7 +309,7 @@
             return questionEdit;
         }
 
-        public static bool PromptToEditAnswers()
+        public static bool PromptEditAnswers()
         {
             Console.WriteLine("Would you like to edit any answers for this question?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
@@ -343,7 +343,7 @@
         {
             Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber]} in question number {questionNumber}.");
             Console.WriteLine("Please type the answer the way you would like it.");
-            Console.WriteLine($"{currentQuiz[questionNumber - 1].answerChoices[answerNumber]}");
+            Console.WriteLine($"{currentQuiz[questionNumber - 1].answerChoices[answerNumber].answer}");
             Answer answerEdit = new()
             {
                 answer = Console.ReadLine()
