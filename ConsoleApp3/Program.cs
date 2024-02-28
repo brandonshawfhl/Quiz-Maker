@@ -30,7 +30,7 @@
                             answerChoices = UserInterface.PromptForAnswers()
                         };
                         madeQuiz.Add(currentQuizCard);
-                        moreQuestions = UserInterface.PromptForMoreQuestions();
+                        moreQuestions = UserInterface.PromptMoreQuestions();
                         UserInterface.ConsoleClear();
                         saveQuiz = UserInterface.PromptToSave();
 
@@ -59,12 +59,12 @@
                 }
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
-                bool seeQuiz = UserInterface.PromptSeeWholeQuiz();
+                bool seeQuiz = UserInterface.PromptSeeQuiz();
                 UserInterface.ConsoleClear();
 
-                if (seeQuiz)
+                while (seeQuiz)
                 {
-                    UserInterface.PrintWholeQuiz(currentQuiz);
+                    UserInterface.PrintQuiz(currentQuiz);
 
                     bool makeChanges = UserInterface.PromptToMakeChanges();
 
@@ -110,7 +110,7 @@
                             }
                             currentQuiz[questionNumber - 1].answerChoices[answerNumber - 1] =
                                 UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
-                            seeQuiz = UserInterface.PromptSeeWholeQuiz();
+                            seeQuiz = UserInterface.PromptSeeQuiz();
                             editAnswers = UserInterface.PromptEditAnotherAnswer();
                         }
 
@@ -136,7 +136,7 @@
                         UserInterface.ConsoleClear();
                         List<int> userAnswers = UserInterface.PlayQuiz(currentQuiz);
                         UserInterface.ConsoleClear();
-                        UserInterface.PrintQuizScore(currentQuiz, userAnswers);
+                        UserInterface.PrintScore(currentQuiz, userAnswers);
                         takeQuiz = UserInterface.IsPlayQuizAgain();
                         UserInterface.ConsoleClear();
                     }

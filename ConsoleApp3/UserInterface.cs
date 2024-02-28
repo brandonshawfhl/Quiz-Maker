@@ -105,7 +105,7 @@
         /// asks the user if they would like to continue using the program
         /// </summary>
         /// <returns>returns true or false based on the users answer</returns>
-        public static bool PromptForMoreQuizOptions()
+        public static bool PromptMoreQuizOptions()
         {
             Console.WriteLine("Would you like to keep going?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
@@ -119,7 +119,7 @@
         /// Asks the user if they would like to create more questions
         /// </summary>
         /// <returns>true or false depedning on the user's answer</returns>
-        public static bool PromptForMoreQuestions()
+        public static bool PromptMoreQuestions()
         {
             Console.WriteLine("Would you like to add another question to this quiz?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
@@ -145,7 +145,7 @@
         /// prints the entire quiz for the User to see on the screen
         /// </summary>
         /// <param name="currentQuiz">the list of quiz questions and all of their associated information</param>
-        public static void PrintWholeQuiz(List<QuizCard> currentQuiz)
+        public static void PrintQuiz(List<QuizCard> currentQuiz)
         {
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
@@ -164,7 +164,7 @@
         /// asks the user if they would like to see the whole quiz
         /// </summary>
         /// <returns>returns true or false based on the user's answer</returns>
-        public static bool PromptSeeWholeQuiz()
+        public static bool PromptSeeQuiz()
         {
             Console.WriteLine("Would you like to see the whole quiz?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
@@ -206,7 +206,7 @@
         /// </summary>
         /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
         /// <param name="userAnswers">a list of numbers corresponding to the answers the User has selected for each question</param>
-        public static void PrintQuizScore(List<QuizCard> currentQuiz, List<int> userAnswers)
+        public static void PrintScore(List<QuizCard> currentQuiz, List<int> userAnswers)
         {
             int numberCorrect = 0;
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
@@ -323,7 +323,8 @@
         {
             Console.WriteLine("Which answer would you like to change?");
             Console.WriteLine("Please enter the number of the answer you would like to change.");
-            int answerNumber = Convert.ToInt32(Console.ReadLine());
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            int answerNumber = Constants.ANSWER_KEYS.IndexOf(userInput.Key);
             Console.WriteLine("\n");
             return answerNumber;
         }
