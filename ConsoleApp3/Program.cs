@@ -7,6 +7,7 @@
         {
             bool anotherAction = true;
             List<QuizCard> madeQuiz = new();
+            List<QuizCard> currentQuiz = new();
 
             while (anotherAction)
             {
@@ -29,6 +30,7 @@
                             question = UserInterface.PromptForQuestion(),
                             answerChoices = UserInterface.PromptForAnswers()
                         };
+
                         madeQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptMoreQuestions();
                         UserInterface.ConsoleClear();
@@ -58,72 +60,79 @@
                     }
                 }
 
-                List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
+                currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
                 bool seeQuiz = UserInterface.PromptSeeQuiz();
                 UserInterface.ConsoleClear();
 
-                while (seeQuiz)
+                if (seeQuiz)
                 {
                     UserInterface.PrintQuiz(currentQuiz);
+                }
 
-                    bool makeChanges = UserInterface.PromptMakeChanges();
+                bool makeChanges = UserInterface.PromptMakeChanges();
 
-                    while (makeChanges)
+                while (makeChanges)
+                {
+                    int questionNumber = 0;
+                    bool questionDoesntExist = true;
+
+                    while (questionDoesntExist)
                     {
-                        int questionNumber = 0;
-                        bool questionDoesntExist = true;
+                        questionNumber = UserInterface.GetQuestionNumber();
+                        questionDoesntExist = Logic.IsQuestionValid(questionNumber, currentQuiz);
 
-                        while (questionDoesntExist)
+                        if (questionDoesntExist)
                         {
-                            questionNumber = UserInterface.GetQuestionNumber();
-                            questionDoesntExist = Logic.IsQuestionValid(questionNumber, currentQuiz);
-
-                            if (questionDoesntExist)
-                            {
-                                UserInterface.PrintQuestionDoesntExistMessage();
-                            }
+                            UserInterface.PrintQuestionDoesntExistMessage();
                         }
-
-                        bool editQuestion = UserInterface.PromptEditQuestion();
-
-                        if (editQuestion)
-                        {
-                            currentQuiz[questionNumber - 1].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
-                        }
-
-                        bool editAnswers = UserInterface.PromptEditAnswers();
-
-                        while (editAnswers)
-                        {
-                            bool answerDoesntExist = true;
-                            int answerNumber = 0;
-
-                            while (answerDoesntExist)
-                            {
-                                answerNumber = UserInterface.GetAnswerNumber();
-                                answerDoesntExist = Logic.IsAnswerValid(questionNumber, answerNumber, currentQuiz);
-
-                                if (answerDoesntExist)
-                                {
-                                    UserInterface.PrintAnswerDoesntExistMessage();
-                                }
-                            }
-                            currentQuiz[questionNumber - 1].answerChoices[answerNumber - 1] =
-                                UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
-                            seeQuiz = UserInterface.PromptSeeQuiz();
-                            editAnswers = UserInterface.PromptEditAnotherAnswer();
-                        }
-
-                        saveQuiz = UserInterface.PromptSave();
-
-                        if (saveQuiz)
-                        {
-                            Logic.SaveQuiz(madeQuiz);
-                            UserInterface.PrintSuccessfulSaveMessage();
-                        }
-
-                        makeChanges = UserInterface.PromptMoreChanges();
                     }
+
+                    bool editQuestion = UserInterface.PromptEditQuestion();
+
+                    if (editQuestion)
+                    {
+                        currentQuiz[questionNumber - 1].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
+                    }
+
+                    bool editAnswers = UserInterface.PromptEditAnswers();
+
+                    while (editAnswers)
+                    {
+                        bool answerDoesntExist = true;
+                        int answerNumber = 0;
+
+                        while (answerDoesntExist)
+                        {
+                            answerNumber = UserInterface.GetAnswerNumber();
+                            answerDoesntExist = Logic.IsAnswerValid(questionNumber, answerNumber, currentQuiz);
+
+                            if (answerDoesntExist)
+                            {
+                                UserInterface.PrintAnswerDoesntExistMessage();
+                            }
+                        }
+
+                        currentQuiz[questionNumber - 1].answerChoices[answerNumber - 1] =
+                            UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
+                        editAnswers = UserInterface.PromptEditAnotherAnswer();
+                    }
+
+                    seeQuiz = UserInterface.PromptSeeQuiz();
+
+                    if (seeQuiz)
+                    {
+                        UserInterface.PrintQuiz(currentQuiz);
+                    }
+
+                    saveQuiz = UserInterface.PromptSave();
+
+                    if (saveQuiz)
+                    {
+                        Logic.SaveQuiz(madeQuiz);
+                        UserInterface.PrintSuccessfulSaveMessage();
+                    }
+
+                    makeChanges = UserInterface.PromptMoreChanges();
                 }
 
                 bool takeQuiz = UserInterface.IsPlayQuiz();
@@ -148,6 +157,7 @@
                         break;
                     }
                 }
+
                 anotherAction = UserInterface.PromptContinue();
             }
         }

@@ -111,7 +111,6 @@
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool moreQuizOptions = (userInput.Key == Constants.USER_YES_CHOICE);
-
             return moreQuizOptions;
         }
 
