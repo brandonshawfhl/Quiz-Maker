@@ -40,15 +40,14 @@
                 Console.WriteLine("Please enter an answer that will be listed as one of the choices for this question.");
                 Console.WriteLine($"You have {choicesLeft} more choices.\n");
                 potentialAnswer.answer = Console.ReadLine();
-                Console.WriteLine("\n");
+                Console.Write("\n");
                 Console.WriteLine("Is this answer correct?");
                 Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
-                Console.Write("\n");
                 ConsoleKeyInfo isCorrectInput = Console.ReadKey(true);
                 potentialAnswer.isCorrect = (isCorrectInput.Key == Constants.USER_YES_CHOICE);
                 potentialAnswers.Add(potentialAnswer);
                 tooManyAnswers = potentialAnswers.Count >= Constants.CHOICE_LIMIT;
-                Console.Write("\n");
+                
 
                 if (tooManyAnswers)
                 {

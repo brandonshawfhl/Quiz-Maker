@@ -7,8 +7,7 @@
         {
             bool anotherAction = true;
             List<QuizCard> madeQuiz = new();
-            List<QuizCard> currentQuiz = new();
-
+          
             while (anotherAction)
             {
                 UserInterface.ConsoleClear();
@@ -60,7 +59,7 @@
                     }
                 }
 
-                currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
+                List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
                 bool seeQuiz = UserInterface.PromptSeeQuiz();
                 UserInterface.ConsoleClear();
 
