@@ -154,10 +154,9 @@
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}" +
-                        $"{currentQuiz[questionNumber].answerChoices[answerNumber].answer}");
-                    Console.Write("\n");
+                        $"{currentQuiz[questionNumber].answerChoices[answerNumber].answer}\n");
                 }
-                Console.Write("\n\n\n");
+                Console.WriteLine("\n\n");
             }
         }
 
@@ -186,7 +185,7 @@
 
             for (int questionNumber = 0; questionNumber <= currentQuiz.Count - 1; questionNumber++)
             {
-                Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}\n");
+                Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}\n\n");
 
                 for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count - 1; answerNumber++)
                 {
@@ -194,7 +193,7 @@
                         $"{currentQuiz[questionNumber].answerChoices[answerNumber].answer}\n");
                 }
 
-                Console.Write("\n");
+                Console.WriteLine("\n\n");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
                 userAnswers.Add(Constants.ANSWER_KEYS.IndexOf(userInput.Key));
             }
@@ -356,7 +355,7 @@
             return editAnswer;
         }
 
-        public static bool PromptToMakeMoreChanges()
+        public static bool PromptMoreChanges()
         {
             Console.WriteLine("Would you like to make any more changes");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
@@ -365,7 +364,7 @@
             return makeChanges;
         }
 
-        public static bool PromptToSave()
+        public static bool PromptSave()
         {
             Console.WriteLine("Would you like to save your quiz?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");

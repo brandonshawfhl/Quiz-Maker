@@ -32,7 +32,7 @@
                         madeQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptMoreQuestions();
                         UserInterface.ConsoleClear();
-                        saveQuiz = UserInterface.PromptToSave();
+                        saveQuiz = UserInterface.PromptSave();
 
                         if (saveQuiz)
                         {
@@ -114,7 +114,7 @@
                             editAnswers = UserInterface.PromptEditAnotherAnswer();
                         }
 
-                        saveQuiz = UserInterface.PromptToSave();
+                        saveQuiz = UserInterface.PromptSave();
 
                         if (saveQuiz)
                         {
@@ -122,7 +122,7 @@
                             UserInterface.PrintSuccessfulSaveMessage();
                         }
 
-                        makeChanges = UserInterface.PromptToMakeMoreChanges();
+                        makeChanges = UserInterface.PromptMoreChanges();
                     }
                 }
 
