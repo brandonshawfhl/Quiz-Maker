@@ -70,7 +70,7 @@
         }
 
         /// <summary>
-        /// asks user to provide a number that determines what they would like to do in this program
+        /// asks User to provide a number that determines what they would like to do in this program
         /// </summary>
         /// <returns>the choice they made in the form of an enum</returns>
         public static QuizAction.QuizOptions PromptQuizAction()
@@ -269,6 +269,10 @@
             return continuePlaying;
         }
 
+        /// <summary>
+        /// prompts the User to disclose whether or not they would like to make any changes to their quiz
+        /// </summary>
+        /// <returns>true or false based on the User's disclosure</returns>
         public static bool PromptMakeChanges()
         {
             Console.WriteLine("Would you like to make any changes");
@@ -278,6 +282,10 @@
             return makeChanges;
         }
 
+        /// <summary>
+        /// Prompts the User to enter the number of the question they would like to edit
+        /// </summary>
+        /// <returns>the number of the question the User would like to edit</returns>
         public static int GetQuestionNumber()
         {
             Console.WriteLine("Which question would you like to change?");
@@ -287,6 +295,10 @@
             return questionNumber;
         }
 
+        /// <summary>
+        /// Prompts the user to disclose whether or not they would like to edit the question specifically
+        /// </summary>
+        /// <returns>true or false based on the User's disclosure</returns>
         public static bool PromptEditQuestion()
         {
             Console.WriteLine("Would you like to edit the question itself?");
@@ -297,6 +309,12 @@
             return editQuestion;
         }
 
+        /// <summary>
+        /// allows the user to edit the question they have previously selected and gives them the tools they need to do it
+        /// </summary>
+        /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
+        /// <param name="questionNumber">the number of the question the user has previously selected</param>
+        /// <returns></returns>
         public static string EditQuestion(List<QuizCard> currentQuiz, int questionNumber)
         {
             Console.WriteLine($"Editing question number {questionNumber}.");
@@ -307,6 +325,11 @@
             return questionEdit;
         }
 
+        /// <summary>
+        /// prompts the User to disclose whether or not they would like to edit any of the answers corresponding with the 
+        /// question they have previously selected
+        /// </summary>
+        /// <returns>true or false based on the User's disclosure</returns>
         public static bool PromptEditAnswers()
         {
             Console.WriteLine("Would you like to edit any answers for this question?");
@@ -317,6 +340,10 @@
             return editAnswers;
         }
 
+        /// <summary>
+        /// prompts the User to choose which answer they would like to edit
+        /// </summary>
+        /// <returns>returns the corresponding numer to the answer the User selects</returns>
         public static int GetAnswerNumber()
         {
             Console.WriteLine("Which answer would you like to change?");
@@ -327,6 +354,13 @@
             return answerNumber;
         }
 
+        /// <summary>
+        /// allows the User to edit the answer they have previously selected
+        /// </summary>
+        /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
+        /// <param name="questionNumber">the number of the question the User has previously selected</param>
+        /// <param name="answerNumber">the corresponding number of the answer the User has previously selected</param>
+        /// <returns></returns>
         public static Answer EditAnswer(List<QuizCard> currentQuiz, int questionNumber, int answerNumber)
         {
             Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber]} in question number {questionNumber}.");
@@ -345,6 +379,10 @@
             return answerEdit;
         }
 
+        /// <summary>
+        /// prompts the user to disclose whether or not they would like to edit another answer
+        /// </summary>
+        /// <returns>true or false based on the User's disclosure</returns>
         public static bool PromptEditAnotherAnswer()
         {
             Console.WriteLine("Would you like to edit another answer?");
@@ -354,6 +392,10 @@
             return editAnswer;
         }
 
+        /// <summary>
+        /// prompts the user to disclose whether or not they would like to make more changes to their quiz
+        /// </summary>
+        /// <returns>true or false based on the User's disclosure</returns>
         public static bool PromptMoreChanges()
         {
             Console.WriteLine("Would you like to make any more changes");
@@ -363,6 +405,10 @@
             return makeChanges;
         }
 
+        /// <summary>
+        /// prompts the User to disclose whether or not they would like to save the quiz they just created/edited
+        /// </summary>
+        /// <returns>true or false based on the User's disclosure</returns>
         public static bool PromptSave()
         {
             Console.WriteLine("Would you like to save your quiz?");
@@ -372,29 +418,53 @@
             return saveQuiz;
         }
 
+        /// <summary>
+        /// prints message indicating a successfully loaded quiz
+        /// </summary>
         public static void PrintSuccessfulLoadMessage()
         {
             Console.WriteLine("Your quiz has been successfully loaded!");
         }
 
+        /// <summary>
+        /// ptints message indicating a successfully save quiz
+        /// </summary>
         public static void PrintSuccessfulSaveMessage()
         {
             Console.WriteLine("Your quiz has been successfully saved!\n");
         }
 
+        /// <summary>
+        /// prints message indicating a failure to load a quiz
+        /// </summary>
         public static void PrintFailedLoadMessage()
         {
             Console.WriteLine("Sorry! Your quiz has failed to load!");
         }
 
+        /// <summary>
+        /// prints message indicating that the question the User has tried to select does not exist
+        /// </summary>
         public static void PrintQuestionDoesntExistMessage()
         {
             Console.WriteLine("This question does not exist. Please try again.");
         }
 
+        /// <summary>
+        /// prints a message indicating that the answer the User has tried to select does not exist
+        /// </summary>
         public static void PrintAnswerDoesntExistMessage()
         {
             Console.WriteLine("This answer does not exist. Please try again.");
+        }
+
+        public static bool PromptAddQuestions()
+        {
+            Console.WriteLine("Would you like to add any questions to your quiz?");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool addQuestions = (userInput.Key == Constants.USER_YES_CHOICE);
+            return addQuestions;
         }
     }
 }

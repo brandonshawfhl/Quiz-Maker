@@ -6,8 +6,9 @@
         static void Main(string[] args)
         {
             bool anotherAction = true;
+            bool addQuestions = true;
             List<QuizCard> madeQuiz = new();
-          
+
             while (anotherAction)
             {
                 UserInterface.ConsoleClear();
@@ -21,7 +22,6 @@
                 if (QuizAction.QuizOptions.Make == quizChoice)
                 {
                     bool moreQuestions = true;
-
                     while (moreQuestions)
                     {
                         QuizCard currentQuizCard = new()
@@ -43,6 +43,7 @@
                     }
                 }
 
+                //loads a quiz from a file
                 if (QuizAction.QuizOptions.Load == quizChoice)
                 {
                     List<QuizCard> loadedQuiz = Logic.LoadQuiz();
@@ -70,6 +71,7 @@
 
                 bool makeChanges = UserInterface.PromptMakeChanges();
 
+                //user makes changes to quiz
                 while (makeChanges)
                 {
                     int questionNumber = 0;
@@ -132,6 +134,15 @@
                     }
 
                     makeChanges = UserInterface.PromptMoreChanges();
+                    if (!makeChanges)
+                    {
+                        addQuestions = UserInterface.PromptAddQuestions();
+                    }
+                }
+
+                if (addQuestions)
+                {
+                    break;
                 }
 
                 bool takeQuiz = UserInterface.IsPlayQuiz();
