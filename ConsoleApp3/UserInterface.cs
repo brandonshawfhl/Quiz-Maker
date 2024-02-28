@@ -319,23 +319,12 @@
             return editAnswers;
         }
 
-        public static int GetAnswerNumber(List<QuizCard> currentQuiz)
+        public static int GetAnswerNumber()
         {
-            int answerNumber = 0;
-            bool answerDoesntExist = answerNumber > currentQuiz.Count || answerNumber < 0;
-            while (answerDoesntExist)
-            {
-                Console.WriteLine("Which answer would you like to change?");
-                Console.WriteLine("Please enter the number of the answer you would like to change.");
-                answerNumber = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("\n");
-
-                if (answerDoesntExist)
-                {
-                    Console.WriteLine("This answer does not exist. Please try again.");
-                    Console.WriteLine("\n");
-                }
-            }
+            Console.WriteLine("Which answer would you like to change?");
+            Console.WriteLine("Please enter the number of the answer you would like to change.");
+            int answerNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\n");
             return answerNumber;
         }
 
@@ -343,7 +332,7 @@
         {
             Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber]} in question number {questionNumber}.");
             Console.WriteLine("Please type the answer the way you would like it.");
-            Console.WriteLine($"{currentQuiz[questionNumber - 1].answerChoices[answerNumber].answer}");
+            Console.WriteLine($"{currentQuiz[questionNumber - 1].answerChoices[answerNumber - 1].answer}");
             Answer answerEdit = new()
             {
                 answer = Console.ReadLine()
@@ -401,6 +390,11 @@
         public static void PrintQuestionDoesntExistMessage()
         {
             Console.WriteLine("This question does not exist. Please try again.");
+        }
+
+        public static void PrintAnswerDoesntExistMessage()
+        {
+            Console.WriteLine("This answer does not exist. Please try again.");
         }
     }
 }

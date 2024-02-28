@@ -93,18 +93,24 @@
 
                         bool editAnswers = UserInterface.PromptEditAnswers();
 
-                        if (editAnswers)
+                        while (editAnswers)
                         {
                             bool answerDoesntExist = true;
                             int answerNumber = 0;
 
                             while (answerDoesntExist)
                             {
-                                answerNumber = UserInterface.GetAnswerNumber(currentQuiz);
+                                answerNumber = UserInterface.GetAnswerNumber();
                                 answerDoesntExist = Logic.IsAnswerValid(questionNumber, answerNumber, currentQuiz);
+
+                                if (answerDoesntExist)
+                                {
+                                    UserInterface.PrintAnswerDoesntExistMessage();
+                                }
                             }
-                            currentQuiz[questionNumber - 1].answerChoices[answerNumber] =
+                            currentQuiz[questionNumber - 1].answerChoices[answerNumber - 1] =
                                 UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
+                            editAnswers = UserInterface.PromptToEditAnotherAnswer();
                         }
 
                         saveQuiz = UserInterface.PromptToSave();
