@@ -68,12 +68,25 @@ namespace Quiz_Maker
             return randomQuiz;
         }
 
+        /// <summary>
+        /// checks to see if the question number the User has chosen is valid
+        /// </summary>
+        /// <param name="questionNumber">the number of the question the User has previously selected</param>
+        /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
+        /// <returns>true or false based on the result of the check</returns>
         public static bool IsQuestionValid(int questionNumber, List<QuizCard> currentQuiz)
         {
             bool validQuestion = Math.Abs(questionNumber) > currentQuiz.Count;
             return  validQuestion;
         }
 
+        /// <summary>
+        /// checks to see whether or not the answer the User has chosen is valid
+        /// </summary>
+        /// <param name="questionNumber">the number of the question the User has previously selected</param>
+        /// <param name="answerNumber">the corresponding number to the answer the user has previously selected</param>
+        /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
+        /// <returns>true or false based on the result of the check</returns>
         public static bool IsAnswerValid(int questionNumber, int answerNumber, List<QuizCard> currentQuiz) 
         {
             bool validAnswer = Math.Abs(answerNumber) > currentQuiz[questionNumber - 1].answerChoices.Count;

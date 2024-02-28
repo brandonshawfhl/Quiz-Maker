@@ -47,7 +47,7 @@
                 potentialAnswer.isCorrect = (isCorrectInput.Key == Constants.USER_YES_CHOICE);
                 potentialAnswers.Add(potentialAnswer);
                 tooManyAnswers = potentialAnswers.Count >= Constants.CHOICE_LIMIT;
-                
+
 
                 if (tooManyAnswers)
                 {
@@ -303,14 +303,14 @@
             Console.WriteLine("Please type the question the way you would like it.");
             Console.WriteLine($"{currentQuiz[questionNumber - 1].question}");
             string questionEdit = Console.ReadLine();
-            Console.WriteLine("\n");
+            Console.Write("\n");
             return questionEdit;
         }
 
         public static bool PromptEditAnswers()
         {
             Console.WriteLine("Would you like to edit any answers for this question?");
-            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool editAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
             Console.Write("\n");
@@ -323,7 +323,7 @@
             Console.WriteLine("Please enter the letter of the answer you would like to change.");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             int answerNumber = Constants.ANSWER_KEYS.IndexOf(userInput.Key);
-            Console.WriteLine("\n");
+            Console.Write("\n");
             return answerNumber;
         }
 
