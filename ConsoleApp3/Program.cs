@@ -13,7 +13,7 @@
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
                 QuizAction.QuizOptions quizChoice;
-                quizChoice = UserInterface.PromptForQuizAction();
+                quizChoice = UserInterface.PromptQuizAction();
 
                 bool saveQuiz;
 

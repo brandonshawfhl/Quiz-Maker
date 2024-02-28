@@ -74,7 +74,7 @@
         /// asks user to provide a number that determines what they would like to do in this program
         /// </summary>
         /// <returns>the choice they made in the form of an enum</returns>
-        public static QuizAction.QuizOptions PromptForQuizAction()
+        public static QuizAction.QuizOptions PromptQuizAction()
         {
             QuizAction.QuizOptions quizChoice;
             while (true)
@@ -149,14 +149,15 @@
         {
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
-                Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}\n");
+                Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}\n\n");
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}" +
                         $"{currentQuiz[questionNumber].answerChoices[answerNumber].answer}");
-                    Console.WriteLine("\n");
+                    Console.Write("\n");
                 }
+                Console.Write("\n\n\n");
             }
         }
 
@@ -322,7 +323,7 @@
         public static int GetAnswerNumber()
         {
             Console.WriteLine("Which answer would you like to change?");
-            Console.WriteLine("Please enter the number of the answer you would like to change.");
+            Console.WriteLine("Please enter the letter of the answer you would like to change.");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             int answerNumber = Constants.ANSWER_KEYS.IndexOf(userInput.Key);
             Console.WriteLine("\n");
