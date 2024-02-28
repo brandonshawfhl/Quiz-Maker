@@ -330,7 +330,7 @@
 
         public static Answer EditAnswer(List<QuizCard> currentQuiz, int questionNumber, int answerNumber)
         {
-            Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber]} in question number {questionNumber}.");
+            Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber - 1]} in question number {questionNumber}.");
             Console.WriteLine("Please type the answer the way you would like it.");
             Console.WriteLine($"{currentQuiz[questionNumber - 1].answerChoices[answerNumber - 1].answer}");
             Answer answerEdit = new()
