@@ -18,8 +18,8 @@
 
                 bool saveQuiz;
 
-                //user creates a quiz from scratch
-                if (QuizAction.QuizOptions.Make == quizChoice)
+                //user creates a quiz from scratch or edits a quiz that is currently active in the Program
+                if (QuizAction.QuizOptions.Make == quizChoice || QuizAction.QuizOptions.Edit == quizChoice)
                 {
                     bool moreQuestions = true;
                     while (moreQuestions)
@@ -138,11 +138,6 @@
                     {
                         addQuestions = UserInterface.PromptAddQuestions();
                     }
-                }
-
-                if (addQuestions)
-                {
-                    break;
                 }
 
                 bool takeQuiz = UserInterface.IsPlayQuiz();
