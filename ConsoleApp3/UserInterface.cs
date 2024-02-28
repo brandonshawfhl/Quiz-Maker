@@ -249,7 +249,7 @@
         /// prompts the User to decide whether or not they would like to retake the quiz they just took
         /// </summary>
         /// <returns>true or false based on the User's answer</returns>
-        public static bool IsPlayQuizAgain()
+        public static bool PromptPlayQuizAgain()
         {
             Console.WriteLine("Would you like to take your quiz again?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
@@ -262,7 +262,7 @@
         /// prompts the User to decide whether or not they would like to choose another quiz action
         /// </summary>
         /// <returns>true or false based on the User's choice</returns>
-        public static bool PromptToContinue()
+        public static bool PromptContinue()
         {
             Console.WriteLine("Would you like to continue?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
@@ -271,7 +271,7 @@
             return continuePlaying;
         }
 
-        public static bool PromptToMakeChanges()
+        public static bool PromptMakeChanges()
         {
             Console.WriteLine("Would you like to make any changes");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");

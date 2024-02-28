@@ -66,7 +66,7 @@
                 {
                     UserInterface.PrintQuiz(currentQuiz);
 
-                    bool makeChanges = UserInterface.PromptToMakeChanges();
+                    bool makeChanges = UserInterface.PromptMakeChanges();
 
                     while (makeChanges)
                     {
@@ -137,7 +137,7 @@
                         List<int> userAnswers = UserInterface.PlayQuiz(currentQuiz);
                         UserInterface.ConsoleClear();
                         UserInterface.PrintScore(currentQuiz, userAnswers);
-                        takeQuiz = UserInterface.IsPlayQuizAgain();
+                        takeQuiz = UserInterface.PromptPlayQuizAgain();
                         UserInterface.ConsoleClear();
                     }
 
@@ -148,7 +148,7 @@
                         break;
                     }
                 }
-                anotherAction = UserInterface.PromptToContinue();
+                anotherAction = UserInterface.PromptContinue();
             }
         }
     }
