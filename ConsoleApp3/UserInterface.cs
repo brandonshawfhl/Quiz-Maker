@@ -152,7 +152,7 @@
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}" +
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}  " +
                         $"{currentQuiz[questionNumber].answerChoices[answerNumber].answer}\n");
                 }
                 Console.WriteLine("\n\n");
@@ -188,7 +188,7 @@
 
                 for (int answerNumber = 0; answerNumber <= currentQuiz[questionNumber].answerChoices.Count - 1; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}" +
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}  " +
                         $"{currentQuiz[questionNumber].answerChoices[answerNumber].answer}\n");
                 }
 
@@ -214,7 +214,7 @@
 
                 for (int answerNumber = 0; answerNumber < currentQuiz[questionNumber].answerChoices.Count; answerNumber++)
                 {
-                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}" +
+                    Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}  " +
                         $"{currentQuiz[questionNumber].answerChoices[answerNumber].answer}");
                     Console.WriteLine("\n");
                 }
@@ -282,7 +282,7 @@
         public static int GetQuestionNumber()
         {
             Console.WriteLine("Which question would you like to change?");
-            Console.WriteLine("Please enter the number of the question you like to change.");
+            Console.WriteLine("Please enter the number of the question you like to change and then press Enter.");
             int questionNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\n");
             return questionNumber;
@@ -330,9 +330,9 @@
 
         public static Answer EditAnswer(List<QuizCard> currentQuiz, int questionNumber, int answerNumber)
         {
-            Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber - 1]} in question number {questionNumber}.");
+            Console.WriteLine($"Editing answer {Constants.ANSWER_CHOICES[answerNumber]} in question number {questionNumber}.");
             Console.WriteLine("Please type the answer the way you would like it.");
-            Console.WriteLine($"{currentQuiz[questionNumber - 1].answerChoices[answerNumber - 1].answer}");
+            Console.WriteLine($"{currentQuiz[questionNumber - 1].answerChoices[answerNumber].answer}");
             Answer answerEdit = new()
             {
                 answer = Console.ReadLine()

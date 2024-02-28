@@ -112,7 +112,7 @@
                             }
                         }
 
-                        currentQuiz[questionNumber - 1].answerChoices[answerNumber - 1] =
+                        currentQuiz[questionNumber - 1].answerChoices[answerNumber] =
                             UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
                         editAnswers = UserInterface.PromptEditAnotherAnswer();
                     }

@@ -6,16 +6,16 @@
         public const int CHOICE_LIMIT = 9;
         public static readonly List<string> ANSWER_CHOICES = new()
             {
-            "A.  ",
-            "B.  ",
-            "C.  ",
-            "D.  ",
-            "E.  ",
-            "F.  ",
-            "G.  ",
-            "H.  ",
-            "I.  ",
-            "J.  "
+            "A.",
+            "B.",
+            "C.",
+            "D.",
+            "E.",
+            "F.",
+            "G.",
+            "H.",
+            "I.",
+            "J."
             };
 
         public static readonly List<ConsoleKey> ANSWER_KEYS = new()
