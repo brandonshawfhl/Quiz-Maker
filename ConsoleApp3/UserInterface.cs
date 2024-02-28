@@ -281,19 +281,19 @@
         public static int GetQuestionNumber()
         {
             Console.WriteLine("Which question would you like to change?");
-            Console.WriteLine("Please enter the number of the question you like to change and then press Enter.");
+            Console.WriteLine("Please enter the number of the question you like to change and then press Enter.\n");
             int questionNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("\n");
+            Console.Write("\n");
             return questionNumber;
         }
 
         public static bool PromptEditQuestion()
         {
             Console.WriteLine("Would you like to edit the question itself?");
-            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool editQuestion = (userInput.Key == Constants.USER_YES_CHOICE);
-            Console.WriteLine("\n");
+            Console.Write("\n");
             return editQuestion;
         }
 
@@ -313,7 +313,7 @@
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
             bool editAnswers = (userInput.Key == Constants.USER_YES_CHOICE);
-            Console.WriteLine("\n");
+            Console.Write("\n");
             return editAnswers;
         }
 
@@ -337,6 +337,7 @@
                 answer = Console.ReadLine()
             };
 
+            Console.Write("\n");
             Console.WriteLine("Is this answer correct?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
@@ -378,7 +379,7 @@
 
         public static void PrintSuccessfulSaveMessage()
         {
-            Console.WriteLine("Your quiz has been successfully saved!");
+            Console.WriteLine("Your quiz has been successfully saved!\n");
         }
 
         public static void PrintFailedLoadMessage()
