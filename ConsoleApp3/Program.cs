@@ -91,14 +91,14 @@
                             currentQuiz[questionNumber - 1].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
                         }
 
-                        bool editAnswers = UserInterface.PromptEditAnswers();
+                        bool editAnswers = true;
 
                         while (editAnswers)
                         {
+                            editAnswers = UserInterface.PromptEditAnswers();
                             int answerNumber = UserInterface.GetAnswerNumber(currentQuiz);
                             currentQuiz[questionNumber - 1].answerChoices[answerNumber] =
                                 UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
-                            editAnswers = UserInterface.PromptEditAnswers();
                         }
 
                         saveQuiz = UserInterface.PromptToSave();
