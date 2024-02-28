@@ -73,6 +73,12 @@ namespace Quiz_Maker
             bool validQuestion = Math.Abs(questionNumber) > currentQuiz.Count;
             return  validQuestion;
         }
+
+        public static bool IsAnswerValid(int questionNumber, int answerNumber, List<QuizCard> currentQuiz) 
+        {
+            bool validAnswer = Math.Abs(answerNumber) > currentQuiz[questionNumber].answerChoices.Count;
+            return validAnswer;
+        }
     }
 }
 

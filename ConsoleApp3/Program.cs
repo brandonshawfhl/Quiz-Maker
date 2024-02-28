@@ -91,12 +91,18 @@
                             currentQuiz[questionNumber - 1].question = UserInterface.EditQuestion(currentQuiz, questionNumber);
                         }
 
-                        bool editAnswers = true;
+                        bool editAnswers = UserInterface.PromptEditAnswers();
 
-                        while (editAnswers)
+                        if (editAnswers)
                         {
-                            editAnswers = UserInterface.PromptEditAnswers();
-                            int answerNumber = UserInterface.GetAnswerNumber(currentQuiz);
+                            bool answerDoesntExist = true;
+                            int answerNumber = 0;
+
+                            while (answerDoesntExist)
+                            {
+                                answerNumber = UserInterface.GetAnswerNumber(currentQuiz);
+                                answerDoesntExist = Logic.IsAnswerValid(questionNumber, answerNumber, currentQuiz);
+                            }
                             currentQuiz[questionNumber - 1].answerChoices[answerNumber] =
                                 UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
                         }
