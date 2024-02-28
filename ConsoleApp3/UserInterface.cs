@@ -164,7 +164,7 @@
         /// asks the user if they would like to see the whole quiz
         /// </summary>
         /// <returns>returns true or false based on the user's answer</returns>
-        public static bool PromptToSeeWholeQuiz()
+        public static bool PromptSeeWholeQuiz()
         {
             Console.WriteLine("Would you like to see the whole quiz?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
@@ -345,7 +345,7 @@
             return answerEdit;
         }
 
-        public static bool PromptToEditAnotherAnswer()
+        public static bool PromptEditAnotherAnswer()
         {
             Console.WriteLine("Would you like to edit another answer?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");

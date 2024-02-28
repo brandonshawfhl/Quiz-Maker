@@ -59,7 +59,7 @@
                 }
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
-                bool seeQuiz = UserInterface.PromptToSeeWholeQuiz();
+                bool seeQuiz = UserInterface.PromptSeeWholeQuiz();
                 UserInterface.ConsoleClear();
 
                 if (seeQuiz)
@@ -110,7 +110,8 @@
                             }
                             currentQuiz[questionNumber - 1].answerChoices[answerNumber - 1] =
                                 UserInterface.EditAnswer(currentQuiz, questionNumber, answerNumber);
-                            editAnswers = UserInterface.PromptToEditAnotherAnswer();
+                            seeQuiz = UserInterface.PromptSeeWholeQuiz();
+                            editAnswers = UserInterface.PromptEditAnotherAnswer();
                         }
 
                         saveQuiz = UserInterface.PromptToSave();
