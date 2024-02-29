@@ -460,10 +460,26 @@ namespace Quiz_Maker
             Console.WriteLine("This answer does not exist. Please try again.");
         }
 
+        /// <summary>
+        /// prints message indicating there is no quiz stored currently in the program
+        /// </summary>
         public static void PrintNoQuizStoredMessage()
         {
             Console.WriteLine("Sorry you do not have any quiz data stored.");
             Console.WriteLine("Please create or load a quiz to continue.");
+        }
+
+        /// <summary>
+        /// prompts the User to disclose whether or not they would like to replace the quiz currently loaded into the program
+        /// </summary>
+        /// <returns>true or false based on the User's disclosure</returns>
+        public static bool PromptReplaceQuiz()
+        {
+            Console.WriteLine("Would you like to replace your current quiz?");
+            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
+            ConsoleKeyInfo userInput = Console.ReadKey(true);
+            bool replaceQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
+            return replaceQuiz;
         }
     }
 }

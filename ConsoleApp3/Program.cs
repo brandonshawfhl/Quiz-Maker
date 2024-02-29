@@ -11,14 +11,23 @@
             while (anotherAction)
             {
                 UserInterface.ConsoleClear();
+              
+                if (currentQuiz.Count > 0)
+                {
+                    if (UserInterface.PromptReplaceQuiz() == true)
+                    {
+                        currentQuiz.Clear();
+                    }
+                }
+
                 UserInterface.PrintWelcomeMessage();
-                QuizAction.QuizOptions 
+                QuizAction.QuizOptions quizChoice;
                 QuizAction.QuizCreation quizData;
                 quizData = UserInterface.PromptQuizCreation(currentQuiz);
                 bool saveQuiz;
 
                 //user creates a quiz from scratch or edits a quiz that is currently active in the Program
-                if (QuizAction.QuizCreation.Make == quizData || QuizAction.QuizOptions.Add == )
+                if (QuizAction.QuizCreation.Make == quizData || QuizAction.QuizOptions.Add == quizChoice)
                 {
                     bool moreQuestions = true;
                     while (moreQuestions)
