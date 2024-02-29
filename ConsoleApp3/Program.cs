@@ -14,15 +14,20 @@
                 UserInterface.PrintWelcomeMessage();
                 QuizAction.QuizOptions quizChoice;
                 quizChoice = UserInterface.PromptQuizAction();
-
                 bool saveQuiz;
 
                 //user creates a quiz from scratch or edits a quiz that is currently active in the Program
-                if (QuizAction.QuizOptions.Make == quizChoice)
+                if (QuizAction.QuizOptions.Make == quizChoice || QuizAction.QuizOptions.Add == quizChoice)
                 {
                     bool moreQuestions = true;
                     while (moreQuestions)
                     {
+                        if (QuizAction.QuizOptions.Add == quizChoice && currentQuiz.Count == 0)
+                        {
+                            UserInterface.PrintNoQuizStoredMessage();
+                            break;
+                        }
+
                         QuizCard currentQuizCard = new()
                         {
                             question = UserInterface.PromptForQuestion(),
