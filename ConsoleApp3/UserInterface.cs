@@ -103,19 +103,6 @@
         }
 
         /// <summary>
-        /// asks the user if they would like to continue using the program
-        /// </summary>
-        /// <returns>returns true or false based on the users answer</returns>
-        public static bool PromptMoreQuizOptions()
-        {
-            Console.WriteLine("Would you like to keep going?");
-            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool moreQuizOptions = (userInput.Key == Constants.USER_YES_CHOICE);
-            return moreQuizOptions;
-        }
-
-        /// <summary>
         /// Asks the user if they would like to create more questions
         /// </summary>
         /// <returns>true or false depedning on the user's answer</returns>
@@ -460,6 +447,10 @@
             Console.WriteLine("This answer does not exist. Please try again.");
         }
 
-        
+        public static void PrintNoQuizStoredMessage()
+        {
+            Console.WriteLine("Sorry you do not have any quiz data stored.");
+            Console.WriteLine("Please create or load a quiz to continue.");
+        }
     }
 }

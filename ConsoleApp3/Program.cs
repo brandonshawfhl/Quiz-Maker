@@ -58,9 +58,9 @@
                         UserInterface.PrintFailedLoadMessage();
                     }
                 }
-
+                    
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
-
+                
                 //user edits quiz
                 if (QuizAction.QuizOptions.Edit == quizChoice)
                 {
@@ -140,10 +140,9 @@
                 }
 
 
-                UserInterface.ConsoleClear();
-
                 if (QuizAction.QuizOptions.Take == quizChoice)
                 {
+                    UserInterface.ConsoleClear();
                     bool takeQuiz = true;
                     while (takeQuiz)
                     {
@@ -159,16 +158,15 @@
 
                         else
                         {
-                            Console.WriteLine("Sorry you do not have any quiz data stored.");
-                            Console.WriteLine("Please create or load a quiz to continue.");
+                            UserInterface.PrintNoQuizStoredMessage();
                             break;
                         }
                     }
                 }
-            }
 
-            anotherAction = UserInterface.PromptContinue();
+                anotherAction = UserInterface.PromptContinue();
+            }
         }
     }
 }
-}
+
