@@ -1,4 +1,6 @@
-﻿namespace Quiz_Maker
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Quiz_Maker
 {
     internal class UserInterface
     {
@@ -73,9 +75,9 @@
         /// asks User to provide a number that determines what they would like to do in this program
         /// </summary>
         /// <returns>the choice they made in the form of an enum</returns>
-        public static QuizAction.QuizOptions PromptQuizAction()
+        public static QuizAction.QuizCreation PromptQuizAction(List<QuizCard> currentQuiz)
         {
-            QuizAction.QuizOptions quizChoice;
+            QuizAction.QuizCreation quizChoice;
             while (true)
             {
                 Console.WriteLine("What would you like to do?(Enter 0 to make a quiz and 1 to load a quiz. If a quiz has");
@@ -83,23 +85,25 @@
                 Console.WriteLine("to a quiz or 4 to take the current quiz. Once you have entered the corresponding");
                 Console.WriteLine("number, press enter to continue.\n");
                 string quizChoiceConversion = Console.ReadLine();
-                quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizOptions), quizChoiceConversion);
+                quizChoice = (QuizAction.QuizCreation)Enum.Parse(typeof(QuizAction.QuizCreation), quizChoiceConversion);
                 Console.Clear();
                 switch (quizChoice)
                 {
-                    case QuizAction.QuizOptions.Make:
+                    case currentQuiz.Count > 0:
+
+                    case QuizAction.QuizCreation.Make:
                         break;
 
-                    case QuizAction.QuizOptions.Load:
+                    case QuizAction.QuizCreation.Load:
                         break;
 
-                    case QuizAction.QuizOptions.Edit:
+                    case QuizAction.QuizCreation.Edit:
                         break;
 
-                    case QuizAction.QuizOptions.Add:
+                    case QuizAction.QuizCreation.Add:
                         break;
 
-                    case QuizAction.QuizOptions.Take:
+                    case QuizAction.QuizCreation.Take:
                         break;
 
                     default:

@@ -12,22 +12,16 @@
             {
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
-                QuizAction.QuizOptions quizChoice;
-                quizChoice = UserInterface.PromptQuizAction();
+                QuizAction.QuizCreation quizChoice;
+                quizChoice = UserInterface.PromptQuizAction(currentQuiz);
                 bool saveQuiz;
 
                 //user creates a quiz from scratch or edits a quiz that is currently active in the Program
-                if (QuizAction.QuizOptions.Make == quizChoice || QuizAction.QuizOptions.Add == quizChoice)
+                if (QuizAction.QuizCreation.Make == quizChoice || QuizAction.QuizCreation.Add == quizChoice)
                 {
                     bool moreQuestions = true;
                     while (moreQuestions)
                     {
-                        if (QuizAction.QuizOptions.Add == quizChoice && currentQuiz.Count == 0)
-                        {
-                            UserInterface.PrintNoQuizStoredMessage();
-                            break;
-                        }
-
                         QuizCard currentQuizCard = new()
                         {
                             question = UserInterface.PromptForQuestion(),
@@ -48,7 +42,7 @@
                 }
 
                 //loads a quiz from a file
-                if (QuizAction.QuizOptions.Load == quizChoice)
+                if (QuizAction.QuizCreation.Load == quizChoice)
                 {
                     List<QuizCard> loadedQuiz = Logic.LoadQuiz();
 
@@ -66,7 +60,7 @@
 
 
                 //user edits quiz
-                if (QuizAction.QuizOptions.Edit == quizChoice)
+                if (QuizAction.QuizCreation.Edit == quizChoice)
                 {
                     bool seeQuiz = UserInterface.PromptSeeQuiz();
                     UserInterface.ConsoleClear();
@@ -144,7 +138,7 @@
                 }
 
 
-                if (QuizAction.QuizOptions.Take == quizChoice)
+                if (QuizAction.QuizCreation.Take == quizChoice)
                 {
                     List<QuizCard> shuffledQuiz = Logic.ShuffleQuizCards(currentQuiz);
                     UserInterface.ConsoleClear();
