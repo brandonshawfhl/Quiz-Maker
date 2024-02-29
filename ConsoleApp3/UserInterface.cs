@@ -75,7 +75,7 @@ namespace Quiz_Maker
         /// asks User to provide a number that determines what they would like to do in this program
         /// </summary>
         /// <returns>the choice they made in the form of an enum</returns>
-        public static QuizAction.QuizCreation PromptQuizAction(List<QuizCard> currentQuiz)
+        public static QuizAction.QuizCreation PromptQuizCreation(List<QuizCard> currentQuiz)
         {
             QuizAction.QuizCreation quizChoice;
             while (true)

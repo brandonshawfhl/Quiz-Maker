@@ -12,12 +12,13 @@
             {
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
-                QuizAction.QuizCreation quizChoice;
-                quizChoice = UserInterface.PromptQuizAction(currentQuiz);
+                QuizAction.QuizOptions 
+                QuizAction.QuizCreation quizData;
+                quizData = UserInterface.PromptQuizCreation(currentQuiz);
                 bool saveQuiz;
 
                 //user creates a quiz from scratch or edits a quiz that is currently active in the Program
-                if (QuizAction.QuizCreation.Make == quizChoice || QuizAction.QuizCreation.Add == quizChoice)
+                if (QuizAction.QuizCreation.Make == quizData || QuizAction.QuizOptions.Add == )
                 {
                     bool moreQuestions = true;
                     while (moreQuestions)
@@ -42,7 +43,7 @@
                 }
 
                 //loads a quiz from a file
-                if (QuizAction.QuizCreation.Load == quizChoice)
+                if (QuizAction.QuizCreation.Load == quizData)
                 {
                     List<QuizCard> loadedQuiz = Logic.LoadQuiz();
 
@@ -60,7 +61,7 @@
 
 
                 //user edits quiz
-                if (QuizAction.QuizCreation.Edit == quizChoice)
+                if (QuizAction.QuizCreation.Edit == quizData)
                 {
                     bool seeQuiz = UserInterface.PromptSeeQuiz();
                     UserInterface.ConsoleClear();
@@ -138,7 +139,7 @@
                 }
 
 
-                if (QuizAction.QuizCreation.Take == quizChoice)
+                if (QuizAction.QuizCreation.Take == quizData)
                 {
                     List<QuizCard> shuffledQuiz = Logic.ShuffleQuizCards(currentQuiz);
                     UserInterface.ConsoleClear();
