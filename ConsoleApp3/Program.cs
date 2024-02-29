@@ -22,8 +22,10 @@
                         currentQuiz.Clear();
                     }
 
-                QuizAction.QuizOptions quizChoice;
-
+                    else
+                    {
+                        QuizAction.QuizOptions quizChoice = UserInterface.PromptQuizOptions();
+                    }
                 }
 
                 QuizAction.QuizCreation quizData;

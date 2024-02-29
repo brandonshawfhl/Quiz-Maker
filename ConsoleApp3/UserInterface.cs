@@ -1,4 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Metrics;
 
 namespace Quiz_Maker
 {
@@ -75,35 +77,23 @@ namespace Quiz_Maker
         /// asks User to provide a number that determines what they would like to do in this program
         /// </summary>
         /// <returns>the choice they made in the form of an enum</returns>
-        public static QuizAction.QuizCreation PromptQuizCreation(List<QuizCard> currentQuiz)
+        public static QuizAction.QuizCreation PromptQuizCreation()
         {
-            QuizAction.QuizCreation quizChoice;
+            QuizAction.QuizCreation quizData;
+
             while (true)
             {
-                Console.WriteLine("What would you like to do?(Enter 0 to make a quiz and 1 to load a quiz. If a quiz has");
-                Console.WriteLine("already been made or loaded you may also enter 2 to edit the current quiz, 3 to add");
-                Console.WriteLine("to a quiz or 4 to take the current quiz. Once you have entered the corresponding");
-                Console.WriteLine("number, press enter to continue.\n");
-                string quizChoiceConversion = Console.ReadLine();
-                quizChoice = (QuizAction.QuizCreation)Enum.Parse(typeof(QuizAction.QuizCreation), quizChoiceConversion);
+                Console.WriteLine("What would you like to do? (Enter 0 to make a quiz and 1 to load a quiz. Once you have");
+                Console.WriteLine("entered the corresponding number, press enter to continue.)\n");
+                string quizDataConversion = Console.ReadLine();
+                quizData = (QuizAction.QuizCreation)Enum.Parse(typeof(QuizAction.QuizCreation), quizDataConversion);
                 Console.Clear();
-                switch (quizChoice)
+                switch (quizData)
                 {
-                    case currentQuiz.Count > 0:
-
                     case QuizAction.QuizCreation.Make:
                         break;
 
                     case QuizAction.QuizCreation.Load:
-                        break;
-
-                    case QuizAction.QuizCreation.Edit:
-                        break;
-
-                    case QuizAction.QuizCreation.Add:
-                        break;
-
-                    case QuizAction.QuizCreation.Take:
                         break;
 
                     default:
@@ -112,7 +102,7 @@ namespace Quiz_Maker
                 }
                 break;
             }
-            return quizChoice;
+            return quizData;
         }
 
         /// <summary>
@@ -482,6 +472,37 @@ namespace Quiz_Maker
             return replaceQuiz;
         }
 
-        public static QuizAction.QuizOptions 
+        public static QuizAction.QuizOptions PromptQuizOptions()
+        {
+            QuizAction.QuizOptions quizChoice;
+
+            while (true)
+            {
+                Console.WriteLine("What would you like to do? (Enter 0 to edit your quiz, 1 to add more questions and");
+                Console.WriteLine("answers to your quiz or 2 to take your quiz. Once you have entered the corresponding");
+                Console.WriteLine("number, press enter to continue.)\n");
+                string quizChoiceConversion = Console.ReadLine();
+                quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizCreation), quizChoiceConversion);
+                Console.Clear();
+                switch (quizChoice)
+                {
+                    case QuizAction.QuizOptions.Edit:
+                        break;
+
+                    case QuizAction.QuizOptions.Add:
+                        break;
+
+                    case QuizAction.QuizOptions.Take:
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid entry. Please try again.\n");
+                        continue;
+                }
+                break;
+            }
+            return quizChoice;
+        }
+
     }
 }
