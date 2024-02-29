@@ -14,7 +14,9 @@
               
                 if (currentQuiz.Count > 0)
                 {
-                    if (UserInterface.PromptReplaceQuiz() == true)
+                    bool replaceQuiz = UserInterface.PromptReplaceQuiz();
+
+                    if (replaceQuiz)
                     {
                         currentQuiz.Clear();
                     }
