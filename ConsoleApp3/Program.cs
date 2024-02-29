@@ -6,7 +6,7 @@
         static void Main(string[] args)
         {
             bool anotherAction = true;
-            List<QuizCard> madeQuiz = new();
+            List<QuizCard> currentQuiz = new();
 
             while (anotherAction)
             {
@@ -29,14 +29,14 @@
                             answerChoices = UserInterface.PromptForAnswers()
                         };
 
-                        madeQuiz.Add(currentQuizCard);
+                        currentQuiz.Add(currentQuizCard);
                         moreQuestions = UserInterface.PromptMoreQuestions();
                         UserInterface.ConsoleClear();
                         saveQuiz = UserInterface.PromptSave();
 
                         if (saveQuiz)
                         {
-                            Logic.SaveQuiz(madeQuiz);
+                            Logic.SaveQuiz(currentQuiz);
                             UserInterface.PrintSuccessfulSaveMessage();
                         }
                     }
@@ -50,7 +50,7 @@
                     if (loadedQuiz.Count > 0)
                     {
                         UserInterface.PrintSuccessfulLoadMessage();
-                        madeQuiz = loadedQuiz;
+                        currentQuiz = loadedQuiz;
                     }
 
                     else
@@ -58,9 +58,8 @@
                         UserInterface.PrintFailedLoadMessage();
                     }
                 }
-                    
-                List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
-                
+
+
                 //user edits quiz
                 if (QuizAction.QuizOptions.Edit == quizChoice)
                 {
@@ -131,7 +130,7 @@
 
                         if (saveQuiz)
                         {
-                            Logic.SaveQuiz(madeQuiz);
+                            Logic.SaveQuiz(currentQuiz);
                             UserInterface.PrintSuccessfulSaveMessage();
                         }
 
@@ -142,16 +141,17 @@
 
                 if (QuizAction.QuizOptions.Take == quizChoice)
                 {
+                    List<QuizCard> shuffledQuiz = Logic.ShuffleQuizCards(currentQuiz);
                     UserInterface.ConsoleClear();
                     bool takeQuiz = true;
                     while (takeQuiz)
                     {
-                        if (currentQuiz.Count > 0)
+                        if (shuffledQuiz.Count > 0)
                         {
                             UserInterface.ConsoleClear();
-                            List<int> userAnswers = UserInterface.PlayQuiz(currentQuiz);
+                            List<int> userAnswers = UserInterface.PlayQuiz(shuffledQuiz);
                             UserInterface.ConsoleClear();
-                            UserInterface.PrintScore(currentQuiz, userAnswers);
+                            UserInterface.PrintScore(shuffledQuiz, userAnswers);
                             takeQuiz = UserInterface.PromptPlayQuizAgain();
                             UserInterface.ConsoleClear();
                         }
