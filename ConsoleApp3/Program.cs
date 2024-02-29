@@ -11,7 +11,8 @@
             while (anotherAction)
             {
                 UserInterface.ConsoleClear();
-              
+                UserInterface.PrintWelcomeMessage();
+
                 if (currentQuiz.Count > 0)
                 {
                     bool replaceQuiz = UserInterface.PromptReplaceQuiz();
@@ -20,12 +21,18 @@
                     {
                         currentQuiz.Clear();
                     }
+
+                QuizAction.QuizOptions quizChoice;
+
                 }
 
-                UserInterface.PrintWelcomeMessage();
-                QuizAction.QuizOptions quizChoice;
                 QuizAction.QuizCreation quizData;
-                quizData = UserInterface.PromptQuizCreation(currentQuiz);
+
+                if (currentQuiz.Count == 0)
+                {
+                    quizData = UserInterface.PromptQuizCreation(currentQuiz);
+                }
+
                 bool saveQuiz;
 
                 //user creates a quiz from scratch or edits a quiz that is currently active in the Program
