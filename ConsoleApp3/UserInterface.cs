@@ -79,7 +79,7 @@
             while (true)
             {
                 Console.WriteLine("What would you like to do?(Enter 0 to make a quiz and 1 to load a quiz. If a quiz has");
-                Console.WriteLine("already been made or loaded you may also enter 2 to edit the current quiz or 3 to add");
+                Console.WriteLine("already been made or loaded you may also enter 2 to edit the current quiz, 3 to add");
                 Console.WriteLine("to a quiz or 4 to take the current quiz. Once you have entered the corresponding");
                 Console.WriteLine("number, press enter to continue.\n");
                 string quizChoiceConversion = Console.ReadLine();
@@ -91,6 +91,15 @@
                         break;
 
                     case QuizAction.QuizOptions.Load:
+                        break;
+
+                    case QuizAction.QuizOptions.Edit:
+                        break;
+
+                    case QuizAction.QuizOptions.Add:
+                        break;
+
+                    case QuizAction.QuizOptions.Take:
                         break;
 
                     default:
