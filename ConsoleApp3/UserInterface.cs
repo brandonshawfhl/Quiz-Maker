@@ -460,13 +460,6 @@
             Console.WriteLine("This answer does not exist. Please try again.");
         }
 
-        public static bool PromptAddQuestions()
-        {
-            Console.WriteLine("Would you like to add any questions to your quiz?");
-            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool addQuestions = (userInput.Key == Constants.USER_YES_CHOICE);
-            return addQuestions;
-        }
+        
     }
 }

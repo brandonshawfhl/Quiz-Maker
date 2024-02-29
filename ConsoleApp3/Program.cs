@@ -61,9 +61,9 @@
 
                 List<QuizCard> currentQuiz = Logic.ShuffleQuizCards(madeQuiz);
 
+                //user edits quiz
                 if (QuizAction.QuizOptions.Edit == quizChoice)
                 {
-
                     bool seeQuiz = UserInterface.PromptSeeQuiz();
                     UserInterface.ConsoleClear();
 
@@ -74,7 +74,6 @@
 
                     bool makeChanges = UserInterface.PromptMakeChanges();
 
-                    //user makes changes to quiz
                     while (makeChanges)
                     {
                         int questionNumber = 0;
@@ -140,31 +139,36 @@
                     }
                 }
 
-                bool takeQuiz = UserInterface.IsPlayQuiz();
+
                 UserInterface.ConsoleClear();
 
-                while (takeQuiz)
+                if (QuizAction.QuizOptions.Take == quizChoice)
                 {
-                    if (currentQuiz.Count > 0)
+                    bool takeQuiz = true;
+                    while (takeQuiz)
                     {
-                        UserInterface.ConsoleClear();
-                        List<int> userAnswers = UserInterface.PlayQuiz(currentQuiz);
-                        UserInterface.ConsoleClear();
-                        UserInterface.PrintScore(currentQuiz, userAnswers);
-                        takeQuiz = UserInterface.PromptPlayQuizAgain();
-                        UserInterface.ConsoleClear();
-                    }
+                        if (currentQuiz.Count > 0)
+                        {
+                            UserInterface.ConsoleClear();
+                            List<int> userAnswers = UserInterface.PlayQuiz(currentQuiz);
+                            UserInterface.ConsoleClear();
+                            UserInterface.PrintScore(currentQuiz, userAnswers);
+                            takeQuiz = UserInterface.PromptPlayQuizAgain();
+                            UserInterface.ConsoleClear();
+                        }
 
-                    else
-                    {
-                        Console.WriteLine("Sorry you do not have any quiz data stored.");
-                        Console.WriteLine("Please create or load a quiz to continue.");
-                        break;
+                        else
+                        {
+                            Console.WriteLine("Sorry you do not have any quiz data stored.");
+                            Console.WriteLine("Please create or load a quiz to continue.");
+                            break;
+                        }
                     }
                 }
-
-                anotherAction = UserInterface.PromptContinue();
             }
+
+            anotherAction = UserInterface.PromptContinue();
         }
     }
+}
 }
