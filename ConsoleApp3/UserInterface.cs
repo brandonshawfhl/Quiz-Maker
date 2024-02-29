@@ -481,5 +481,7 @@ namespace Quiz_Maker
             bool replaceQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
             return replaceQuiz;
         }
+
+        public static QuizAction.QuizOptions 
     }
 }
