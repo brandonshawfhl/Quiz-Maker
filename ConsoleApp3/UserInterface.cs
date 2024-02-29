@@ -78,8 +78,10 @@
             QuizAction.QuizOptions quizChoice;
             while (true)
             {
-                Console.WriteLine("What would you like to do?(Enter 0 to make a quiz and 1 to load a quiz.)");
-                Console.WriteLine("Once you have entered the corresponding number, press enter to continue.\n");
+                Console.WriteLine("What would you like to do?(Enter 0 to make a quiz and 1 to load a quiz. If a quiz has");
+                Console.WriteLine("already been made or loaded you may also enter 2 to edit the current quiz or 3 to add");
+                Console.WriteLine("to a quiz or 4 to take the current quiz. Once you have entered the corresponding");
+                Console.WriteLine("number, press enter to continue.\n");
                 string quizChoiceConversion = Console.ReadLine();
                 quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizOptions), quizChoiceConversion);
                 Console.Clear();

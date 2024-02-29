@@ -10,6 +10,7 @@
             Make,
             Load,
             Edit,
+            Add,
             Take
         }
     }
