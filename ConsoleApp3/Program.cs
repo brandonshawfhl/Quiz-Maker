@@ -12,6 +12,7 @@
             {
                 UserInterface.ConsoleClear();
                 UserInterface.PrintWelcomeMessage();
+                QuizAction.QuizOptions quizChoice = default;
 
                 if (currentQuiz.Count > 0)
                 {
@@ -24,15 +25,15 @@
 
                     else
                     {
-                        QuizAction.QuizOptions quizChoice = UserInterface.PromptQuizOptions();
+                        quizChoice = UserInterface.PromptQuizOptions();
                     }
                 }
 
-                QuizAction.QuizCreation quizData;
+                QuizAction.QuizCreation quizData = default;
 
                 if (currentQuiz.Count == 0)
                 {
-                    quizData = UserInterface.PromptQuizCreation(currentQuiz);
+                    quizData = UserInterface.PromptQuizCreation();
                 }
 
                 bool saveQuiz;
@@ -81,7 +82,7 @@
 
 
                 //user edits quiz
-                if (QuizAction.QuizCreation.Edit == quizData)
+                if (QuizAction.QuizOptions.Edit == quizChoice)
                 {
                     bool seeQuiz = UserInterface.PromptSeeQuiz();
                     UserInterface.ConsoleClear();
@@ -159,7 +160,7 @@
                 }
 
 
-                if (QuizAction.QuizCreation.Take == quizData)
+                if (QuizAction.QuizOptions.Take == quizChoice)
                 {
                     List<QuizCard> shuffledQuiz = Logic.ShuffleQuizCards(currentQuiz);
                     UserInterface.ConsoleClear();
