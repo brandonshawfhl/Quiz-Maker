@@ -16,6 +16,7 @@
 
                 if (currentQuiz.Count > 0)
                 {
+                    UserInterface.PrintQuiz(currentQuiz);
                     bool replaceQuiz = UserInterface.PromptReplaceQuiz();
 
                     if (replaceQuiz)
@@ -66,22 +67,27 @@
                 //loads a quiz from a file
                 if (QuizAction.QuizCreation.Load == quizData)
                 {
-                    List<QuizCard> loadedQuiz = Logic.LoadQuiz();
+                    bool quizIntended = true;
 
-                    if (loadedQuiz.Count > 0)
+                    while (quizIntended)
                     {
-                        UserInterface.PrintSuccessfulLoadMessage();
-                        currentQuiz = loadedQuiz;
-                        UserInterface.PrintQuiz(currentQuiz);
-                    }
+                        List<QuizCard> loadedQuiz = Logic.LoadQuiz();
 
-                    else
-                    {
-                        UserInterface.PrintFailedLoadMessage();
+                        if (loadedQuiz.Count > 0)
+                        {
+                            UserInterface.PrintSuccessfulLoadMessage();
+                            currentQuiz = loadedQuiz;
+                            UserInterface.PrintQuiz(currentQuiz);
+                            quizIntended = UserInterface.PromptQuizIntended();
+                        }
                     }
                 }
 
-
+                else
+                {
+                    UserInterface.PrintFailedLoadMessage();
+                }
+                
                 //user edits quiz
                 if (QuizAction.QuizOptions.Edit == quizChoice)
                 {
