@@ -464,8 +464,8 @@
             Console.WriteLine("Would you like to continue working with this quiz?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
             ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool replaceQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
-            return replaceQuiz;
+            bool continueWorking = (userInput.Key == Constants.USER_YES_CHOICE);
+            return continueWorking;
         }
 
         public static QuizAction.QuizOptions PromptQuizOptions()

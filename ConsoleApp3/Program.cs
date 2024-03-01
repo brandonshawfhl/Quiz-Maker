@@ -17,9 +17,9 @@
                 if (currentQuiz.Count > 0)
                 {
                     UserInterface.PrintQuiz(currentQuiz);
-                    bool replaceQuiz = UserInterface.PromptReplaceQuiz();
+                    bool continueWorking = UserInterface.PromptReplaceQuiz();
 
-                    if (replaceQuiz)
+                    if (continueWorking)
                     {
                         currentQuiz.Clear();
                     }
@@ -67,9 +67,9 @@
                 //loads a quiz from a file
                 if (QuizAction.QuizCreation.Load == quizData)
                 {
-                    bool quizIntended = true;
+                    bool quizIntended = false;
 
-                    while (quizIntended)
+                    while (!quizIntended)
                     {
                         List<QuizCard> loadedQuiz = Logic.LoadQuiz();
 
