@@ -80,25 +80,20 @@
                             UserInterface.PrintQuiz(currentQuiz);
                             quizIntended = UserInterface.PromptQuizIntended();
                         }
+
+                        else
+                        {
+                            UserInterface.PrintFailedLoadMessage();
+                        }
                     }
                 }
 
-                else
-                {
-                    UserInterface.PrintFailedLoadMessage();
-                }
-                
+
                 //user edits quiz
                 if (QuizAction.QuizOptions.Edit == quizChoice)
                 {
-                    bool seeQuiz = UserInterface.PromptSeeQuiz();
                     UserInterface.ConsoleClear();
-
-                    if (seeQuiz)
-                    {
-                        UserInterface.PrintQuiz(currentQuiz);
-                    }
-
+                    UserInterface.PrintQuiz(currentQuiz);
                     bool makeChanges = UserInterface.PromptMakeChanges();
 
                     while (makeChanges)
@@ -147,13 +142,7 @@
                             editAnswers = UserInterface.PromptEditAnotherAnswer();
                         }
 
-                        seeQuiz = UserInterface.PromptSeeQuiz();
-
-                        if (seeQuiz)
-                        {
-                            UserInterface.PrintQuiz(currentQuiz);
-                        }
-
+                        UserInterface.PrintQuiz(currentQuiz);
                         saveQuiz = UserInterface.PromptSave();
 
                         if (saveQuiz)

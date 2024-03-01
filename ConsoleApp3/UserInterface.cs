@@ -147,19 +147,6 @@
         }
 
         /// <summary>
-        /// asks the user if they would like to see the whole quiz
-        /// </summary>
-        /// <returns>returns true or false based on the user's answer</returns>
-        public static bool PromptSeeQuiz()
-        {
-            Console.WriteLine("Would you like to see the whole quiz?");
-            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool seeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
-            return seeQuiz;
-        }
-
-        /// <summary>
         /// outputs all the questions in the entire quiz 1 at a time, allows the User to answer and then stores the number
         /// of the answer the User has selected
         /// </summary>
