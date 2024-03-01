@@ -12,14 +12,14 @@
             while (anotherAction)
             {
                 UserInterface.ConsoleClear();
-                QuizAction.QuizOptions quizChoice = QuizAction.QuizOptions.Default;
+                QuizAction.QuizOptions quizChoice = QuizAction.QuizOptions.Reset;
 
                 if (currentQuiz.Count > 0)
                 {
                     UserInterface.PrintQuiz(currentQuiz);
                     bool continueWorking = UserInterface.PromptReplaceQuiz();
 
-                    if (continueWorking)
+                    if (!continueWorking)
                     {
                         currentQuiz.Clear();
                     }
@@ -30,7 +30,7 @@
                     }
                 }
 
-                QuizAction.QuizCreation quizData = QuizAction.QuizCreation.Default;
+                QuizAction.QuizCreation quizData = QuizAction.QuizCreation.Reset;
 
                 if (currentQuiz.Count == 0)
                 {

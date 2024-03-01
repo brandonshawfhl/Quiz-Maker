@@ -10,7 +10,7 @@
         {
             Make,
             Load,
-            Default
+            Reset
         }
 
         public enum QuizOptions
@@ -18,7 +18,7 @@
             Edit,
             Add,
             Take,
-            Default
+            Reset
         }
     }
 }
