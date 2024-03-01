@@ -10,13 +10,15 @@
         {
             Make,
             Load,
+            Default
         }
 
         public enum QuizOptions
         {
             Edit,
             Add,
-            Take
+            Take,
+            Default
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Quiz_Maker
         /// </summary>
         public static void PrintWelcomeMessage()
         {
-            Console.WriteLine("Welcome to Quiz Maker where you can make your own quiz!\n");
+            Console.WriteLine("Quiz Maker\n");
         }
 
         /// <summary>

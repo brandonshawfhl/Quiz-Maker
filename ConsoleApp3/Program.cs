@@ -5,14 +5,14 @@
         public static readonly Random rng = new();
         static void Main(string[] args)
         {
+            UserInterface.PrintWelcomeMessage();
             bool anotherAction = true;
             List<QuizCard> currentQuiz = new();
 
             while (anotherAction)
             {
                 UserInterface.ConsoleClear();
-                UserInterface.PrintWelcomeMessage();
-                QuizAction.QuizOptions quizChoice = default;
+                QuizAction.QuizOptions quizChoice = QuizAction.QuizOptions.Default;
 
                 if (currentQuiz.Count > 0)
                 {
@@ -29,7 +29,7 @@
                     }
                 }
 
-                QuizAction.QuizCreation quizData = default;
+                QuizAction.QuizCreation quizData = QuizAction.QuizCreation.Default;
 
                 if (currentQuiz.Count == 0)
                 {
