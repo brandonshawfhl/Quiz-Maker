@@ -72,6 +72,7 @@
                     {
                         UserInterface.PrintSuccessfulLoadMessage();
                         currentQuiz = loadedQuiz;
+                        UserInterface.PrintQuiz(currentQuiz);
                     }
 
                     else

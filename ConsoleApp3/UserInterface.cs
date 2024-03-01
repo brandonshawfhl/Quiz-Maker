@@ -1,8 +1,4 @@
-﻿using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.Metrics;
-
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
     internal class UserInterface
     {
@@ -415,7 +411,7 @@ namespace Quiz_Maker
         /// </summary>
         public static void PrintSuccessfulLoadMessage()
         {
-            Console.WriteLine("Your quiz has been successfully loaded!");
+            Console.WriteLine("Your quiz has been successfully loaded!\n");
         }
 
         /// <summary>
