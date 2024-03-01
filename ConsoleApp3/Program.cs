@@ -94,7 +94,7 @@
                 {
                     UserInterface.ConsoleClear();
                     UserInterface.PrintQuiz(currentQuiz);
-                    bool makeChanges = UserInterface.PromptMakeChanges();
+                    bool makeChanges = true;
 
                     while (makeChanges)
                     {

@@ -245,19 +245,6 @@
         }
 
         /// <summary>
-        /// prompts the User to disclose whether or not they would like to make any changes to their quiz
-        /// </summary>
-        /// <returns>true or false based on the User's disclosure</returns>
-        public static bool PromptMakeChanges()
-        {
-            Console.WriteLine("Would you like to make any changes");
-            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool makeChanges = (userInput.Key == Constants.USER_YES_CHOICE);
-            return makeChanges;
-        }
-
-        /// <summary>
         /// Prompts the User to enter the number of the question they would like to edit
         /// </summary>
         /// <returns>the number of the question the User would like to edit</returns>

@@ -31,6 +31,7 @@ namespace Quiz_Maker
             {
                 loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
             }
+
             return loadedQuiz;
         }
 
@@ -65,6 +66,7 @@ namespace Quiz_Maker
                 randomQuiz.Add(randomQuizCard);
                 quizCardList.Remove(randomQuizCard);
             }
+
             return randomQuiz;
         }
 
