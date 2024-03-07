@@ -71,6 +71,12 @@
 
                     while (!quizIntended)
                     {
+                        if (!File.Exists(Constants.PATH))
+                        {
+                            UserInterface.PrintFailedLoadMessage();
+                            break;
+                        }
+
                         List<QuizCard> loadedQuiz = Logic.LoadQuiz();
 
                         if (loadedQuiz.Count > 0)
@@ -79,11 +85,6 @@
                             currentQuiz = loadedQuiz;
                             UserInterface.PrintQuiz(currentQuiz);
                             quizIntended = UserInterface.PromptQuizIntended();
-                        }
-
-                        else
-                        {
-                            UserInterface.PrintFailedLoadMessage();
                         }
                     }
                 }
@@ -161,6 +162,7 @@
                     List<QuizCard> shuffledQuiz = Logic.ShuffleQuizCards(currentQuiz);
                     UserInterface.ConsoleClear();
                     bool takeQuiz = true;
+
                     while (takeQuiz)
                     {
                         if (shuffledQuiz.Count > 0)

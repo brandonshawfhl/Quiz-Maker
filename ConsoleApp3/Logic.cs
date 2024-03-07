@@ -24,14 +24,9 @@ namespace Quiz_Maker
         /// <returns>a list of quiz qustions and their associated information</returns>
         public static List<QuizCard> LoadQuiz()
         {
-            List<QuizCard> loadedQuiz = new();
             XmlSerializer serializer = new(typeof(List<QuizCard>));
-
-            using (FileStream file = File.OpenRead(Constants.PATH))
-            {
-                loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
-            }
-
+            using FileStream file = File.OpenRead(Constants.PATH);
+            List <QuizCard> loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
             return loadedQuiz;
         }
 
@@ -79,7 +74,7 @@ namespace Quiz_Maker
         public static bool IsQuestionValid(int questionNumber, List<QuizCard> currentQuiz)
         {
             bool validQuestion = Math.Abs(questionNumber) > currentQuiz.Count;
-            return  validQuestion;
+            return validQuestion;
         }
 
         /// <summary>
@@ -89,7 +84,7 @@ namespace Quiz_Maker
         /// <param name="answerNumber">the corresponding number to the answer the user has previously selected</param>
         /// <param name="currentQuiz">list containing quiz questions and all of their associated information</param>
         /// <returns>true or false based on the result of the check</returns>
-        public static bool IsAnswerValid(int questionNumber, int answerNumber, List<QuizCard> currentQuiz) 
+        public static bool IsAnswerValid(int questionNumber, int answerNumber, List<QuizCard> currentQuiz)
         {
             bool validAnswer = Math.Abs(answerNumber) > currentQuiz[questionNumber - 1].answerChoices.Count;
             return validAnswer;

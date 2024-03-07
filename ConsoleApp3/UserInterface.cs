@@ -66,6 +66,7 @@
                     break;
                 }
             }
+
             return potentialAnswers;
         }
 
@@ -84,6 +85,7 @@
                 string quizDataConversion = Console.ReadLine();
                 quizData = (QuizAction.QuizCreation)Enum.Parse(typeof(QuizAction.QuizCreation), quizDataConversion);
                 Console.Clear();
+
                 switch (quizData)
                 {
                     case QuizAction.QuizCreation.Make:
@@ -96,6 +98,7 @@
                         Console.WriteLine("Invalid entry. Please try again.\n");
                         continue;
                 }
+
                 break;
             }
             return quizData;
@@ -115,19 +118,6 @@
         }
 
         /// <summary>
-        /// Prompts the user to answer whether or not they would like to take the quiz currently loaded into the program
-        /// </summary>
-        /// <returns>true or false that is determined by the User's answer</returns>
-        public static bool IsPlayQuiz()
-        {
-            Console.WriteLine("Would you like to take your current quiz?");
-            Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
-            ConsoleKeyInfo userInput = Console.ReadKey(true);
-            bool takeQuiz = (userInput.Key == Constants.USER_YES_CHOICE);
-            return takeQuiz;
-        }
-
-        /// <summary>
         /// prints the entire quiz for the User to see on the screen
         /// </summary>
         /// <param name="currentQuiz">the list of quiz questions and all of their associated information</param>
@@ -142,6 +132,7 @@
                     Console.WriteLine($"{Constants.ANSWER_CHOICES[answerNumber]}  " +
                         $"{currentQuiz[questionNumber].answerChoices[answerNumber].answer}\n");
                 }
+
                 Console.WriteLine("\n\n");
             }
         }
@@ -170,6 +161,7 @@
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
                 userAnswers.Add(Constants.ANSWER_KEYS.IndexOf(userInput.Key));
             }
+
             return userAnswers;
         }
 
@@ -182,6 +174,7 @@
         public static void PrintScore(List<QuizCard> currentQuiz, List<int> userAnswers)
         {
             int numberCorrect = 0;
+
             for (int questionNumber = 0; questionNumber < currentQuiz.Count; questionNumber++)
             {
                 Console.WriteLine($"{questionNumber + 1}. {currentQuiz[questionNumber].question}\n");
@@ -205,8 +198,8 @@
                     Console.WriteLine($"{currentQuiz[questionNumber].answerChoices[userAnswers[questionNumber]].answer} " +
                         $"is incorrect!\n\n");
                 }
-
             }
+
             Console.WriteLine($"You scored {numberCorrect} out of {currentQuiz.Count} correct!\n\n\n");
         }
 
@@ -332,7 +325,6 @@
             {
                 answer = Console.ReadLine()
             };
-
             Console.Write("\n");
             Console.WriteLine("Is this answer correct?");
             Console.WriteLine($"('{Constants.USER_YES_CHOICE}' or press any other key to continue.)\n");
@@ -454,6 +446,7 @@
                 string quizChoiceConversion = Console.ReadLine();
                 quizChoice = (QuizAction.QuizOptions)Enum.Parse(typeof(QuizAction.QuizCreation), quizChoiceConversion);
                 Console.Clear();
+
                 switch (quizChoice)
                 {
                     case QuizAction.QuizOptions.Edit:
@@ -469,8 +462,10 @@
                         Console.WriteLine("Invalid entry. Please try again.\n");
                         continue;
                 }
+
                 break;
             }
+
             return quizChoice;
         }
 
