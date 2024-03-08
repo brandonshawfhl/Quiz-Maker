@@ -24,9 +24,15 @@ namespace Quiz_Maker
         /// <returns>a list of quiz qustions and their associated information</returns>
         public static List<QuizCard> LoadQuiz()
         {
-            XmlSerializer serializer = new(typeof(List<QuizCard>));
-            using FileStream file = File.OpenRead(Constants.PATH);
-            List <QuizCard> loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
+            List<QuizCard> loadedQuiz = new();
+           
+            if (File.Exists(Constants.PATH))
+            {
+                XmlSerializer serializer = new(typeof(List<QuizCard>));
+                using FileStream file = File.OpenRead(Constants.PATH);
+                loadedQuiz = (List<QuizCard>)serializer.Deserialize(file);
+            }
+
             return loadedQuiz;
         }
 

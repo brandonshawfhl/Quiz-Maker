@@ -71,12 +71,6 @@
 
                     while (!quizIntended)
                     {
-                        if (!File.Exists(Constants.PATH))
-                        {
-                            UserInterface.PrintFailedLoadMessage();
-                            break;
-                        }
-
                         List<QuizCard> loadedQuiz = Logic.LoadQuiz();
 
                         if (loadedQuiz.Count > 0)
@@ -85,6 +79,12 @@
                             currentQuiz = loadedQuiz;
                             UserInterface.PrintQuiz(currentQuiz);
                             quizIntended = UserInterface.PromptQuizIntended();
+                        }
+
+                        else
+                        {
+                            UserInterface.PrintFailedLoadMessage();
+                            break;
                         }
                     }
                 }

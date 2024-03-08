@@ -393,7 +393,7 @@
         /// </summary>
         public static void PrintFailedLoadMessage()
         {
-            Console.WriteLine("Sorry! Your quiz has failed to load!");
+            Console.WriteLine("Sorry! Your quiz has failed to load!\n");
         }
 
         /// <summary>
